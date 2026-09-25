@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffb7d8">
+<title>Sweet Fantasy — Supitchaya Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff8fc7;--purple:#b78cff;--cyan:#86eaff;--ink:#553b61;--muted:#806d89;--glass:rgba(255,255,255,.58);--line:rgba(255,255,255,.8);--shadow:0 24px 70px rgba(143,75,135,.18)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:"Kanit",sans-serif;color:var(--ink);background:radial-gradient(circle at 10% 10%,#fff,transparent 24%),radial-gradient(circle at 90% 20%,#ffd2eb,transparent 28%),linear-gradient(135deg,#ffe9f4,#eee4ff 48%,#dff8ff);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;background:radial-gradient(circle at 30% 70%,#ffb4dc40,transparent 22%),radial-gradient(circle at 75% 80%,#a4dfff47,transparent 25%);animation:ambient 10s ease-in-out infinite alternate}
+@keyframes ambient{to{transform:scale(1.08) translateY(-10px)}}a{text-decoration:none;color:inherit}button{font:inherit}
+.loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:linear-gradient(135deg,#ffd9ec,#eadbff,#d8f8ff);transition:.8s}.loader.hide{opacity:0;visibility:hidden;pointer-events:none}.loader-box{text-align:center}.loader-candy{width:130px;height:130px;margin:auto;border-radius:38% 62% 58% 42%;background:linear-gradient(135deg,#ff94c9,#c5a0ff);box-shadow:0 0 50px #ff81c78c;animation:float 2s ease-in-out infinite}.loader-title{margin-top:26px;font-family:Pacifico,cursive;font-size:38px;color:#8f5c91}.loader-sub{color:#806d89;margin-top:7px}.loader-bar{width:220px;height:8px;border-radius:99px;background:#ffffff99;overflow:hidden;margin:22px auto}.loader-bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));animation:load 1.8s ease forwards}@keyframes load{to{width:100%}}@keyframes float{50%{transform:translateY(-14px) rotate(4deg)}}
+.magic-bg,.particles{position:fixed;inset:0;pointer-events:none;z-index:-1}.orb{position:absolute;border-radius:50%;filter:blur(8px);opacity:.35;animation:orb 12s ease-in-out infinite alternate}.orb.one{width:250px;height:250px;background:#ff9dcc;left:-60px;top:18%}.orb.two{width:330px;height:330px;background:#c3a4ff;right:-100px;top:10%;animation-delay:-3s}.orb.three{width:220px;height:220px;background:#8de8ff;left:42%;bottom:-80px;animation-delay:-6s}@keyframes orb{to{transform:translate(35px,-25px) scale(1.12)}}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff,0 0 24px #ff9ed2;animation:spark 4s linear infinite}@keyframes spark{0%{opacity:0;transform:translateY(25px) scale(.4)}30%,70%{opacity:1}100%{opacity:0;transform:translateY(-80px) scale(1.3)}}
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1120px,calc(100% - 28px));z-index:100;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#ffffff8c;border:1px solid var(--line);backdrop-filter:blur(20px);border-radius:999px;box-shadow:var(--shadow)}.logo{font-family:Pacifico,cursive;color:#a05c9d;font-size:22px;white-space:nowrap}.nav-links{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.nav-links a{padding:8px 12px;border-radius:999px;font-size:13px;transition:.25s}.nav-links a:hover{background:#fff;color:#c05d9e;transform:translateY(-2px)}.nav-toggle{display:none;border:0;background:#fff8;border-radius:50%;width:42px;height:42px}
+section{padding:110px 7%;position:relative}.hero{min-height:100vh;padding-top:150px;display:grid;place-items:center}.hero-wrap{width:min(1120px,100%);display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.kicker{display:inline-flex;padding:8px 15px;border-radius:999px;background:#ffffff8c;border:1px solid #fff;color:#9c6498;font-size:13px}.hero h1{font-size:clamp(45px,7vw,82px);line-height:1.03;margin:22px 0 14px;letter-spacing:-2px}.hero h1 .gradient{background:linear-gradient(90deg,#e66da9,#9b78e9,#5bcce5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero h1 small{display:block;font-family:Pacifico,cursive;font-size:.45em;color:#9a719c;letter-spacing:0}.hero p{font-size:18px;color:var(--muted);line-height:1.9;max-width:650px}.quote{margin-top:25px;padding:18px 22px;border-left:5px solid var(--pink);background:#ffffff63;border-radius:0 20px 20px 0;font-size:20px;color:#805a87}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:0;padding:13px 21px;border-radius:999px;cursor:pointer;background:linear-gradient(100deg,#ff8fbe,#b28bf5);color:white;box-shadow:0 12px 28px #cd64ab40;transition:.25s}.btn:hover{transform:translateY(-3px)}.btn.alt{background:#ffffff94;color:#865d8b;border:1px solid #fff}
+.hero-card{min-height:480px;position:relative;border:1px solid #fffffff0;background:linear-gradient(145deg,#ffffffad,#ffffff4d);backdrop-filter:blur(22px);border-radius:45px;box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}.hero-card:before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffd1e9 28%,#c8b1ff 65%,transparent 70%)}.candy-orbit{width:260px;height:260px;border:2px dashed #b47abc59;border-radius:50%;position:relative;animation:spin 18s linear infinite}.candy-orbit span{position:absolute;font-size:48px}.candy-orbit span:nth-child(1){top:-28px;left:90px}.candy-orbit span:nth-child(2){right:-22px;top:100px}.candy-orbit span:nth-child(3){bottom:-20px;left:85px}.candy-orbit span:nth-child(4){left:-25px;top:100px}.hero-sweet{position:absolute;font-size:115px;z-index:2;filter:drop-shadow(0 18px 20px #8c508c30);animation:float 3.5s ease-in-out infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.section-heading{text-align:center;max-width:760px;margin:0 auto 48px}.section-heading .mini{color:#ae6ba6;letter-spacing:4px;font-size:12px}.section-heading h2{font-size:clamp(32px,5vw,54px);margin:8px 0}.section-heading p{color:var(--muted);line-height:1.8}.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(20px);box-shadow:var(--shadow);border-radius:32px}
+.profile-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px;max-width:1100px;margin:auto}.profile-card{padding:32px}.avatar{width:180px;height:180px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;font-size:76px;background:linear-gradient(145deg,#ffd1e6,#e0caff,#c5f4ff);box-shadow:inset 0 0 30px #fff,0 20px 50px #91599330}.profile-card h3{text-align:center;font-size:28px}.profile-card .nick{text-align:center;color:#a16c9d}.info-list{display:grid;gap:13px}.info{display:flex;justify-content:space-between;gap:20px;padding:16px 18px;border-radius:20px;background:#ffffff66}.info b{color:#805b87}.info span{text-align:right;color:#77627c}
+.hobby-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.hobby{padding:28px;text-align:center;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.3s;position:relative;overflow:hidden}.hobby:hover{transform:translateY(-8px) rotate(.5deg)}.hobby .emoji{font-size:55px;margin-bottom:10px}.hobby h3{font-size:21px}.hobby p{font-size:13px;color:var(--muted)}
+.edu-wrap{max-width:1000px;margin:auto}.timeline{display:grid;gap:18px}.edu{padding:25px 28px;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center}.edu-year{font-family:Pacifico,cursive;color:#a463a2;font-size:20px}.edu h3{font-size:21px;margin-bottom:5px}.edu p{color:var(--muted)}
+.interest{max-width:1000px;margin:auto;padding:42px;text-align:center}.interest .big{font-size:70px}.interest p{font-size:20px;line-height:1.9;color:#705c76}.goal{max-width:900px;margin:35px auto 0;padding:40px;text-align:center;background:linear-gradient(135deg,#ffffffad,#ffdde987)}.goal .teacher{font-size:80px}.goal h3{font-size:34px}.goal p{color:var(--muted)}
+.contact-grid{max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-card{padding:32px}.contact-item{display:flex;gap:15px;align-items:center;padding:17px 0;border-bottom:1px solid #895b8c1f}.contact-item:last-child{border:0}.contact-icon{font-size:28px}.contact-item small{display:block;color:#a07ca3}.contact-item strong{font-size:17px;word-break:break-word}.footer{text-align:center;padding:60px 20px 85px;color:#856f8a}.footer .sweet{font-family:Pacifico,cursive;font-size:28px;color:#a2649d}
+.floating{position:fixed;right:20px;bottom:20px;z-index:90;width:55px;height:55px;border:1px solid #fff;border-radius:50%;background:#ffffffa6;backdrop-filter:blur(12px);cursor:pointer;box-shadow:0 15px 35px #82508c2e}.mouse-dot{position:fixed;width:9px;height:9px;border-radius:50%;background:#ff7fbc;box-shadow:0 0 16px #ff7fbc;pointer-events:none;z-index:1000;transform:translate(-50%,-50%)}.ripple{position:fixed;width:15px;height:15px;border:2px solid #ff8fc7;border-radius:50%;pointer-events:none;z-index:999;animation:ripple .7s ease-out forwards}@keyframes ripple{to{width:100px;height:100px;opacity:0;transform:translate(-42px,-42px)}}
+@media(max-width:850px){.nav-links{display:none}.nav-toggle{display:block}.nav.open{border-radius:28px}.nav.open .nav-links{display:flex;position:absolute;top:65px;left:0;right:0;padding:12px;background:#ffffffcc;border:1px solid #fff;border-radius:25px;backdrop-filter:blur(20px)}.hero-wrap,.profile-grid,.contact-grid{grid-template-columns:1fr}.hero{text-align:center}.hero p{margin:auto}.quote{text-align:left}.actions{justify-content:center}.hero-card{min-height:360px}.hobby-grid{grid-template-columns:repeat(2,1fr)}.edu{grid-template-columns:1fr;gap:5px}}
+@media(max-width:520px){section{padding:80px 5%}.hero{padding-top:125px}.hero h1{font-size:45px}.hero-card{min-height:310px}.hobby-grid{grid-template-columns:1fr}.profile-card,.contact-card,.interest,.goal{padding:25px}.info{flex-direction:column;gap:4px}.info span{text-align:left}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-box"><div class="loader-candy"></div><div class="loader-title">Sweet Fantasy</div><div class="loader-sub">กำลังเปิดประตูเข้าสู่โลกของแก้ม...</div><div class="loader-bar"><span></span></div></div></div>
+<div class="magic-bg"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div></div><div class="particles" id="particles"></div>
+
+<nav class="nav" id="nav">
+<a class="logo" href="#home">Sweet ✦ Gam</a>
+<div class="nav-links"><a href="#home">หน้าแรก</a><a href="#profile">เกี่ยวกับฉัน</a><a href="#education">การศึกษา</a><a href="#hobby">งานอดิเรก</a><a href="#interest">ความสนใจ</a><a href="#contact">ติดต่อ</a></div>
+<button class="nav-toggle" id="navToggle">☰</button>
+</nav>
+
+<main>
+<section class="hero" id="home"><div class="hero-wrap"><div>
+<span class="kicker">🍬 WELCOME TO MY SWEET WORLD ✨</span>
+<h1><small>My name is</small><span class="gradient">สุพิชญา บุตรต๊ะ</span></h1>
+<p>สวัสดีค่ะ ฉันชื่อ <b>สุพิชญา บุตรต๊ะ</b> ชื่อเล่น <b>แก้ม</b> นักเรียนชั้น ม.3/2 จากโรงเรียนจอมทอง จังหวัดเชียงใหม่ ยินดีต้อนรับเข้าสู่ Portfolio โลกเล็ก ๆ ที่รวมตัวตน ความฝัน และสิ่งที่ฉันรักเอาไว้ด้วยกัน</p>
+<div class="quote">“ศิลปะคือหนึ่งในจิตวิญญาณของฉัน” 🎨</div>
+<div class="actions"><a class="btn" href="#profile">รู้จักฉันมากขึ้น ✨</a><a class="btn alt" href="#contact">ช่องทางติดต่อ 💌</a></div>
+</div><div class="hero-card"><div class="candy-orbit"><span>🍭</span><span>🍓</span><span>🧁</span><span>🍬</span></div><div class="hero-sweet">🎨</div></div></div></section>
+
+<section id="profile"><div class="section-heading"><div class="mini">ABOUT ME</div><h2>ทำความรู้จักกับแก้ม</h2><p>พื้นที่เล็ก ๆ ที่เล่าเรื่องตัวตนของฉันในแบบหวาน ๆ และเป็นตัวเอง</p></div>
+<div class="profile-grid"><div class="glass profile-card"><div class="avatar">🎨</div><h3>สุพิชญา บุตรต๊ะ</h3><div class="nick">แก้ม • Gam</div></div>
+<div class="glass profile-card"><div class="info-list"><div class="info"><b>ชื่อเล่น</b><span>แก้ม</span></div><div class="info"><b>ระดับชั้น</b><span>ม.3/2</span></div><div class="info"><b>โรงเรียน</b><span>จอมทอง</span></div><div class="info"><b>จังหวัด</b><span>เชียงใหม่</span></div><div class="info"><b>วิชาที่ชอบ</b><span>ภาษาอังกฤษ และ ศิลปะ</span></div><div class="info"><b>เป้าหมาย</b><span>อยากเป็นครู</span></div></div></div></div></section>
+
+<section id="education"><div class="section-heading"><div class="mini">EDUCATION</div><h2>เส้นทางการศึกษา 📚</h2><p>ก้าวเล็ก ๆ ที่ค่อย ๆ พาฉันเดินไปสู่ความฝัน</p></div><div class="edu-wrap"><div class="timeline">
+<article class="glass edu"><div class="edu-year">2561–2567</div><div><h3>ประถมศึกษา ป.1–6</h3><p>ศึกษาอยู่ที่โรงเรียนศรีจอมทอง</p></div></article>
+<article class="glass edu"><div class="edu-year">2567–2568</div><div><h3>มัธยมศึกษา ม.1–2</h3><p>ศึกษาอยู่ที่โรงเรียนจอมทอง</p></div></article>
+<article class="glass edu"><div class="edu-year">2569–ปัจจุบัน</div><div><h3>มัธยมศึกษา ม.3</h3><p>กำลังศึกษาอยู่ที่โรงเรียนจอมทอง</p></div></article>
+</div></div></section>
+
+<section id="hobby"><div class="section-heading"><div class="mini">MY HOBBIES</div><h2>สิ่งที่ฉันชอบทำ 🍭</h2><p>งานอดิเรกที่ทำให้วันธรรมดามีสีสันมากขึ้น</p></div><div class="hobby-grid">
+<article class="glass hobby"><div class="emoji">🎨</div><h3>วาดรูป</h3><p>สร้างโลกจากจินตนาการ</p></article><article class="glass hobby"><div class="emoji">🎧</div><h3>ฟังเพลง</h3><p>ปล่อยใจไปกับเสียงเพลง</p></article><article class="glass hobby"><div class="emoji">🎤</div><h3>ร้องเพลง</h3><p>สนุกกับการร้องเพลง</p></article><article class="glass hobby"><div class="emoji">🧶</div><h3>งานคราฟต์ DIY</h3><p>ประดิษฐ์ของด้วยมือของตัวเอง</p></article><article class="glass hobby"><div class="emoji">🎮</div><h3>เล่นเกม</h3><p>ผจญภัยในโลกอีกใบ</p></article><article class="glass hobby"><div class="emoji">😴</div><h3>นอน</h3><p>พักผ่อนชาร์จพลังให้ตัวเอง</p></article>
+</div></section>
+
+<section id="interest"><div class="section-heading"><div class="mini">MY WORLD</div><h2>ความสนใจและความฝัน 🌈</h2></div>
+<div class="glass interest"><div class="big">🌎✨</div><p>ฉันอยากออกสำรวจโลกกว้าง เสาะหาความรู้ต่าง ๆ และได้ทำในสิ่งที่ตนเองรัก เพราะฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้นแค่ในห้องเรียน แต่เกิดขึ้นจากทุกประสบการณ์ที่เราได้พบเจอ</p></div>
+<div class="glass goal"><div class="teacher">👩‍🏫</div><h3>ความฝันของฉัน</h3><p>อยากเป็นครู และส่งต่อความรู้ให้กับคนอื่นในอนาคต</p></div></section>
+
+<section id="contact"><div class="section-heading"><div class="mini">CONTACT</div><h2>มาพูดคุยกัน 💌</h2><p>ขอบคุณที่แวะเข้ามาทำความรู้จักกับ Portfolio ของฉัน</p></div>
+<div class="contact-grid"><div class="glass contact-card">
+<div class="contact-item"><div class="contact-icon">📧</div><div><small>Email</small><strong>gamhom181a54@gmail.com</strong></div></div>
+<div class="contact-item"><div class="contact-icon">📱</div><div><small>Number</small><strong>063-627-1686</strong></div></div>
+<div class="contact-item"><div class="contact-icon">📸</div><div><small>Instagram</small><strong>Supitchaya_Butta</strong></div></div>
+</div><div class="glass contact-card" style="display:grid;place-items:center;text-align:center"><div><div style="font-size:70px">🍰</div><h3 style="font-size:28px">My Portfolio</h3><p style="color:var(--muted);margin-top:8px;line-height:1.8">Sweet Fantasy ของแก้ม<br>ศิลปะ ความฝัน และตัวตนของฉัน</p></div></div></div></section>
+</main>
+<footer class="footer"><div class="sweet">Sweetly made by Gam ✦</div><p>© 2026 Supitchaya Butta — My Portfolio</p></footer>
+<button class="floating" id="topBtn" title="กลับด้านบน">↑</button><div class="mouse-dot" id="mouseDot"></div>
+
+<script>
+const loader=document.getElementById("loader");window.addEventListener("load",()=>setTimeout(()=>loader.classList.add("hide"),1200));
+const nav=document.getElementById("nav"),navToggle=document.getElementById("navToggle");navToggle.addEventListener("click",()=>nav.classList.toggle("open"));
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+const particles=document.getElementById("particles");for(let i=0;i<34;i++){const s=document.createElement("span");s.className="spark";s.style.left=Math.random()*100+"%";s.style.top=10+Math.random()*85+"%";s.style.animationDelay=Math.random()*4+"s";s.style.animationDuration=3+Math.random()*4+"s";particles.appendChild(s)}
+const mouseDot=document.getElementById("mouseDot");let mx=0,my=0,dx=0,dy=0;window.addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY});function cursorLoop(){dx+=(mx-dx)*.18;dy+=(my-dy)*.18;mouseDot.style.left=dx+"px";mouseDot.style.top=dy+"px";requestAnimationFrame(cursorLoop)}cursorLoop();
+document.addEventListener("pointerdown",e=>{const r=document.createElement("span");r.className="ripple";r.style.left=e.clientX+"px";r.style.top=e.clientY+"px";document.body.appendChild(r);setTimeout(()=>r.remove(),700)});
+document.getElementById("topBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+</script>
+</body>
+</html>
