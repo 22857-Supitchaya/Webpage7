@@ -693,11 +693,14 @@
         updateProgress(
             pageName
         );
-
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
+try {
+    window.scrollTo({
+        top: 0,
+        behavior: "auto"
+    });
+} catch (_) {
+    window.scrollTo(0, 0);
+}
 
         updateSauce();
 
