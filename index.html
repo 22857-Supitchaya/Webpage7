@@ -1,2052 +1,2729 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
 
-  <meta
-    name="description"
-    content="Sweet Gam Portfolio — สุพิชญา บุตรต๊ะ"
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <meta name="theme-color" content="#ffd4ec">
+    <meta
+        name="theme-color"
+        content="#ff9fcb"
+    >
 
-  <title>Sweet Gam — สุพิชญา บุตรต๊ะ</title>
+    <meta
+        name="description"
+        content="Sweet Gam Portfolio — สุพิชญา บุตรต๊ะ"
+    >
 
-  <!-- =========================================================
-       GOOGLE FONTS
-  ========================================================== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Sweet Gam — Portfolio</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Pacifico&display=swap"
-    rel="stylesheet"
-  >
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-  <!-- =========================================================
-       MAIN STYLES
-  ========================================================== -->
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/themes.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         STYLES
+    ========================================================== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
 </head>
 
-<body data-theme="candy">
+<body class="theme-candy">
 
-  <!-- =========================================================
-       LOADING SCREEN
-       หน้าโหลด:
-       ขนมกลางวงแหวน
-       → ขนมกระจาย
-       → ผ้าม่าน
-       → Home
-  ========================================================== -->
-
-  <div
-    id="siteLoader"
-    class="site-loader"
-    aria-hidden="true"
-  >
-
-    <div class="loader-sky"></div>
+    <!-- =========================================================
+         ACCESSIBILITY / PAGE STATUS
+    ========================================================== -->
 
     <div
-      class="loader-sweets"
-      id="loaderSweets"
+        class="sr-only"
+        aria-live="polite"
+        id="liveRegion"
     ></div>
 
-    <div class="loader-orbit orbit-a"></div>
-    <div class="loader-orbit orbit-b"></div>
 
-    <div class="loader-center">
+    <!-- =========================================================
+         LOADING SCREEN
+    ========================================================== -->
 
-      <div
-        class="loader-candy"
-        id="loaderCandy"
-      >
-        🍭
-      </div>
+    <div
+        id="loadingScreen"
+        class="loading-screen"
+        aria-hidden="false"
+    >
 
-      <div class="loader-title">
-        Sweet Fantasy
-      </div>
+        <div class="loading-background">
+            <span class="loading-sparkle sparkle-1">✦</span>
+            <span class="loading-sparkle sparkle-2">✧</span>
+            <span class="loading-sparkle sparkle-3">⋆</span>
+            <span class="loading-sparkle sparkle-4">✦</span>
+            <span class="loading-sparkle sparkle-5">✧</span>
+            <span class="loading-sparkle sparkle-6">⋆</span>
+        </div>
 
-      <p class="loader-subtitle">
-        กำลังเปิดประตูเข้าสู่โลกของแก้ม...
-      </p>
 
-      <div class="loader-bar">
-        <span id="loaderBarFill"></span>
-      </div>
+        <div class="loader-content">
 
-      <div
-        class="loader-percent"
-        id="loaderPercent"
-      >
-        0%
-      </div>
+            <div class="loader-candy-wrap">
+
+                <div class="loader-ring loader-ring-a"></div>
+                <div class="loader-ring loader-ring-b"></div>
+                <div class="loader-ring loader-ring-c"></div>
+
+                <div class="loader-candy">
+                    <span class="loader-candy-shine"></span>
+                    <span class="loader-candy-icon">🍭</span>
+                </div>
+
+            </div>
+
+
+            <div class="loader-title">
+                SWEET GAM
+            </div>
+
+            <div class="loader-subtitle">
+                entering my sweet world...
+            </div>
+
+
+            <div class="loader-progress">
+
+                <div class="loader-progress-track">
+                    <div
+                        id="loaderProgress"
+                        class="loader-progress-bar"
+                    ></div>
+                </div>
+
+                <div class="loader-progress-info">
+                    <span id="loaderPercent">0%</span>
+                    <span id="loaderStatus">
+                        preparing sweetness
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="loader-sweets" aria-hidden="true">
+                <span>🍓</span>
+                <span>🍬</span>
+                <span>🧁</span>
+                <span>🍭</span>
+                <span>🍰</span>
+                <span>🍫</span>
+                <span>🍩</span>
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="loader-curtain loader-curtain-left"></div>
-    <div class="loader-curtain loader-curtain-right"></div>
 
-  </div>
-
-
-  <!-- =========================================================
-       PAGE TRANSITION CURTAIN
-       ใช้ตอนเปลี่ยนหน้า
-       ไม่ต้องโหลด Loading ใหม่
-  ========================================================== -->
-
-  <div
-    id="pageCurtain"
-    class="page-curtain"
-    aria-hidden="true"
-  >
-
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+    <!-- =========================================================
+         CURTAIN TRANSITION
+    ========================================================== -->
 
     <div
-      class="curtain-candy-burst"
-      id="curtainCandyBurst"
-    ></div>
-
-  </div>
-
-
-  <!-- =========================================================
-       MOUSE SYSTEM
-  ========================================================== -->
-
-  <div
-    id="mouseGlow"
-    class="mouse-glow"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    id="cursorSpoon"
-    class="cursor-spoon"
-    aria-hidden="true"
-  >
-    🥄
-  </div>
-
-  <div
-    id="cursorDot"
-    class="cursor-dot"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    id="trailLayer"
-    class="trail-layer"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    id="clickLayer"
-    class="click-layer"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    id="sparkleLayer"
-    class="sparkle-layer"
-    aria-hidden="true"
-  ></div>
-
-
-  <!-- =========================================================
-       AMBIENT WORLD
-       พื้นหลังร่วมทุกหน้า ยกเว้น Loading
-  ========================================================== -->
-
-  <div
-    class="ambient-world"
-    aria-hidden="true"
-  >
-
-    <!-- Gradient / Glow -->
-    <div class="orb orb-pink"></div>
-    <div class="orb orb-purple"></div>
-    <div class="orb orb-blue"></div>
-
-    <!-- ดาว / ประกาย -->
-    <div
-      class="ambient-stars"
-      id="ambientStars"
-    ></div>
-
-    <!-- ขนมลอยพื้นหลัง -->
-    <div
-      class="floating-sweets"
-      id="floatingSweets"
-    ></div>
-
-    <!-- กองขนมด้านล่าง -->
-    <div
-      class="bottom-sweet-pile"
-      id="bottomSweetPile"
-    ></div>
-
-    <!-- ซอสไหลตาม Scroll -->
-    <div
-      class="sauce-drip"
-      id="sauceDrip"
-    >
-      <div class="sauce-pool"></div>
-    </div>
-
-    <!-- trail สำหรับ Scroll -->
-    <div
-      class="page-sugar-trail"
-      id="pageSugarTrail"
-    ></div>
-
-  </div>
-
-
-  <!-- =========================================================
-       HEADER / NAVIGATION
-  ========================================================== -->
-
-  <header class="site-header">
-
-    <button
-      class="brand-button"
-      type="button"
-      data-page="home"
-      aria-label="กลับหน้าแรก"
+        id="curtainTransition"
+        class="curtain-transition"
+        aria-hidden="true"
     >
 
-      <span class="brand-script">
-        Sweet
-      </span>
+        <div class="curtain curtain-left">
+            <div class="curtain-decoration">🍓</div>
+            <div class="curtain-decoration">🍭</div>
+            <div class="curtain-decoration">🍬</div>
+        </div>
 
-      <span class="brand-star">
-        ✦
-      </span>
+        <div class="curtain curtain-right">
+            <div class="curtain-decoration">🧁</div>
+            <div class="curtain-decoration">🍰</div>
+            <div class="curtain-decoration">🍫</div>
+        </div>
 
-      <span class="brand-name">
-        Gam
-      </span>
-
-    </button>
-
-
-    <nav
-      class="main-nav"
-      aria-label="เมนูหลัก"
-    >
-
-      <button
-        data-page="home"
-        class="nav-button active"
-        type="button"
-      >
-        หน้าแรก
-      </button>
-
-      <button
-        data-page="about"
-        class="nav-button"
-        type="button"
-      >
-        เกี่ยวกับฉัน
-      </button>
-
-      <button
-        data-page="education"
-        class="nav-button"
-        type="button"
-      >
-        การศึกษา
-      </button>
-
-      <button
-        data-page="hobbies"
-        class="nav-button"
-        type="button"
-      >
-        งานอดิเรก
-      </button>
-
-      <button
-        data-page="interests"
-        class="nav-button"
-        type="button"
-      >
-        ความสนใจ
-      </button>
-
-      <button
-        data-page="contact"
-        class="nav-button"
-        type="button"
-      >
-        ติดต่อ
-      </button>
-
-      <button
-        data-page="thankyou"
-        class="nav-button"
-        type="button"
-      >
-        ของขวัญ
-      </button>
-
-    </nav>
-
-
-    <button
-      id="mobileMenuBtn"
-      class="mobile-menu-btn"
-      type="button"
-      aria-label="เปิดเมนู"
-    >
-      ☰
-    </button>
-
-  </header>
-
-
-  <!-- =========================================================
-       MOBILE MENU
-  ========================================================== -->
-
-  <aside
-    id="mobileMenu"
-    class="mobile-menu"
-    aria-hidden="true"
-  >
-
-    <div class="mobile-menu-panel">
-
-      <button
-        class="mobile-close"
-        id="mobileClose"
-        type="button"
-        aria-label="ปิดเมนู"
-      >
-        ×
-      </button>
-
-      <div class="mobile-brand">
-        Sweet ✦ Gam
-      </div>
-
-      <button
-        data-page="home"
-        type="button"
-      >
-        หน้าแรก
-      </button>
-
-      <button
-        data-page="about"
-        type="button"
-      >
-        เกี่ยวกับฉัน
-      </button>
-
-      <button
-        data-page="education"
-        type="button"
-      >
-        การศึกษา
-      </button>
-
-      <button
-        data-page="hobbies"
-        type="button"
-      >
-        งานอดิเรก
-      </button>
-
-      <button
-        data-page="interests"
-        type="button"
-      >
-        ความสนใจ
-      </button>
-
-      <button
-        data-page="contact"
-        type="button"
-      >
-        ติดต่อ
-      </button>
-
-      <button
-        data-page="thankyou"
-        type="button"
-      >
-        ของขวัญ
-      </button>
+        <div class="curtain-center">
+            <span>✦</span>
+            <span>sweet transition</span>
+            <span>✦</span>
+        </div>
 
     </div>
 
-  </aside>
+
+    <!-- =========================================================
+         CUSTOM SPOON CURSOR
+    ========================================================== -->
+
+    <div
+        id="customCursor"
+        class="custom-cursor"
+        aria-hidden="true"
+    >
+        <div class="cursor-spoon">
+            <span class="spoon-head"></span>
+            <span class="spoon-neck"></span>
+            <span class="spoon-handle"></span>
+        </div>
+    </div>
 
 
-  <!-- =========================================================
-       MAIN APP
-       ทุก section คือ "คนละหน้า"
-       JavaScript จะสลับ active-page
-  ========================================================== -->
+    <!-- =========================================================
+         MOUSE EFFECT CONTAINERS
+    ========================================================== -->
 
-  <main
-    id="app"
-    class="app-shell"
-  >
+    <div
+        id="mouseTrail"
+        class="mouse-trail"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        id="clickBurstLayer"
+        class="click-burst-layer"
+        aria-hidden="true"
+    ></div>
 
 
-    <!-- =======================================================
-         PAGE 01 — HOME
-    ======================================================== -->
+    <!-- =========================================================
+         GLOBAL OCEAN / CANDY BACKGROUND
+    ========================================================== -->
 
-    <section
-      class="page active-page"
-      data-page-view="home"
-      id="page-home"
+    <div
+        id="globalBackground"
+        class="global-background"
+        aria-hidden="true"
     >
 
-      <div class="page-inner home-layout">
+        <div class="background-gradient"></div>
+
+        <div class="background-glow glow-a"></div>
+        <div class="background-glow glow-b"></div>
+        <div class="background-glow glow-c"></div>
 
 
-        <!-- HERO TEXT -->
-
-        <div class="hero-copy reveal-on-page">
-
-          <div class="eyebrow glass-pill">
-            🍬 WELCOME TO MY SWEET WORLD ✨
-          </div>
-
-          <p class="hero-script">
-            My name is
-          </p>
-
-          <h1 class="hero-name shimmer-text">
-            สุพิชญา บุตรต๊ะ
-          </h1>
-
-          <p class="hero-lead">
-
-            สวัสดีค่ะ ฉันชื่อ
-            <strong>สุพิชญา บุตรต๊ะ</strong>
-
-            ชื่อเล่น
-            <strong>แก้ม</strong>
-
-            นักเรียนชั้น
-            <strong>ม.3/2</strong>
-
-            จากโรงเรียนจอมทอง จังหวัดเชียงใหม่
-
-            ยินดีต้อนรับเข้าสู่โลก Portfolio หวาน ๆ
-            ที่รวมตัวตน ความฝัน และสิ่งที่ฉันรักเอาไว้ด้วยกัน
-
-          </p>
-
-
-          <!-- MOTTO -->
-
-          <div
-            class="quote-box tilt-card text-card"
-          >
-
-            <span>
-              “ศิลปะคือหนึ่งในจิตวิญญาณของฉัน” 🎨
-            </span>
-
-          </div>
-
-
-          <!-- HERO BUTTONS -->
-
-          <div class="hero-actions">
+        <div class="floating-sweets floating-sweets-back">
 
             <button
-              class="primary-btn"
-              type="button"
-              data-page="about"
+                type="button"
+                class="background-sweet bg-sweet-1"
+                data-sweet="🍬"
+                aria-label="sweet decoration"
             >
-              รู้จักฉันมากขึ้น ✨
+                🍬
             </button>
 
             <button
-              class="secondary-btn"
-              type="button"
-              data-page="contact"
+                type="button"
+                class="background-sweet bg-sweet-2"
+                data-sweet="🍭"
+                aria-label="sweet decoration"
             >
-              ช่องทางติดต่อ 💌
+                🍭
             </button>
 
-          </div>
+            <button
+                type="button"
+                class="background-sweet bg-sweet-3"
+                data-sweet="🍓"
+                aria-label="sweet decoration"
+            >
+                🍓
+            </button>
 
+            <button
+                type="button"
+                class="background-sweet bg-sweet-4"
+                data-sweet="🍫"
+                aria-label="sweet decoration"
+            >
+                🍫
+            </button>
 
-          <!-- ACHIEVEMENT PREVIEW -->
+            <button
+                type="button"
+                class="background-sweet bg-sweet-5"
+                data-sweet="🧁"
+                aria-label="sweet decoration"
+            >
+                🧁
+            </button>
 
-          <div
-            class="achievement-strip"
-            id="achievementStrip"
-            aria-live="polite"
-          ></div>
+            <button
+                type="button"
+                class="background-sweet bg-sweet-6"
+                data-sweet="🍩"
+                aria-label="sweet decoration"
+            >
+                🍩
+            </button>
+
+            <button
+                type="button"
+                class="background-sweet bg-sweet-7"
+                data-sweet="🍰"
+                aria-label="sweet decoration"
+            >
+                🍰
+            </button>
+
+            <button
+                type="button"
+                class="background-sweet bg-sweet-8"
+                data-sweet="🍪"
+                aria-label="sweet decoration"
+            >
+                🍪
+            </button>
 
         </div>
 
 
-        <!-- HERO SWEET ART -->
+        <div class="floating-sweets floating-sweets-front">
 
-        <div
-          class="hero-art tilt-card image-card"
-          data-zoom="true"
-        >
+            <span class="floating-candy candy-a">🍭</span>
+            <span class="floating-candy candy-b">🍬</span>
+            <span class="floating-candy candy-c">🍓</span>
+            <span class="floating-candy candy-d">🧁</span>
+            <span class="floating-candy candy-e">🍫</span>
+            <span class="floating-candy candy-f">🍰</span>
+            <span class="floating-candy candy-g">🍩</span>
 
-          <!-- ขนมกลางหน้า -->
-          <div
-            class="hero-sweet-core"
-            id="heroSweetCore"
-          >
-            🍰
-          </div>
-
-          <!-- วงแหวนหมุน -->
-          <div class="hero-ring hero-ring-1"></div>
-          <div class="hero-ring hero-ring-2"></div>
-          <div class="hero-ring hero-ring-3"></div>
+        </div>
 
 
-          <!-- ประกาย -->
-          <div class="hero-sprinkles">
+        <div class="background-sparkles">
 
             <span>✦</span>
             <span>✧</span>
-            <span>✿</span>
-            <span>♡</span>
-
-          </div>
-
-
-          <!-- =================================================
-               รูปสำหรับหน้า Home
-               เปลี่ยนไฟล์ตรงนี้ได้
-          ================================================== -->
-
-          <div class="image-placeholder hero-placeholder">
-
-            <img
-              src="./images/decorations/home-sweet.png"
-              alt="ขนมตกแต่งหน้าแรก"
-              data-fallback="home-sweet"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="section-footer-hint">
-
-        เลื่อนดูได้ที่ปุ่มเมนูด้านบน
-        — ทุกหน้าเป็นคนละฉาก ✦
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 02 — ABOUT
-    ======================================================== -->
-
-    <section
-      class="page"
-      data-page-view="about"
-      id="page-about"
-    >
-
-      <div class="page-inner">
-
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            MY SWEET IDENTITY
-          </div>
-
-          <h2>
-            รู้จักแก้มให้มากขึ้น 🍓
-          </h2>
-
-          <p>
-            พื้นที่เล็ก ๆ ที่เล่าเรื่องตัวตนของฉันแบบหวาน ๆ
-          </p>
-
-        </div>
-
-
-        <div class="about-grid">
-
-
-          <!-- PROFILE IMAGE -->
-
-          <article
-            class="profile-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="profile-photo-wrap">
-
-              <!--
-                รูปโปรไฟล์
-                เปลี่ยนไฟล์เป็นรูปของตัวเองได้เลย
-              -->
-
-              <img
-                src="./images/profile/profile.jpg"
-                alt="รูปโปรไฟล์ของสุพิชญา"
-                data-fallback="profile"
-              >
-
-            </div>
-
-            <div class="profile-name">
-              สุพิชญา บุตรต๊ะ
-            </div>
-
-            <div class="profile-nick">
-              แก้ม · Gam
-            </div>
-
-            <div class="profile-ribbon">
-              ศิลปะ · ความฝัน · จินตนาการ
-            </div>
-
-          </article>
-
-
-          <!-- PROFILE INFORMATION -->
-
-          <div class="profile-details">
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  ชื่อเล่น
-                </span>
-
-                <strong>
-                  แก้ม
-                </strong>
-
-              </div>
-
-            </article>
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  ระดับชั้น
-                </span>
-
-                <strong>
-                  ม.3/2
-                </strong>
-
-              </div>
-
-            </article>
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  โรงเรียน
-                </span>
-
-                <strong>
-                  จอมทอง
-                </strong>
-
-              </div>
-
-            </article>
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  จังหวัด
-                </span>
-
-                <strong>
-                  เชียงใหม่
-                </strong>
-
-              </div>
-
-            </article>
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  วิชาที่ชอบ
-                </span>
-
-                <strong>
-                  ภาษาอังกฤษ และ ศิลปะ
-                </strong>
-
-              </div>
-
-            </article>
-
-
-            <article
-              class="info-card tilt-card text-card"
-            >
-
-              <div>
-
-                <span>
-                  เป้าหมาย
-                </span>
-
-                <strong>
-                  อยากเป็นครู
-                </strong>
-
-              </div>
-
-            </article>
-
-
-          </div>
-
-        </div>
-
-
-        <!-- ===================================================
-             SECRET RECIPE
-        ==================================================== -->
-
-        <div
-          class="secret-box tilt-card text-card"
-          id="secretRecipeBox"
-        >
-
-          <div class="secret-icon">
-            🔐
-          </div>
-
-          <div>
-
-            <strong>
-              Secret Recipe
-            </strong>
-
-            <p>
-              ลองแตะปุ่มขนม 3 ชิ้นตามลำดับให้ถูกดูนะ…
-            </p>
-
-          </div>
-
-
-          <div
-            class="secret-sequence"
-            id="secretSequence"
-          >
-
-            <button
-              type="button"
-              data-secret="🍓"
-            >
-              🍓
-            </button>
-
-            <button
-              type="button"
-              data-secret="🍫"
-            >
-              🍫
-            </button>
-
-            <button
-              type="button"
-              data-secret="🍭"
-            >
-              🍭
-            </button>
-
-          </div>
-
-
-          <div
-            class="secret-result"
-            id="secretResult"
-          >
-            ยังไม่ปลดล็อก ✧
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 03 — EDUCATION
-    ======================================================== -->
-
-    <section
-      class="page"
-      data-page-view="education"
-      id="page-education"
-    >
-
-      <div class="page-inner">
-
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            EDUCATION
-          </div>
-
-          <h2>
-            เส้นทางการศึกษา 📚
-          </h2>
-
-          <p>
-            ก้าวเล็ก ๆ ที่ค่อย ๆ พาฉันเดินไปสู่ความฝัน
-          </p>
+            <span>⋆</span>
+            <span>✦</span>
+            <span>✧</span>
+            <span>⋆</span>
+            <span>✦</span>
+            <span>✧</span>
+            <span>⋆</span>
+            <span>✦</span>
+            <span>✧</span>
+            <span>⋆</span>
 
         </div>
 
 
         <div
-          class="education-timeline"
-          id="educationTimeline"
-        >
-
-          <!-- เส้นเชื่อม -->
-          <div class="timeline-line"></div>
-
-
-          <!-- PRIMARY -->
-
-          <article
-            class="edu-card tilt-card text-card"
-          >
-
-            <div class="edu-year">
-              2561–2567
-            </div>
-
-            <div class="edu-bullet">
-              🍪
-            </div>
-
-            <div class="edu-content">
-
-              <h3>
-                ประถมศึกษา ป.1–6
-              </h3>
-
-              <p>
-                ศึกษาอยู่ที่โรงเรียนศรีจอมทอง
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- SECONDARY -->
-
-          <article
-            class="edu-card tilt-card text-card"
-          >
-
-            <div class="edu-year">
-              2567–2568
-            </div>
-
-            <div class="edu-bullet">
-              🍫
-            </div>
-
-            <div class="edu-content">
-
-              <h3>
-                มัธยมศึกษา ม.1–2
-              </h3>
-
-              <p>
-                ศึกษาอยู่ที่โรงเรียนจอมทอง
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- CURRENT -->
-
-          <article
-            class="edu-card tilt-card text-card"
-          >
-
-            <div class="edu-year">
-              2569–ปัจจุบัน
-            </div>
-
-            <div class="edu-bullet">
-              🍰
-            </div>
-
-            <div class="edu-content">
-
-              <h3>
-                มัธยมศึกษา ม.3
-              </h3>
-
-              <p>
-                กำลังศึกษาอยู่ที่โรงเรียนจอมทอง
-              </p>
-
-            </div>
-
-          </article>
-
-        </div>
-
-
-        <!-- DESSERT PROGRESS -->
-
-        <div
-          class="progress-dessert"
-          id="progressDessert"
-        >
-
-          <span>🍬</span>
-          <span>🍓</span>
-          <span>🍫</span>
-          <span>🧁</span>
-          <span>🎂</span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 04 — HOBBIES
-    ======================================================== -->
-
-    <section
-      class="page"
-      data-page-view="hobbies"
-      id="page-hobbies"
-    >
-
-      <div class="page-inner">
-
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            MY HOBBIES
-          </div>
-
-          <h2>
-            สิ่งที่ฉันชอบทำ 🍭
-          </h2>
-
-          <p>
-            งานอดิเรกที่ทำให้วันธรรมดามีสีสันมากขึ้น
-          </p>
-
-        </div>
-
-
-        <div class="hobby-grid">
-
-
-          <!-- DRAWING -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/drawing.jpg"
-                alt="วาดรูป"
-                data-fallback="drawing"
-              >
-
-            </div>
-
-            <h3>
-              วาดรูป
-            </h3>
-
-            <p>
-              สร้างโลกจากจินตนาการ
-            </p>
-
-          </article>
-
-
-          <!-- MUSIC -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/music.jpg"
-                alt="ฟังเพลง"
-                data-fallback="music"
-              >
-
-            </div>
-
-            <h3>
-              ฟังเพลง
-            </h3>
-
-            <p>
-              ปล่อยใจไปกับเสียงเพลง
-            </p>
-
-          </article>
-
-
-          <!-- SINGING -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/singing.jpg"
-                alt="ร้องเพลง"
-                data-fallback="singing"
-              >
-
-            </div>
-
-            <h3>
-              ร้องเพลง
-            </h3>
-
-            <p>
-              สนุกกับการร้องเพลง
-            </p>
-
-          </article>
-
-
-          <!-- DIY -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/diy.jpg"
-                alt="งานคราฟต์ DIY"
-                data-fallback="diy"
-              >
-
-            </div>
-
-            <h3>
-              งานคราฟต์ DIY
-            </h3>
-
-            <p>
-              ประดิษฐ์ของด้วยมือของตัวเอง
-            </p>
-
-          </article>
-
-
-          <!-- GAMING -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/gaming.jpg"
-                alt="เล่นเกม"
-                data-fallback="gaming"
-              >
-
-            </div>
-
-            <h3>
-              เล่นเกม
-            </h3>
-
-            <p>
-              ผจญภัยในโลกอีกใบ
-            </p>
-
-          </article>
-
-
-          <!-- SLEEPING -->
-
-          <article
-            class="hobby-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="hobby-image">
-
-              <img
-                src="./images/hobbies/sleeping.jpg"
-                alt="นอน"
-                data-fallback="sleeping"
-              >
-
-            </div>
-
-            <h3>
-              นอน
-            </h3>
-
-            <p>
-              พักผ่อนชาร์จพลังให้ตัวเอง
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 05 — INTERESTS / DREAMS
-    ======================================================== -->
-
-    <section
-      class="page"
-      data-page-view="interests"
-      id="page-interests"
-    >
-
-      <div class="page-inner">
-
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            MY DREAMS
-          </div>
-
-          <h2>
-            ความสนใจและความฝัน 🌈
-          </h2>
-
-          <p>
-            โลกกว้างยังมีอะไรอีกมากให้ฉันได้ออกไปค้นหา
-          </p>
-
-        </div>
-
-
-        <div class="dream-grid">
-
-
-          <!-- WORLD -->
-
-          <article
-            class="dream-card tilt-card text-card"
-          >
-
-            <div class="dream-icon">
-              🌍
-            </div>
-
-            <h3>
-              โลกกว้างที่อยากไปเจอ
-            </h3>
-
-            <p>
-              ฉันอยากออกสำรวจโลกกว้าง
-              เสาะหาความรู้ต่าง ๆ
-              และเรียนรู้จากประสบการณ์ที่ได้พบเจอ
-              เพราะฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้นแค่ในห้องเรียน
-            </p>
-
-          </article>
-
-
-          <!-- DREAM -->
-
-          <article
-            class="dream-card tilt-card text-card"
-          >
-
-            <div class="dream-icon">
-              👩‍🏫
-            </div>
-
-            <h3>
-              ความฝันของฉัน
-            </h3>
-
-            <p>
-              ฉันอยากเป็นครู
-              และอยากส่งต่อความรู้ให้กับคนอื่นในอนาคต
-              ให้การเรียนรู้เป็นสิ่งที่น่าสนใจและมีความหมาย
-            </p>
-
-          </article>
-
-
-          <!-- DREAM IMAGE -->
-
-          <article
-            class="dream-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="dream-photo">
-
-              <img
-                src="./images/decorations/dream.jpg"
-                alt="รูปเกี่ยวกับความฝัน"
-                data-fallback="dream"
-              >
-
-            </div>
-
-            <div class="dream-caption">
-              ทำในสิ่งที่รัก · เรียนรู้ · เติบโต
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 06 — CONTACT
-    ======================================================== -->
-
-    <section
-      class="page"
-      data-page-view="contact"
-      id="page-contact"
-    >
-
-      <div class="page-inner">
-
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            CONTACT
-          </div>
-
-          <h2>
-            มาพูดคุยกัน ❤️
-          </h2>
-
-          <p>
-            ขอบคุณที่แวะเข้ามาทำความรู้จักกับ Portfolio ของฉัน
-          </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-          <!-- CONTACT INFORMATION -->
-
-          <div
-            class="contact-card tilt-card text-card"
-          >
-
-
-            <!-- EMAIL -->
-
-            <a
-              class="contact-row"
-              href="mailto:gamhom181a54@gmail.com"
-            >
-
-              <span>
-                📧
-              </span>
-
-              <div>
-
-                <small>
-                  Email
-                </small>
-
-                <strong>
-                  gamhom181a54@gmail.com
-                </strong>
-
-              </div>
-
-            </a>
-
-
-            <!-- PHONE -->
-
-            <a
-              class="contact-row"
-              href="tel:0636271686"
-            >
-
-              <span>
-                📱
-              </span>
-
-              <div>
-
-                <small>
-                  Number
-                </small>
-
-                <strong>
-                  063-627-1686
-                </strong>
-
-              </div>
-
-            </a>
-
-
-            <!-- INSTAGRAM -->
-
-            <a
-              class="contact-row"
-              href="https://instagram.com/Supitchaya_Butta"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <span>
-                📸
-              </span>
-
-              <div>
-
-                <small>
-                  Instagram
-                </small>
-
-                <strong>
-                  Supitchaya_Butta
-                </strong>
-
-              </div>
-
-            </a>
-
-
-          </div>
-
-
-          <!-- PORTFOLIO CARD -->
-
-          <article
-            class="portfolio-card tilt-card image-card"
-            data-zoom="true"
-          >
-
-            <div class="portfolio-icon">
-              🍰
-            </div>
-
-            <div class="portfolio-title">
-              My Portfolio
-            </div>
-
-            <p>
-              Sweet Fantasy ของแก้ม
-              <br>
-              ศิลปะ ความฝัน และตัวตนของฉัน
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PAGE 07 — THANK YOU / GIFT
-    ======================================================== -->
-
-    <section
-      class="page thankyou-page"
-      data-page-view="thankyou"
-      id="page-thankyou"
-    >
-
-      <div class="page-inner">
-
-
-        <!-- TITLE -->
-
-        <div class="section-heading reveal-on-page">
-
-          <div class="section-kicker">
-            THANK YOU
-          </div>
-
-          <h2>
-            ขอบคุณที่แวะมาเยี่ยมชม 💗
-          </h2>
-
-          <p>
-            ก่อนที่เราจะบอกลากัน…
-            ฉันมีของขวัญเล็ก ๆ ให้คุณ
-          </p>
-
-        </div>
-
-
-        <!-- ===================================================
-             GIFT MESSAGE
-        ==================================================== -->
-
-        <article
-          class="gift-message tilt-card text-card"
-        >
-
-          <div class="gift-message-icon">
-            🎁
-          </div>
-
-          <h3>
-            ก่อนกลับ ฉันมีของขวัญให้คุณ
-          </h3>
-
-          <p>
-            คุณเดินทางผ่านโลกหวาน ๆ
-            ของแก้มมาจนถึงตรงนี้แล้ว
-            เลยอยากชวนคุณทำของหวานชิ้นเล็ก ๆ
-            ด้วยตัวเอง เพื่อเป็นที่ระลึกจากโลกใบนี้ค่ะ ✨
-          </p>
-
-        </article>
-
-
-
-        <!-- ===================================================
-             CAKE LAB
-        ==================================================== -->
-
-        <div class="cake-lab">
-
-
-          <!-- =================================================
-               GACHA PANEL
-          ================================================== -->
-
-          <div
-            class="gacha-panel tilt-card text-card"
-          >
-
-            <div class="panel-title">
-              🎰 Sweet Gacha
-            </div>
-
-
-            <div
-              class="gacha-machine"
-              id="gachaMachine"
-            >
-
-              <div class="gacha-glass">
-
-                <div
-                  id="gachaBallDisplay"
-                >
-                  🍬
-                </div>
-
-              </div>
-
-
-              <div class="gacha-controls">
-
-                <button
-                  class="primary-btn"
-                  id="gachaButton"
-                  type="button"
-                >
-                  สุ่มขนม 🎲
-                </button>
-
-              </div>
-
-
-              <div
-                class="gacha-result"
-                id="gachaResult"
-              >
-                กดสุ่มเพื่อรับของตกแต่ง
-              </div>
-
-            </div>
-
-
-            <!-- INVENTORY -->
-
-            <div
-              class="inventory"
-              id="inventory"
-            >
-
-              <div class="inventory-title">
-                🎒 ช่องเก็บของ
-              </div>
-
-              <div
-                class="inventory-slots"
-                id="inventorySlots"
-              ></div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- =================================================
-               CAKE STAGE
-          ================================================== -->
-
-          <div
-            class="cake-stage tilt-card image-card"
-            data-zoom="false"
-          >
-
-            <div class="panel-title">
-              🍰 แต่งเค้ก
-            </div>
-
-
-            <!-- CAKE OPTIONS -->
-
-            <div class="cake-options">
-
-
-              <!-- LAYERS -->
-
-              <div>
-
-                <label>
-                  จำนวนชั้น
-                </label>
-
-                <div
-                  class="choice-row"
-                  id="cakeLayersChoice"
-                >
-
-                  <button
-                    data-value="1"
-                    class="choice active"
-                    type="button"
-                  >
-                    1
-                  </button>
-
-                  <button
-                    data-value="2"
-                    class="choice"
-                    type="button"
-                  >
-                    2
-                  </button>
-
-                  <button
-                    data-value="3"
-                    class="choice"
-                    type="button"
-                  >
-                    3
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <!-- FLAVOR -->
-
-              <div>
-
-                <label>
-                  รสชาติ
-                </label>
-
-                <div
-                  class="choice-row"
-                  id="cakeFlavorChoice"
-                >
-
-                  <button
-                    data-value="vanilla"
-                    class="choice active"
-                    type="button"
-                  >
-                    วานิลา
-                  </button>
-
-                  <button
-                    data-value="chocolate"
-                    class="choice"
-                    type="button"
-                  >
-                    ช็อกโกแลต
-                  </button>
-
-                  <button
-                    data-value="strawberry"
-                    class="choice"
-                    type="button"
-                  >
-                    สตรอว์เบอร์รี่
-                  </button>
-
-                </div>
-
-              </div>
-
-
-            </div>
-
-
-            <!-- CAKE DROP ZONE -->
-
-            <div
-              class="cake-canvas-wrap"
-              id="cakeDropZone"
-            >
-
-              <div
-                class="cake-canvas"
-                id="cakeCanvas"
-              ></div>
-
-              <div class="cake-drop-hint">
-                ลากของตกแต่งจากช่องเก็บของมาวางบนเค้ก
-              </div>
-
-            </div>
-
-
-            <!-- FINISH -->
-
-            <button
-              class="secondary-btn finish-cake-btn"
-              id="finishCakeButton"
-              type="button"
-            >
-              เสร็จสิ้น ✨
-            </button>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- ===================================================
-             GIFT BOX
-        ==================================================== -->
-
-        <div
-          class="cake-box-zone"
-          id="cakeBoxZone"
-          aria-hidden="true"
-        >
-
-          <div class="cake-box-copy">
-
-            <h3>
-              ได้เวลาแพ็กของขวัญแล้ว 🎁
-            </h3>
-
-            <p>
-              ลากเค้กใส่กล่องเพื่อรับข้อความพิเศษ
-            </p>
-
-          </div>
-
-
-          <div
-            class="gift-box"
-            id="giftBox"
-          >
-
-            <div class="box-lid"></div>
-
-            <div class="box-body">
-              🎁
-            </div>
-
-          </div>
-
-
-          <div
-            class="draggable-final-cake"
-            id="draggableFinalCake"
-            draggable="true"
-          >
-            🍰
-          </div>
-
-        </div>
-
-
-
-        <!-- ===================================================
-             FINAL THANK YOU
-        ==================================================== -->
-
-        <div
-          class="final-thanks-card tilt-card text-card"
-          id="finalThanksCard"
-          aria-hidden="true"
-        >
-
-          <div class="final-sparkles">
-            ✨ ✦ ✨
-          </div>
-
-          <div class="final-card-icon">
-            💌
-          </div>
-
-          <h3>
-            ขอบคุณที่เข้ามาในโลกของแก้มนะคะ
-          </h3>
-
-          <p>
-            เค้กชิ้นนี้เป็นของขวัญเล็ก ๆ
-            แทนคำขอบคุณที่แวะเข้ามาทำความรู้จักกับฉัน
-            หวังว่าคุณจะยิ้มได้ก่อนออกจากเว็บนี้นะ 🍰💗
-          </p>
-
-          <button
-            class="primary-btn"
-            type="button"
-            data-page="home"
-          >
-            กลับไปเที่ยว Sweet World อีกครั้ง ✨
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================================================
-       FIXED CONTROLS
-  ========================================================== -->
-
-  <div class="fixed-controls">
-
-
-    <!-- THEME SWITCH -->
-
-    <button
-      id="themeButton"
-      class="floating-control theme-control"
-      type="button"
-      aria-label="เปลี่ยนธีม"
-      title="เปลี่ยนธีม"
-    >
-      🍭
-    </button>
-
-
-    <!-- ACHIEVEMENTS -->
-
-    <button
-      id="achievementsButton"
-      class="floating-control"
-      type="button"
-      aria-label="ดูรางวัล"
-      title="Achievements"
-    >
-      🏆
-    </button>
-
-
-    <!-- MUSIC -->
-
-    <button
-      id="musicToggle"
-      class="music-control"
-      type="button"
-      aria-label="เปิดหรือปิดเพลง"
-    >
-
-      <span id="musicIcon">
-        🎵
-      </span>
-
-      <span id="musicText">
-        เปิดเพลง
-      </span>
-
-    </button>
-
-  </div>
-
-
-
-  <!-- =========================================================
-       ACHIEVEMENT PANEL
-  ========================================================== -->
-
-  <div
-    id="achievementPanel"
-    class="achievement-panel"
-    aria-hidden="true"
-  >
-
-    <div class="achievement-panel-head">
-
-      <strong>
-        🏆 Achievements
-      </strong>
-
-      <button
-        id="closeAchievements"
-        type="button"
-        aria-label="ปิด"
-      >
-        ×
-      </button>
+            id="backgroundStars"
+            class="background-stars"
+        ></div>
 
     </div>
 
+
+    <!-- =========================================================
+         STICKY DRIPPING SAUCE
+    ========================================================== -->
+
     <div
-      id="achievementList"
-    ></div>
+        id="stickySauce"
+        class="sticky-sauce"
+        aria-hidden="true"
+    >
 
-  </div>
+        <div class="sauce-top"></div>
+
+        <span class="drip drip-1"></span>
+        <span class="drip drip-2"></span>
+        <span class="drip drip-3"></span>
+        <span class="drip drip-4"></span>
+        <span class="drip drip-5"></span>
+
+    </div>
 
 
+    <!-- =========================================================
+         TOP NAVIGATION
+    ========================================================== -->
 
-  <!-- =========================================================
-       PAGE PROGRESS
-       ใช้ขนมแทนจุดบอกตำแหน่งหน้า
-  ========================================================== -->
+    <header
+        id="mainHeader"
+        class="main-header"
+    >
 
-  <div
-    class="page-progress"
-    id="pageProgress"
-    aria-label="ลำดับหน้า"
-  >
+        <a
+            href="#home"
+            class="brand"
+            data-page="home"
+            aria-label="Sweet Gam Home"
+        >
+
+            <span class="brand-icon">🍓</span>
+
+            <span class="brand-text">
+                SWEET GAM
+            </span>
+
+            <span class="brand-sparkle">✦</span>
+
+        </a>
+
+
+        <nav
+            id="mainNavigation"
+            class="main-navigation"
+            aria-label="Main navigation"
+        >
+
+            <button
+                type="button"
+                class="nav-link active"
+                data-page="home"
+            >
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="about"
+            >
+                <span class="nav-icon">💗</span>
+                <span class="nav-label">About</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="education"
+            >
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">Education</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="hobbies"
+            >
+                <span class="nav-icon">🎨</span>
+                <span class="nav-label">Hobbies</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="dreams"
+            >
+                <span class="nav-icon">🌷</span>
+                <span class="nav-label">Dreams</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="contact"
+            >
+                <span class="nav-icon">💌</span>
+                <span class="nav-label">Contact</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-link"
+                data-page="thankyou"
+            >
+                <span class="nav-icon">🎂</span>
+                <span class="nav-label">Gift</span>
+            </button>
+
+        </nav>
+
+
+        <div class="header-tools">
+
+            <button
+                type="button"
+                id="themeToggle"
+                class="tool-button theme-toggle"
+                aria-label="Change theme"
+                title="Change theme"
+            >
+                <span class="tool-icon">🍰</span>
+            </button>
+
+
+            <button
+                type="button"
+                id="musicToggle"
+                class="tool-button music-toggle"
+                aria-label="Play or pause music"
+                title="Play / Pause music"
+            >
+                <span
+                    id="musicIcon"
+                    class="tool-icon"
+                >
+                    ♫
+                </span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MOBILE NAVIGATION BUTTON
+    ========================================================== -->
 
     <button
-      data-progress-page="home"
-      type="button"
-      aria-label="หน้าแรก"
+        type="button"
+        id="mobileMenuButton"
+        class="mobile-menu-button"
+        aria-label="Open navigation"
+        aria-expanded="false"
     >
-      🍭
+        <span></span>
+        <span></span>
+        <span></span>
     </button>
 
-    <button
-      data-progress-page="about"
-      type="button"
-      aria-label="เกี่ยวกับฉัน"
+
+    <!-- =========================================================
+         MUSIC
+    ========================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        loop
+        preload="none"
     >
-      🍓
-    </button>
-
-    <button
-      data-progress-page="education"
-      type="button"
-      aria-label="การศึกษา"
-    >
-      📚
-    </button>
-
-    <button
-      data-progress-page="hobbies"
-      type="button"
-      aria-label="งานอดิเรก"
-    >
-      🍬
-    </button>
-
-    <button
-      data-progress-page="interests"
-      type="button"
-      aria-label="ความสนใจ"
-    >
-      🌈
-    </button>
-
-    <button
-      data-progress-page="contact"
-      type="button"
-      aria-label="ติดต่อ"
-    >
-      💌
-    </button>
-
-    <button
-      data-progress-page="thankyou"
-      type="button"
-      aria-label="ของขวัญ"
-    >
-      🎁
-    </button>
-
-  </div>
+        <source
+            src="music/play-date.mp3"
+            type="audio/mpeg"
+        >
+    </audio>
 
 
+    <!-- =========================================================
+         PAGE PROGRESS
+    ========================================================== -->
 
-  <!-- =========================================================
-       TOAST
-  ========================================================== -->
-
-  <div
-    class="toast"
-    id="toast"
-    role="status"
-    aria-live="polite"
-  ></div>
-
-
-
-  <!-- =========================================================
-       BACKGROUND MUSIC
-
-       ชื่อไฟล์คงเป็น:
-       play-date.mp3
-
-       ให้วางไฟล์เพลงไว้ที่ root เดียวกับ index.html
-  ========================================================== -->
-
-  <audio
-    id="bgMusic"
-    loop
-    preload="metadata"
-  >
-
-    <source
-      src="./play-date.mp3"
-      type="audio/mpeg"
+    <aside
+        id="pageProgress"
+        class="page-progress"
+        aria-label="Portfolio progress"
     >
 
-  </audio>
+        <button
+            type="button"
+            class="progress-dot active"
+            data-page="home"
+            aria-label="Home"
+        >
+            🍭
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="about"
+            aria-label="About"
+        >
+            🍓
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="education"
+            aria-label="Education"
+        >
+            🍪
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="hobbies"
+            aria-label="Hobbies"
+        >
+            🧁
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="dreams"
+            aria-label="Dreams"
+        >
+            🌷
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="contact"
+            aria-label="Contact"
+        >
+            💌
+        </button>
+
+        <span class="progress-line"></span>
+
+        <button
+            type="button"
+            class="progress-dot"
+            data-page="thankyou"
+            aria-label="Gift"
+        >
+            🍰
+        </button>
+
+    </aside>
 
 
+    <!-- =========================================================
+         MAIN APPLICATION
+    ========================================================== -->
 
-  <!-- =========================================================
-       JAVASCRIPT
-       แยกเป็นระบบเพื่อให้แก้ง่าย
-  ========================================================== -->
+    <main
+        id="app"
+        class="app"
+    >
 
-  <script src="./js/effects.js"></script>
 
-  <script src="./js/theme.js"></script>
+        <!-- =====================================================
+             HOME PAGE
+        ====================================================== -->
 
-  <script src="./js/transition.js"></script>
+        <section
+            id="home"
+            class="page page-home active"
+            data-page="home"
+            aria-labelledby="homeTitle"
+        >
 
-  <script src="./js/cake.js"></script>
+            <div class="page-inner home-inner">
 
-  <script src="./js/gacha.js"></script>
+                <div class="home-copy">
 
-  <script src="./js/main.js"></script>
+                    <div class="section-kicker">
+                        WELCOME TO MY SWEET WORLD
+                    </div>
 
+
+                    <h1
+                        id="homeTitle"
+                        class="home-title glass-shimmer"
+                    >
+                        <span class="title-line">
+                            สุพิชญา
+                        </span>
+
+                        <span class="title-line title-name">
+                            บุตรต๊ะ
+                        </span>
+                    </h1>
+
+
+                    <p class="home-subtitle">
+                        A little portfolio filled with
+                        sweetness, dreams and pieces of me.
+                    </p>
+
+
+                    <div class="home-tags">
+
+                        <span>🎨 Art</span>
+                        <span>🎶 Music</span>
+                        <span>🍰 Sweet Life</span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button home-start-button"
+                        data-page="about"
+                    >
+
+                        <span>Enter My Sweet World</span>
+                        <span class="button-icon">🍭</span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="home-candy-stage">
+
+                    <div class="home-orbit orbit-1"></div>
+                    <div class="home-orbit orbit-2"></div>
+                    <div class="home-orbit orbit-3"></div>
+
+
+                    <div class="home-candy-glow"></div>
+
+
+                    <div class="home-candy">
+
+                        <div class="candy-highlight"></div>
+
+                        <div class="candy-main">
+                            🍭
+                        </div>
+
+                        <span class="candy-star star-a">✦</span>
+                        <span class="candy-star star-b">✧</span>
+                        <span class="candy-star star-c">⋆</span>
+                        <span class="candy-star star-d">✦</span>
+
+                    </div>
+
+
+                    <div class="home-mini-sweets">
+
+                        <span>🍓</span>
+                        <span>🍬</span>
+                        <span>🧁</span>
+                        <span>🍫</span>
+                        <span>🍰</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="home-scroll-hint">
+
+                    <span class="scroll-arrow">↓</span>
+
+                    <span>
+                        scroll to explore
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT PAGE
+        ====================================================== -->
+
+        <section
+            id="about"
+            class="page page-about"
+            data-page="about"
+            aria-labelledby="aboutTitle"
+        >
+
+            <div class="page-inner">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        LET ME INTRODUCE MYSELF
+                    </span>
+
+                    <h2
+                        id="aboutTitle"
+                        class="section-title"
+                    >
+                        About Me
+                    </h2>
+
+                    <p class="section-description">
+                        มาทำความรู้จักกับแก้มกันนะคะ 💗
+                    </p>
+
+                </div>
+
+
+                <div class="about-layout">
+
+
+                    <div class="image-frame profile-frame tilt-card">
+
+                        <div class="image-frame-glow"></div>
+
+                        <div class="image-placeholder">
+
+                            <img
+                                src="images/profile/profile.jpg"
+                                alt="รูปโปรไฟล์ของสุพิชญา บุตรต๊ะ"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">
+                                    🍓
+                                </span>
+
+                                <span class="placeholder-title">
+                                    PROFILE IMAGE
+                                </span>
+
+                                <small>
+                                    images/profile/profile.jpg
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="image-frame-caption">
+                            <span>♡</span>
+                            <span>Sweet Gam</span>
+                            <span>♡</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-content">
+
+
+                        <div class="glass-card text-card tilt-text">
+
+                            <div class="card-label">
+                                MY NAME
+                            </div>
+
+                            <h3>
+                                สุพิชญา บุตรต๊ะ
+                            </h3>
+
+                            <p>
+                                ชื่อเล่น <strong>แก้ม</strong>
+                            </p>
+
+                        </div>
+
+
+                        <div class="about-info-grid">
+
+
+                            <div class="glass-card mini-info tilt-text">
+
+                                <span class="mini-info-icon">
+                                    🏫
+                                </span>
+
+                                <span class="mini-info-label">
+                                    SCHOOL
+                                </span>
+
+                                <strong>
+                                    จอมทอง
+                                </strong>
+
+                            </div>
+
+
+                            <div class="glass-card mini-info tilt-text">
+
+                                <span class="mini-info-icon">
+                                    📚
+                                </span>
+
+                                <span class="mini-info-label">
+                                    GRADE
+                                </span>
+
+                                <strong>
+                                    ม.3/2
+                                </strong>
+
+                            </div>
+
+
+                            <div class="glass-card mini-info tilt-text">
+
+                                <span class="mini-info-icon">
+                                    📍
+                                </span>
+
+                                <span class="mini-info-label">
+                                    PROVINCE
+                                </span>
+
+                                <strong>
+                                    เชียงใหม่
+                                </strong>
+
+                            </div>
+
+
+                            <div class="glass-card mini-info tilt-text">
+
+                                <span class="mini-info-icon">
+                                    🎨
+                                </span>
+
+                                <span class="mini-info-label">
+                                    FAVORITE
+                                </span>
+
+                                <strong>
+                                    Art
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="glass-card quote-card tilt-text">
+
+                            <span class="quote-mark">
+                                “
+                            </span>
+
+                            <p>
+                                ศิลปะคือหนึ่งในจิตวิญญาณของฉัน
+                            </p>
+
+                            <span class="quote-mark quote-end">
+                                ”
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EDUCATION PAGE
+        ====================================================== -->
+
+        <section
+            id="education"
+            class="page page-education"
+            data-page="education"
+            aria-labelledby="educationTitle"
+        >
+
+            <div class="page-inner">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        THE PATH I'VE WALKED
+                    </span>
+
+                    <h2
+                        id="educationTitle"
+                        class="section-title"
+                    >
+                        Education
+                    </h2>
+
+                    <p class="section-description">
+                        เส้นทางการเรียนรู้ที่พาฉันเดินทางมาถึงวันนี้ 📚
+                    </p>
+
+                </div>
+
+
+                <div class="education-timeline">
+
+
+                    <div class="education-line">
+                        <span class="education-line-glow"></span>
+                    </div>
+
+
+                    <article
+                        class="education-card tilt-text"
+                        data-education="1"
+                    >
+
+                        <div class="education-node">
+                            <span>🍪</span>
+                        </div>
+
+
+                        <div class="education-card-inner">
+
+                            <div class="education-year">
+                                2561 — 2567
+                            </div>
+
+                            <div class="education-icon">
+                                🏫
+                            </div>
+
+                            <div class="education-content">
+
+                                <span class="education-level">
+                                    ประถมศึกษา ป.1 — ป.6
+                                </span>
+
+                                <h3>
+                                    โรงเรียนศรีจอมทอง
+                                </h3>
+
+                                <p>
+                                    จุดเริ่มต้นของการเรียนรู้
+                                    และการค้นหาสิ่งที่ตัวเองชอบ
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="education-card tilt-text"
+                        data-education="2"
+                    >
+
+                        <div class="education-node">
+                            <span>🍓</span>
+                        </div>
+
+
+                        <div class="education-card-inner">
+
+                            <div class="education-year">
+                                2567 — 2568
+                            </div>
+
+                            <div class="education-icon">
+                                🎒
+                            </div>
+
+                            <div class="education-content">
+
+                                <span class="education-level">
+                                    มัธยมศึกษา ม.1 — ม.2
+                                </span>
+
+                                <h3>
+                                    โรงเรียนจอมทอง
+                                </h3>
+
+                                <p>
+                                    ช่วงเวลาที่ได้เรียนรู้สิ่งใหม่ ๆ
+                                    และค้นพบความสนใจของตัวเองมากขึ้น
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="education-card tilt-text"
+                        data-education="3"
+                    >
+
+                        <div class="education-node">
+                            <span>🍰</span>
+                        </div>
+
+
+                        <div class="education-card-inner">
+
+                            <div class="education-year">
+                                2569 — ปัจจุบัน
+                            </div>
+
+                            <div class="education-icon">
+                                📖
+                            </div>
+
+                            <div class="education-content">
+
+                                <span class="education-level">
+                                    มัธยมศึกษา ม.3
+                                </span>
+
+                                <h3>
+                                    กำลังศึกษาอยู่ที่โรงเรียนจอมทอง
+                                </h3>
+
+                                <p>
+                                    กำลังเดินหน้าสู่ความฝัน
+                                    พร้อมเก็บเกี่ยวประสบการณ์ใหม่ ๆ
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="education-footer-note glass-card tilt-text">
+
+                    <span>✦</span>
+
+                    <p>
+                        ทุกก้าวของการเรียนรู้
+                        ล้วนเป็นส่วนหนึ่งของเรื่องราวของฉัน
+                    </p>
+
+                    <span>✦</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             HOBBIES PAGE
+        ====================================================== -->
+
+        <section
+            id="hobbies"
+            class="page page-hobbies"
+            data-page="hobbies"
+            aria-labelledby="hobbiesTitle"
+        >
+
+            <div class="page-inner">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        THINGS THAT MAKE ME HAPPY
+                    </span>
+
+                    <h2
+                        id="hobbiesTitle"
+                        class="section-title"
+                    >
+                        My Hobbies
+                    </h2>
+
+                    <p class="section-description">
+                        สิ่งเล็ก ๆ ที่ทำให้เวลาของฉันเต็มไปด้วยความสุข ✨
+                    </p>
+
+                </div>
+
+
+                <div class="hobbies-grid">
+
+
+                    <!-- DRAWING -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="drawing"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/drawing.jpg"
+                                alt="วาดรูป"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🎨</span>
+
+                                <strong>
+                                    DRAWING IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/drawing.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>✦</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                01
+                            </span>
+
+                            <h3>
+                                วาดรูป
+                            </h3>
+
+                            <p>
+                                ถ่ายทอดจินตนาการ
+                                และความรู้สึกผ่านภาพวาด
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MUSIC -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="music"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/music.jpg"
+                                alt="ฟังเพลง"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🎧</span>
+
+                                <strong>
+                                    MUSIC IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/music.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>♫</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                02
+                            </span>
+
+                            <h3>
+                                ฟังเพลง
+                            </h3>
+
+                            <p>
+                                เพลงคือเพื่อนที่อยู่ด้วยกัน
+                                ในทุกช่วงเวลา
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SINGING -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="singing"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/singing.jpg"
+                                alt="ร้องเพลง"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🎤</span>
+
+                                <strong>
+                                    SINGING IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/singing.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>♪</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                03
+                            </span>
+
+                            <h3>
+                                ร้องเพลง
+                            </h3>
+
+                            <p>
+                                สนุกกับเสียงเพลง
+                                และปล่อยความรู้สึกออกมา
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CRAFT -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="craft"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/craft.jpg"
+                                alt="ประดิษฐ์งานคราฟต์ DIY"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🧵</span>
+
+                                <strong>
+                                    CRAFT IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/craft.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>✂</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                04
+                            </span>
+
+                            <h3>
+                                ประดิษฐ์งานคราฟต์ DIY
+                            </h3>
+
+                            <p>
+                                สร้างของต่าง ๆ ด้วยไอเดีย
+                                และจินตนาการของตัวเอง
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- GAMES -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="games"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/games.jpg"
+                                alt="เล่นเกม"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🎮</span>
+
+                                <strong>
+                                    GAMES IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/games.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>✦</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                05
+                            </span>
+
+                            <h3>
+                                เล่นเกม
+                            </h3>
+
+                            <p>
+                                ผ่อนคลายและสนุกไปกับโลก
+                                ในเกมที่ฉันชอบ
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SLEEP -->
+
+                    <article
+                        class="hobby-card image-card tilt-card"
+                        data-hobby="sleep"
+                    >
+
+                        <div class="hobby-image">
+
+                            <img
+                                src="images/hobbies/sleep.jpg"
+                                alt="นอน"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.parentElement.classList.add('image-missing');"
+                            >
+
+                            <div class="hobby-placeholder">
+
+                                <span>🌙</span>
+
+                                <strong>
+                                    SLEEP IMAGE
+                                </strong>
+
+                                <small>
+                                    images/hobbies/sleep.jpg
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="hobby-overlay">
+                            <span>z</span>
+                        </div>
+
+
+                        <div class="hobby-content">
+
+                            <span class="hobby-number">
+                                06
+                            </span>
+
+                            <h3>
+                                นอน
+                            </h3>
+
+                            <p>
+                                ชาร์จพลังให้ตัวเอง
+                                แล้วกลับมาสนุกกับวันใหม่
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DREAMS PAGE
+        ====================================================== -->
+
+        <section
+            id="dreams"
+            class="page page-dreams"
+            data-page="dreams"
+            aria-labelledby="dreamsTitle"
+        >
+
+            <div class="page-inner">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        WHERE I WANT TO GO
+                    </span>
+
+                    <h2
+                        id="dreamsTitle"
+                        class="section-title"
+                    >
+                        Interests & Dreams
+                    </h2>
+
+                    <p class="section-description">
+                        ความสนใจและความฝันที่อยากพาไปให้ถึง 🌷
+                    </p>
+
+                </div>
+
+
+                <div class="dreams-layout">
+
+
+                    <div class="dream-main glass-card tilt-text">
+
+                        <div class="dream-icon">
+                            🌎
+                        </div>
+
+                        <span class="card-label">
+                            MY INTERESTS
+                        </span>
+
+                        <h3>
+                            อยากออกสำรวจโลกกว้าง
+                        </h3>
+
+                        <p>
+                            ฉันอยากออกไปสำรวจโลกกว้าง
+                            เสาะหาความรู้ต่าง ๆ
+                            ได้เรียนรู้ประสบการณ์ใหม่ ๆ
+                            และได้ทำในสิ่งที่ตนเองรัก
+                        </p>
+
+
+                        <div class="dream-orbit">
+
+                            <span>✦</span>
+                            <span>🌎</span>
+                            <span>✦</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dream-side">
+
+
+                        <div class="glass-card dream-small tilt-text">
+
+                            <span class="dream-small-icon">
+                                🔎
+                            </span>
+
+                            <div>
+
+                                <span class="card-label">
+                                    EXPLORE
+                                </span>
+
+                                <h3>
+                                    เสาะหาความรู้
+                                </h3>
+
+                                <p>
+                                    เปิดใจเรียนรู้สิ่งใหม่
+                                    จากโลกรอบตัว
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="glass-card dream-small tilt-text">
+
+                            <span class="dream-small-icon">
+                                💕
+                            </span>
+
+                            <div>
+
+                                <span class="card-label">
+                                    CREATE
+                                </span>
+
+                                <h3>
+                                    ทำในสิ่งที่รัก
+                                </h3>
+
+                                <p>
+                                    ใช้ความชอบและความสร้างสรรค์
+                                    เป็นแรงผลักดัน
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="glass-card dream-goal tilt-text">
+
+                            <div class="goal-decoration">
+                                🍰
+                            </div>
+
+                            <span class="card-label">
+                                MY GOAL
+                            </span>
+
+                            <h3>
+                                อยากเป็นครู
+                            </h3>
+
+                            <p>
+                                ความฝันของฉันคือ
+                                การได้เป็นครูในอนาคต
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dream-bottom-note">
+
+                    <span>✧</span>
+
+                    <p>
+                        “ความฝันอาจเริ่มจากสิ่งเล็ก ๆ
+                        แต่ทุกก้าวที่เดินไป
+                        ทำให้เราเข้าใกล้มันมากขึ้น”
+                    </p>
+
+                    <span>✧</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT PAGE
+        ====================================================== -->
+
+        <section
+            id="contact"
+            class="page page-contact"
+            data-page="contact"
+            aria-labelledby="contactTitle"
+        >
+
+            <div class="page-inner">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        LET'S KEEP IN TOUCH
+                    </span>
+
+                    <h2
+                        id="contactTitle"
+                        class="section-title"
+                    >
+                        Contact Me
+                    </h2>
+
+                    <p class="section-description">
+                        ถ้าอยากทำความรู้จักกันมากขึ้น
+                        สามารถติดต่อฉันได้ที่นี่ 💌
+                    </p>
+
+                </div>
+
+
+                <div class="contact-layout">
+
+
+                    <div class="contact-message glass-card tilt-text">
+
+                        <div class="contact-envelope">
+                            💌
+                        </div>
+
+                        <span class="card-label">
+                            MY SWEET PORTFOLIO
+                        </span>
+
+                        <h3>
+                            ขอบคุณที่แวะเข้ามา
+                        </h3>
+
+                        <p>
+                            ขอบคุณที่เข้ามาชมผลงาน
+                            และทำความรู้จักกับโลกเล็ก ๆ
+                            ของฉันนะคะ
+                        </p>
+
+
+                        <div class="contact-decoration">
+                            <span>🍓</span>
+                            <span>🍭</span>
+                            <span>🍰</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-list">
+
+
+                        <a
+                            href="mailto:gamhom181a54@gmail.com"
+                            class="contact-card tilt-text"
+                        >
+
+                            <span class="contact-card-icon">
+                                ✉️
+                            </span>
+
+                            <span class="contact-card-content">
+
+                                <small>
+                                    EMAIL
+                                </small>
+
+                                <strong>
+                                    gamhom181a54@gmail.com
+                                </strong>
+
+                            </span>
+
+                            <span class="contact-arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="https://www.instagram.com/Supitchaya_Butta"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="contact-card tilt-text"
+                        >
+
+                            <span class="contact-card-icon">
+                                📷
+                            </span>
+
+                            <span class="contact-card-content">
+
+                                <small>
+                                    INSTAGRAM
+                                </small>
+
+                                <strong>
+                                    @Supitchaya_Butta
+                                </strong>
+
+                            </span>
+
+                            <span class="contact-arrow">
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="tel:0636271686"
+                            class="contact-card tilt-text"
+                        >
+
+                            <span class="contact-card-icon">
+                                📞
+                            </span>
+
+                            <span class="contact-card-content">
+
+                                <small>
+                                    PHONE
+                                </small>
+
+                                <strong>
+                                    063-627-1686
+                                </strong>
+
+                            </span>
+
+                            <span class="contact-arrow">
+                                →
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-bottom">
+
+                    <span>♡</span>
+
+                    <span>
+                        my sweet portfolio
+                    </span>
+
+                    <span>♡</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             THANK YOU / CAKE PAGE
+        ====================================================== -->
+
+        <section
+            id="thankyou"
+            class="page page-thankyou"
+            data-page="thankyou"
+            aria-labelledby="thankyouTitle"
+        >
+
+            <div class="page-inner thankyou-inner">
+
+
+                <!-- INTRO -->
+
+                <div
+                    id="giftIntro"
+                    class="gift-intro"
+                >
+
+                    <div class="section-heading">
+
+                        <span class="section-kicker">
+                            BEFORE YOU LEAVE...
+                        </span>
+
+                        <h2
+                            id="thankyouTitle"
+                            class="section-title"
+                        >
+                            I Have Something For You
+                        </h2>
+
+                        <p class="section-description">
+                            เลื่อนลงมาอีกนิดนะคะ
+                            มีของขวัญเล็ก ๆ รออยู่ 🎂
+                        </p>
+
+                    </div>
+
+
+                    <div class="gift-scroll-message glass-card tilt-text">
+
+                        <div class="gift-scroll-icon">
+                            🎁
+                        </div>
+
+                        <h3>
+                            ก่อนจะกลับไป...
+                        </h3>
+
+                        <p>
+                            มาทำเค้กของขวัญชิ้นเล็ก ๆ
+                            ไปด้วยกันนะ
+                        </p>
+
+                        <span class="gift-scroll-arrow">
+                            ↓
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GACHA -->
+
+                <div
+                    id="gachaSection"
+                    class="gacha-section"
+                >
+
+                    <div class="mini-section-heading">
+
+                        <span>
+                            ✦ SWEET GACHA ✦
+                        </span>
+
+                        <h3>
+                            สุ่มของตกแต่งเค้ก
+                        </h3>
+
+                        <p>
+                            กดสุ่มเพื่อรับของตกแต่งแบบสุ่ม
+                            แล้วนำไปแต่งเค้กของคุณ
+                        </p>
+
+                    </div>
+
+
+                    <div class="gacha-layout">
+
+
+                        <div class="gacha-machine glass-card">
+
+                            <div class="gacha-top-light"></div>
+
+
+                            <div class="gacha-machine-body">
+
+                                <div class="gacha-window">
+
+                                    <div
+                                        id="gachaDisplay"
+                                        class="gacha-display"
+                                    >
+                                        🍬
+                                    </div>
+
+                                    <div class="gacha-glass-shine"></div>
+
+                                </div>
+
+
+                                <div class="gacha-machine-label">
+                                    SWEET GACHA
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    id="gachaButton"
+                                    class="gacha-button"
+                                >
+
+                                    <span>
+                                        🎲
+                                    </span>
+
+                                    <strong>
+                                        GACHA!
+                                    </strong>
+
+                                </button>
+
+
+                                <div
+                                    id="gachaResult"
+                                    class="gacha-result"
+                                >
+                                    Ready?
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="decoration-menu glass-card">
+
+                            <div class="decoration-menu-heading">
+
+                                <span>
+                                    🍰
+                                </span>
+
+                                <div>
+
+                                    <span class="card-label">
+                                        CAKE DECORATION
+                                    </span>
+
+                                    <h3>
+                                        ของตกแต่งของฉัน
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                id="decorationInventory"
+                                class="decoration-inventory"
+                            >
+
+                                <div
+                                    class="inventory-empty"
+                                    id="inventoryEmpty"
+                                >
+                                    สุ่มของตกแต่ง
+                                    เพื่อเพิ่มของที่นี่ ✨
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CAKE STUDIO -->
+
+                <div
+                    id="cakeStudio"
+                    class="cake-studio"
+                >
+
+                    <div class="mini-section-heading">
+
+                        <span>
+                            ✦ LITTLE BAKERY ✦
+                        </span>
+
+                        <h3>
+                            Cake Studio
+                        </h3>
+
+                        <p>
+                            เลือกเค้ก แล้วลากของตกแต่ง
+                            ลงบนเค้กได้เลย
+                        </p>
+
+                    </div>
+
+
+                    <div class="cake-studio-layout">
+
+
+                        <!-- CAKE CONTROLS -->
+
+                        <aside
+                            class="cake-controls glass-card"
+                        >
+
+                            <div class="control-group">
+
+                                <span class="control-title">
+                                    CAKE LAYERS
+                                </span>
+
+                                <div
+                                    id="layerControls"
+                                    class="control-options"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="choice-button active"
+                                        data-layers="1"
+                                    >
+                                        1 ชั้น
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-layers="2"
+                                    >
+                                        2 ชั้น
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-layers="3"
+                                    >
+                                        3 ชั้น
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="control-group">
+
+                                <span class="control-title">
+                                    CAKE FLAVOR
+                                </span>
+
+                                <div
+                                    id="flavorControls"
+                                    class="control-options"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="choice-button active"
+                                        data-flavor="vanilla"
+                                    >
+                                        🍦 Vanilla
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-flavor="chocolate"
+                                    >
+                                        🍫 Chocolate
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-flavor="strawberry"
+                                    >
+                                        🍓 Strawberry
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="control-group">
+
+                                <span class="control-title">
+                                    CREAM
+                                </span>
+
+                                <div
+                                    id="creamControls"
+                                    class="control-options"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-cream="strawberry"
+                                    >
+                                        🍓 Strawberry
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-cream="chocolate"
+                                    >
+                                        🍫 Chocolate
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button active"
+                                        data-cream="vanilla"
+                                    >
+                                        🤍 Vanilla
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-cream="rainbow"
+                                    >
+                                        🌈 Rainbow
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="control-group">
+
+                                <span class="control-title">
+                                    TOPPINGS
+                                </span>
+
+                                <div
+                                    id="toppingControls"
+                                    class="control-options"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-topping="fruit"
+                                    >
+                                        🍓 Fruit
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-topping="chocolate"
+                                    >
+                                        🍫 Chocolate
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-topping="candy"
+                                    >
+                                        🍬 Candy
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="choice-button"
+                                        data-topping="sprinkles"
+                                    >
+                                        🌈 Sprinkles
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="control-group">
+
+                                <span class="control-title">
+                                    ICING
+                                </span>
+
+                                <button
+                                    type="button"
+                                    id="dripToggle"
+                                    class="drip-toggle"
+                                >
+
+                                    <span class="drip-toggle-check">
+                                        ✓
+                                    </span>
+
+                                    <span>
+                                        White whipped cream
+                                        + dripping icing
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="cake-actions">
+
+                                <button
+                                    type="button"
+                                    id="finishCakeButton"
+                                    class="primary-button"
+                                >
+                                    <span>
+                                        Finish Cake
+                                    </span>
+                                    <span>
+                                        ✨
+                                    </span>
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    id="resetCakeButton"
+                                    class="secondary-button"
+                                >
+                                    Reset Cake
+                                </button>
+
+                            </div>
+
+                        </aside>
+
+
+                        <!-- CAKE WORK AREA -->
+
+                        <div
+                            class="cake-work-area glass-card"
+                        >
+
+                            <div class="work-area-label">
+                                DRAG DECORATIONS HERE
+                            </div>
+
+
+                            <div
+                                id="cakeCanvas"
+                                class="cake-canvas"
+                                data-cake-dropzone="true"
+                            >
+
+                                <div class="cake-shadow"></div>
+
+
+                                <div
+                                    id="cake"
+                                    class="cake"
+                                    draggable="true"
+                                >
+
+                                    <div
+                                        class="cake-layer cake-layer-3"
+                                        data-layer="3"
+                                    ></div>
+
+                                    <div
+                                        class="cake-layer cake-layer-2"
+                                        data-layer="2"
+                                    ></div>
+
+                                    <div
+                                        class="cake-layer cake-layer-1"
+                                        data-layer="1"
+                                    ></div>
+
+
+                                    <div
+                                        id="cakeCream"
+                                        class="cake-cream"
+                                    ></div>
+
+
+                                    <div
+                                        id="cakeDrip"
+                                        class="cake-drip"
+                                    ></div>
+
+
+                                    <div
+                                        id="cakeToppings"
+                                        class="cake-toppings"
+                                    ></div>
+
+
+                                    <div
+                                        id="cakeDecorations"
+                                        class="cake-decorations"
+                                    ></div>
+
+                                </div>
+
+
+                                <div
+                                    id="cakeSparkles"
+                                    class="cake-sparkles"
+                                ></div>
+
+                            </div>
+
+
+                            <div
+                                id="cakeHint"
+                                class="cake-hint"
+                            >
+                                ลากของตกแต่งมาวางบนเค้กได้เลย ✨
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CAKE BOX -->
+
+                <div
+                    id="cakeBoxSection"
+                    class="cake-box-section"
+                >
+
+                    <div class="mini-section-heading">
+
+                        <span>
+                            ✦ YOUR GIFT ✦
+                        </span>
+
+                        <h3>
+                            ใส่เค้กลงกล่องของขวัญ
+                        </h3>
+
+                        <p>
+                            เมื่อตกแต่งเสร็จแล้ว
+                            ลากเค้กลงไปในกล่องได้เลย
+                        </p>
+
+                    </div>
+
+
+                    <div class="cake-box-layout">
+
+
+                        <div
+                            id="cakeBox"
+                            class="cake-box glass-card"
+                            data-cake-dropzone="true"
+                        >
+
+                            <div class="box-lid">
+
+                                <span class="box-ribbon">
+                                    🎀
+                                </span>
+
+                                <span>
+                                    SWEET GIFT
+                                </span>
+
+                            </div>
+
+
+                            <div class="box-inside">
+
+                                <div class="box-heart">
+                                    ♥
+                                </div>
+
+                                <span>
+                                    DROP CAKE HERE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="finalGiftMessage"
+                            class="final-gift-message glass-card"
+                        >
+
+                            <div class="final-gift-icon">
+                                🍰
+                            </div>
+
+                            <h3>
+                                ขอบคุณที่เข้ามาเยี่ยมชมโลกเล็ก ๆ ของแก้มนะคะ 💗
+                            </h3>
+
+                            <p>
+                                เค้กชิ้นนี้เป็นของขวัญเล็ก ๆ
+                                แทนคำขอบคุณ
+                                ที่แวะเข้ามาทำความรู้จักกับฉัน
+                                หวังว่าคุณจะมีความสุขก่อนกลับไปนะ 🍰✨
+                            </p>
+
+
+                            <button
+                                type="button"
+                                class="primary-button"
+                                data-page="home"
+                            >
+                                <span>
+                                    Back to Sweet World
+                                </span>
+
+                                <span>
+                                    🍭
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         CANDY SPARKLE SECRET POINTS
+    ========================================================== -->
+
+    <div
+        id="sparkleSecrets"
+        class="sparkle-secrets"
+        aria-hidden="true"
+    >
+
+        <button
+            type="button"
+            class="secret-sparkle secret-1"
+            data-message="Sweet!"
+        >
+            ✦
+        </button>
+
+        <button
+            type="button"
+            class="secret-sparkle secret-2"
+            data-message="You found me!"
+        >
+            ✧
+        </button>
+
+        <button
+            type="button"
+            class="secret-sparkle secret-3"
+            data-message="A little sweetness!"
+        >
+            ⋆
+        </button>
+
+        <button
+            type="button"
+            class="secret-sparkle secret-4"
+            data-message="So sweet!"
+        >
+            ✦
+        </button>
+
+    </div>
+
+
+    <!-- =========================================================
+         SECRET RECIPE / EASTER EGG
+    ========================================================== -->
+
+    <div
+        id="secretRecipe"
+        class="secret-recipe"
+        aria-hidden="true"
+    >
+
+        <div class="secret-recipe-inner glass-card">
+
+            <span class="secret-recipe-icon">
+                🍓
+            </span>
+
+            <h3>
+                Secret Recipe Found!
+            </h3>
+
+            <p>
+                You discovered a little secret sweetness ✨
+            </p>
+
+            <div class="recipe-sequence">
+                🍓 → 🍫 → 🍭 → 🍰
+            </div>
+
+            <button
+                type="button"
+                id="closeSecretRecipe"
+                class="secondary-button"
+            >
+                Sweet!
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         ACHIEVEMENT POPUP
+    ========================================================== -->
+
+    <div
+        id="achievementPopup"
+        class="achievement-popup"
+        aria-hidden="true"
+    >
+
+        <div class="achievement-popup-inner">
+
+            <div
+                id="achievementIcon"
+                class="achievement-icon"
+            >
+                🏆
+            </div>
+
+            <div class="achievement-copy">
+
+                <span class="achievement-small">
+                    ACHIEVEMENT UNLOCKED
+                </span>
+
+                <strong id="achievementTitle">
+                    Sweet Explorer
+                </strong>
+
+                <p id="achievementDescription">
+                    Visited all pages
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         TOAST
+    ========================================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <span
+            id="toastIcon"
+            class="toast-icon"
+        >
+            ✦
+        </span>
+
+        <span
+            id="toastMessage"
+            class="toast-message"
+        >
+            Sweet!
+        </span>
+
+    </div>
+
+
+    <!-- =========================================================
+         BOTTOM SWEET PILE
+    ========================================================== -->
+
+    <div
+        id="bottomSweetPile"
+        class="bottom-sweet-pile"
+        aria-hidden="true"
+    >
+
+        <div class="pile-shadow"></div>
+
+        <span class="pile-sweet pile-1">🍭</span>
+        <span class="pile-sweet pile-2">🍓</span>
+        <span class="pile-sweet pile-3">🍩</span>
+        <span class="pile-sweet pile-4">🍰</span>
+        <span class="pile-sweet pile-5">🍬</span>
+        <span class="pile-sweet pile-6">🧁</span>
+        <span class="pile-sweet pile-7">🍫</span>
+        <span class="pile-sweet pile-8">🍪</span>
+        <span class="pile-sweet pile-9">🍭</span>
+        <span class="pile-sweet pile-10">🍓</span>
+        <span class="pile-sweet pile-11">🧁</span>
+        <span class="pile-sweet pile-12">🍰</span>
+        <span class="pile-sweet pile-13">🍬</span>
+        <span class="pile-sweet pile-14">🍫</span>
+        <span class="pile-sweet pile-15">🍪</span>
+
+    </div>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-sparkles">
+            ✦　✧　⋆　✦　✧
+        </div>
+
+        <p>
+            Made with ♡ by สุพิชญา บุตรต๊ะ
+        </p>
+
+        <span>
+            Sweet Gam Portfolio
+        </span>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/theme.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/gacha.js"></script>
+    <script src="js/cake.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
