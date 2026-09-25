@@ -1,5931 +1,2052 @@
-/* =========================================================
-   SWEET GAM PORTFOLIO
-   style.css
-   Main layout + components + animations + responsive
-========================================================= */
-
-
-/* =========================================================
-   01. RESET
-========================================================= */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
-
-    font-family:
-        "Kanit",
-        sans-serif;
-
-    color: var(--text-main);
-
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            var(--bg-glow-1),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 20%,
-            var(--bg-glow-2),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            var(--bg-1),
-            var(--bg-2) 45%,
-            var(--bg-3)
-        );
-
-    transition:
-        background 1.2s ease,
-        color 0.8s ease;
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta
+    name="description"
+    content="Sweet Gam Portfolio — สุพิชญา บุตรต๊ะ"
+  >
+
+  <meta name="theme-color" content="#ffd4ec">
+
+  <title>Sweet Gam — สุพิชญา บุตรต๊ะ</title>
+
+  <!-- =========================================================
+       GOOGLE FONTS
+  ========================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Pacifico&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- =========================================================
+       MAIN STYLES
+  ========================================================== -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/themes.css">
+</head>
+
+<body data-theme="candy">
+
+  <!-- =========================================================
+       LOADING SCREEN
+       หน้าโหลด:
+       ขนมกลางวงแหวน
+       → ขนมกระจาย
+       → ผ้าม่าน
+       → Home
+  ========================================================== -->
+
+  <div
+    id="siteLoader"
+    class="site-loader"
+    aria-hidden="true"
+  >
+
+    <div class="loader-sky"></div>
+
+    <div
+      class="loader-sweets"
+      id="loaderSweets"
+    ></div>
+
+    <div class="loader-orbit orbit-a"></div>
+    <div class="loader-orbit orbit-b"></div>
+
+    <div class="loader-center">
+
+      <div
+        class="loader-candy"
+        id="loaderCandy"
+      >
+        🍭
+      </div>
+
+      <div class="loader-title">
+        Sweet Fantasy
+      </div>
+
+      <p class="loader-subtitle">
+        กำลังเปิดประตูเข้าสู่โลกของแก้ม...
+      </p>
+
+      <div class="loader-bar">
+        <span id="loaderBarFill"></span>
+      </div>
+
+      <div
+        class="loader-percent"
+        id="loaderPercent"
+      >
+        0%
+      </div>
+
+    </div>
+
+    <div class="loader-curtain loader-curtain-left"></div>
+    <div class="loader-curtain loader-curtain-right"></div>
+
+  </div>
+
+
+  <!-- =========================================================
+       PAGE TRANSITION CURTAIN
+       ใช้ตอนเปลี่ยนหน้า
+       ไม่ต้องโหลด Loading ใหม่
+  ========================================================== -->
+
+  <div
+    id="pageCurtain"
+    class="page-curtain"
+    aria-hidden="true"
+  >
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <div
+      class="curtain-candy-burst"
+      id="curtainCandyBurst"
+    ></div>
+
+  </div>
+
+
+  <!-- =========================================================
+       MOUSE SYSTEM
+  ========================================================== -->
+
+  <div
+    id="mouseGlow"
+    class="mouse-glow"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    id="cursorSpoon"
+    class="cursor-spoon"
+    aria-hidden="true"
+  >
+    🥄
+  </div>
+
+  <div
+    id="cursorDot"
+    class="cursor-dot"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    id="trailLayer"
+    class="trail-layer"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    id="clickLayer"
+    class="click-layer"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    id="sparkleLayer"
+    class="sparkle-layer"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =========================================================
+       AMBIENT WORLD
+       พื้นหลังร่วมทุกหน้า ยกเว้น Loading
+  ========================================================== -->
+
+  <div
+    class="ambient-world"
+    aria-hidden="true"
+  >
+
+    <!-- Gradient / Glow -->
+    <div class="orb orb-pink"></div>
+    <div class="orb orb-purple"></div>
+    <div class="orb orb-blue"></div>
+
+    <!-- ดาว / ประกาย -->
+    <div
+      class="ambient-stars"
+      id="ambientStars"
+    ></div>
+
+    <!-- ขนมลอยพื้นหลัง -->
+    <div
+      class="floating-sweets"
+      id="floatingSweets"
+    ></div>
+
+    <!-- กองขนมด้านล่าง -->
+    <div
+      class="bottom-sweet-pile"
+      id="bottomSweetPile"
+    ></div>
+
+    <!-- ซอสไหลตาม Scroll -->
+    <div
+      class="sauce-drip"
+      id="sauceDrip"
+    >
+      <div class="sauce-pool"></div>
+    </div>
+
+    <!-- trail สำหรับ Scroll -->
+    <div
+      class="page-sugar-trail"
+      id="pageSugarTrail"
+    ></div>
+
+  </div>
+
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+
+  <header class="site-header">
+
+    <button
+      class="brand-button"
+      type="button"
+      data-page="home"
+      aria-label="กลับหน้าแรก"
+    >
+
+      <span class="brand-script">
+        Sweet
+      </span>
+
+      <span class="brand-star">
+        ✦
+      </span>
+
+      <span class="brand-name">
+        Gam
+      </span>
+
+    </button>
+
+
+    <nav
+      class="main-nav"
+      aria-label="เมนูหลัก"
+    >
+
+      <button
+        data-page="home"
+        class="nav-button active"
+        type="button"
+      >
+        หน้าแรก
+      </button>
+
+      <button
+        data-page="about"
+        class="nav-button"
+        type="button"
+      >
+        เกี่ยวกับฉัน
+      </button>
+
+      <button
+        data-page="education"
+        class="nav-button"
+        type="button"
+      >
+        การศึกษา
+      </button>
+
+      <button
+        data-page="hobbies"
+        class="nav-button"
+        type="button"
+      >
+        งานอดิเรก
+      </button>
+
+      <button
+        data-page="interests"
+        class="nav-button"
+        type="button"
+      >
+        ความสนใจ
+      </button>
+
+      <button
+        data-page="contact"
+        class="nav-button"
+        type="button"
+      >
+        ติดต่อ
+      </button>
+
+      <button
+        data-page="thankyou"
+        class="nav-button"
+        type="button"
+      >
+        ของขวัญ
+      </button>
+
+    </nav>
+
+
+    <button
+      id="mobileMenuBtn"
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="เปิดเมนู"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- =========================================================
+       MOBILE MENU
+  ========================================================== -->
+
+  <aside
+    id="mobileMenu"
+    class="mobile-menu"
+    aria-hidden="true"
+  >
+
+    <div class="mobile-menu-panel">
+
+      <button
+        class="mobile-close"
+        id="mobileClose"
+        type="button"
+        aria-label="ปิดเมนู"
+      >
+        ×
+      </button>
+
+      <div class="mobile-brand">
+        Sweet ✦ Gam
+      </div>
+
+      <button
+        data-page="home"
+        type="button"
+      >
+        หน้าแรก
+      </button>
+
+      <button
+        data-page="about"
+        type="button"
+      >
+        เกี่ยวกับฉัน
+      </button>
+
+      <button
+        data-page="education"
+        type="button"
+      >
+        การศึกษา
+      </button>
+
+      <button
+        data-page="hobbies"
+        type="button"
+      >
+        งานอดิเรก
+      </button>
+
+      <button
+        data-page="interests"
+        type="button"
+      >
+        ความสนใจ
+      </button>
+
+      <button
+        data-page="contact"
+        type="button"
+      >
+        ติดต่อ
+      </button>
+
+      <button
+        data-page="thankyou"
+        type="button"
+      >
+        ของขวัญ
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN APP
+       ทุก section คือ "คนละหน้า"
+       JavaScript จะสลับ active-page
+  ========================================================== -->
+
+  <main
+    id="app"
+    class="app-shell"
+  >
+
+
+    <!-- =======================================================
+         PAGE 01 — HOME
+    ======================================================== -->
+
+    <section
+      class="page active-page"
+      data-page-view="home"
+      id="page-home"
+    >
+
+      <div class="page-inner home-layout">
+
+
+        <!-- HERO TEXT -->
+
+        <div class="hero-copy reveal-on-page">
+
+          <div class="eyebrow glass-pill">
+            🍬 WELCOME TO MY SWEET WORLD ✨
+          </div>
+
+          <p class="hero-script">
+            My name is
+          </p>
+
+          <h1 class="hero-name shimmer-text">
+            สุพิชญา บุตรต๊ะ
+          </h1>
+
+          <p class="hero-lead">
+
+            สวัสดีค่ะ ฉันชื่อ
+            <strong>สุพิชญา บุตรต๊ะ</strong>
+
+            ชื่อเล่น
+            <strong>แก้ม</strong>
+
+            นักเรียนชั้น
+            <strong>ม.3/2</strong>
+
+            จากโรงเรียนจอมทอง จังหวัดเชียงใหม่
+
+            ยินดีต้อนรับเข้าสู่โลก Portfolio หวาน ๆ
+            ที่รวมตัวตน ความฝัน และสิ่งที่ฉันรักเอาไว้ด้วยกัน
+
+          </p>
+
+
+          <!-- MOTTO -->
+
+          <div
+            class="quote-box tilt-card text-card"
+          >
+
+            <span>
+              “ศิลปะคือหนึ่งในจิตวิญญาณของฉัน” 🎨
+            </span>
+
+          </div>
+
+
+          <!-- HERO BUTTONS -->
 
-    cursor: none;
-}
+          <div class="hero-actions">
+
+            <button
+              class="primary-btn"
+              type="button"
+              data-page="about"
+            >
+              รู้จักฉันมากขึ้น ✨
+            </button>
 
-body.no-cursor {
-    cursor: auto;
-}
+            <button
+              class="secondary-btn"
+              type="button"
+              data-page="contact"
+            >
+              ช่องทางติดต่อ 💌
+            </button>
 
-body *,
-button,
-a {
-    cursor: none;
-}
+          </div>
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
 
-button {
-    font: inherit;
-}
+          <!-- ACHIEVEMENT PREVIEW -->
 
-img {
-    display: block;
-    max-width: 100%;
-}
+          <div
+            class="achievement-strip"
+            id="achievementStrip"
+            aria-live="polite"
+          ></div>
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+        </div>
 
 
-/* =========================================================
-   02. ROOT VARIABLES
-========================================================= */
+        <!-- HERO SWEET ART -->
 
-:root {
+        <div
+          class="hero-art tilt-card image-card"
+          data-zoom="true"
+        >
 
-    --bg-1:
-        #fff5fb;
+          <!-- ขนมกลางหน้า -->
+          <div
+            class="hero-sweet-core"
+            id="heroSweetCore"
+          >
+            🍰
+          </div>
 
-    --bg-2:
-        #f7edff;
+          <!-- วงแหวนหมุน -->
+          <div class="hero-ring hero-ring-1"></div>
+          <div class="hero-ring hero-ring-2"></div>
+          <div class="hero-ring hero-ring-3"></div>
 
-    --bg-3:
-        #eafaff;
 
-    --bg-glow-1:
-        rgba(255, 115, 192, 0.26);
+          <!-- ประกาย -->
+          <div class="hero-sprinkles">
 
-    --bg-glow-2:
-        rgba(148, 113, 255, 0.22);
+            <span>✦</span>
+            <span>✧</span>
+            <span>✿</span>
+            <span>♡</span>
 
-    --text-main:
-        #50324f;
+          </div>
 
-    --text-soft:
-        #80677e;
 
-    --white:
-        #ffffff;
+          <!-- =================================================
+               รูปสำหรับหน้า Home
+               เปลี่ยนไฟล์ตรงนี้ได้
+          ================================================== -->
 
-    --pink:
-        #ff72b8;
+          <div class="image-placeholder hero-placeholder">
 
-    --pink-light:
-        #ffd2e9;
+            <img
+              src="./images/decorations/home-sweet.png"
+              alt="ขนมตกแต่งหน้าแรก"
+              data-fallback="home-sweet"
+            >
 
-    --purple:
-        #a883ff;
+          </div>
 
-    --purple-light:
-        #e4d7ff;
+        </div>
 
-    --cyan:
-        #71dff1;
+      </div>
 
-    --cyan-light:
-        #d9faff;
 
-    --cream:
-        #fff8e9;
+      <div class="section-footer-hint">
 
-    --yellow:
-        #ffd96d;
+        เลื่อนดูได้ที่ปุ่มเมนูด้านบน
+        — ทุกหน้าเป็นคนละฉาก ✦
 
-    --green:
-        #a8e9b6;
+      </div>
 
-    --red:
-        #ff7d93;
+    </section>
 
-    --brown:
-        #7c4d3b;
 
-    --glass:
-        rgba(255, 255, 255, 0.54);
 
-    --glass-strong:
-        rgba(255, 255, 255, 0.72);
+    <!-- =======================================================
+         PAGE 02 — ABOUT
+    ======================================================== -->
 
-    --glass-dark:
-        rgba(81, 43, 77, 0.09);
+    <section
+      class="page"
+      data-page-view="about"
+      id="page-about"
+    >
 
-    --border:
-        rgba(255, 255, 255, 0.78);
+      <div class="page-inner">
 
-    --shadow:
-        0 25px 80px rgba(116, 67, 119, 0.14);
 
-    --shadow-small:
-        0 10px 30px rgba(116, 67, 119, 0.12);
+        <div class="section-heading reveal-on-page">
 
-    --glow-pink:
-        0 0 35px rgba(255, 114, 184, 0.35);
+          <div class="section-kicker">
+            MY SWEET IDENTITY
+          </div>
 
-    --glow-purple:
-        0 0 35px rgba(168, 131, 255, 0.3);
+          <h2>
+            รู้จักแก้มให้มากขึ้น 🍓
+          </h2>
 
-    --radius-xl:
-        38px;
+          <p>
+            พื้นที่เล็ก ๆ ที่เล่าเรื่องตัวตนของฉันแบบหวาน ๆ
+          </p>
 
-    --radius-lg:
-        28px;
+        </div>
 
-    --radius-md:
-        20px;
 
-    --radius-sm:
-        14px;
+        <div class="about-grid">
 
-    --ease:
-        cubic-bezier(0.22, 1, 0.36, 1);
 
-    --page-padding:
-        clamp(22px, 6vw, 90px);
+          <!-- PROFILE IMAGE -->
 
-    --header-height:
-        82px;
-}
+          <article
+            class="profile-card tilt-card image-card"
+            data-zoom="true"
+          >
 
+            <div class="profile-photo-wrap">
 
-/* =========================================================
-   03. SELECTION
-========================================================= */
+              <!--
+                รูปโปรไฟล์
+                เปลี่ยนไฟล์เป็นรูปของตัวเองได้เลย
+              -->
 
-::selection {
-    color: #fff;
-    background: var(--pink);
-}
+              <img
+                src="./images/profile/profile.jpg"
+                alt="รูปโปรไฟล์ของสุพิชญา"
+                data-fallback="profile"
+              >
 
+            </div>
 
-/* =========================================================
-   04. SCROLLBAR
-========================================================= */
+            <div class="profile-name">
+              สุพิชญา บุตรต๊ะ
+            </div>
 
-::-webkit-scrollbar {
-    width: 9px;
-}
+            <div class="profile-nick">
+              แก้ม · Gam
+            </div>
 
-::-webkit-scrollbar-track {
-    background:
-        rgba(255, 255, 255, 0.3);
-}
+            <div class="profile-ribbon">
+              ศิลปะ · ความฝัน · จินตนาการ
+            </div>
 
-::-webkit-scrollbar-thumb {
-    background:
-        linear-gradient(
-            180deg,
-            var(--pink),
-            var(--purple),
-            var(--cyan)
-        );
+          </article>
 
-    border-radius: 999px;
-}
 
+          <!-- PROFILE INFORMATION -->
 
-/* =========================================================
-   05. AMBIENT WORLD
-========================================================= */
+          <div class="profile-details">
 
-.ambient-world {
-    position: fixed;
-    inset: 0;
 
-    z-index: -20;
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-    pointer-events: none;
+              <div>
 
-    overflow: hidden;
-}
+                <span>
+                  ชื่อเล่น
+                </span>
 
-.orb {
-    position: absolute;
+                <strong>
+                  แก้ม
+                </strong>
 
-    width: 38vw;
-    height: 38vw;
+              </div>
 
-    min-width: 280px;
-    min-height: 280px;
+            </article>
 
-    border-radius: 50%;
 
-    filter: blur(35px);
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-    opacity: 0.38;
+              <div>
 
-    animation:
-        ambientFloat 14s ease-in-out infinite alternate;
-}
+                <span>
+                  ระดับชั้น
+                </span>
 
-.orb-pink {
-    left: -12vw;
-    top: 5vh;
+                <strong>
+                  ม.3/2
+                </strong>
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 121, 191, 0.45),
-            transparent 68%
-        );
-}
+              </div>
 
-.orb-purple {
-    right: -14vw;
-    top: 25vh;
+            </article>
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(161, 130, 255, 0.38),
-            transparent 68%
-        );
 
-    animation-delay: -5s;
-}
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-.orb-blue {
-    left: 35vw;
-    bottom: -25vw;
+              <div>
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(113, 222, 241, 0.32),
-            transparent 68%
-        );
+                <span>
+                  โรงเรียน
+                </span>
 
-    animation-delay: -9s;
-}
+                <strong>
+                  จอมทอง
+                </strong>
 
-@keyframes ambientFloat {
+              </div>
 
-    from {
-        transform:
-            translate3d(-20px, -15px, 0)
-            scale(0.95);
-    }
+            </article>
 
-    to {
-        transform:
-            translate3d(30px, 25px, 0)
-            scale(1.08);
-    }
-}
 
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-/* =========================================================
-   06. STARS
-========================================================= */
+              <div>
 
-.ambient-stars {
-    position: absolute;
-    inset: 0;
-}
+                <span>
+                  จังหวัด
+                </span>
 
-.ambient-star {
-    position: absolute;
+                <strong>
+                  เชียงใหม่
+                </strong>
 
-    width: 5px;
-    height: 5px;
+              </div>
 
-    border-radius: 50%;
+            </article>
 
-    background: #fff;
 
-    box-shadow:
-        0 0 8px rgba(255, 255, 255, 0.95),
-        0 0 20px var(--pink);
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-    opacity: 0.65;
+              <div>
 
-    animation:
-        starTwinkle var(--duration, 3s)
-        ease-in-out infinite alternate;
-}
+                <span>
+                  วิชาที่ชอบ
+                </span>
 
-.ambient-star::before,
-.ambient-star::after {
-    content: "";
+                <strong>
+                  ภาษาอังกฤษ และ ศิลปะ
+                </strong>
 
-    position: absolute;
+              </div>
 
-    left: 50%;
-    top: 50%;
+            </article>
 
-    width: 18px;
-    height: 2px;
 
-    transform:
-        translate(-50%, -50%);
+            <article
+              class="info-card tilt-card text-card"
+            >
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.95),
-            transparent
-        );
-}
+              <div>
 
-.ambient-star::after {
-    transform:
-        translate(-50%, -50%)
-        rotate(90deg);
-}
+                <span>
+                  เป้าหมาย
+                </span>
 
-@keyframes starTwinkle {
+                <strong>
+                  อยากเป็นครู
+                </strong>
 
-    from {
-        opacity: 0.18;
-        transform: scale(0.7);
-    }
+              </div>
 
-    to {
-        opacity: 0.95;
-        transform: scale(1.35);
-    }
-}
+            </article>
 
 
-/* =========================================================
-   07. FLOATING SWEETS
-========================================================= */
+          </div>
 
-.floating-sweets {
-    position: absolute;
-    inset: 0;
-}
+        </div>
 
-.floating-sweet {
-    position: absolute;
 
-    display: grid;
-    place-items: center;
+        <!-- ===================================================
+             SECRET RECIPE
+        ==================================================== -->
 
-    width: var(--size, 38px);
-    height: var(--size, 38px);
+        <div
+          class="secret-box tilt-card text-card"
+          id="secretRecipeBox"
+        >
 
-    font-size:
-        calc(var(--size, 38px) * 0.62);
+          <div class="secret-icon">
+            🔐
+          </div>
 
-    filter:
-        drop-shadow(
-            0 8px 10px
-            rgba(100, 50, 90, 0.12)
-        );
+          <div>
 
-    opacity: var(--opacity, 0.55);
+            <strong>
+              Secret Recipe
+            </strong>
 
-    user-select: none;
+            <p>
+              ลองแตะปุ่มขนม 3 ชิ้นตามลำดับให้ถูกดูนะ…
+            </p>
 
-    pointer-events: auto;
+          </div>
 
-    transition:
-        transform 0.45s var(--ease),
-        filter 0.35s ease,
-        opacity 0.35s ease;
 
-    animation:
-        floatingSweet
-        var(--duration, 8s)
-        ease-in-out
-        infinite alternate;
-}
+          <div
+            class="secret-sequence"
+            id="secretSequence"
+          >
 
-.floating-sweet:hover {
-    opacity: 1;
+            <button
+              type="button"
+              data-secret="🍓"
+            >
+              🍓
+            </button>
 
-    filter:
-        drop-shadow(
-            0 0 14px
-            rgba(255, 105, 190, 0.65)
-        );
+            <button
+              type="button"
+              data-secret="🍫"
+            >
+              🍫
+            </button>
 
-    transform:
-        scale(1.35)
-        rotate(12deg);
-}
+            <button
+              type="button"
+              data-secret="🍭"
+            >
+              🍭
+            </button>
 
-@keyframes floatingSweet {
+          </div>
 
-    0% {
-        transform:
-            translate3d(
-                var(--x1, 0px),
-                var(--y1, 0px),
-                0
-            )
-            rotate(-8deg);
-    }
 
-    100% {
-        transform:
-            translate3d(
-                var(--x2, 20px),
-                var(--y2, -30px),
-                0
-            )
-            rotate(12deg);
-    }
-}
+          <div
+            class="secret-result"
+            id="secretResult"
+          >
+            ยังไม่ปลดล็อก ✧
+          </div>
 
+        </div>
 
-/* =========================================================
-   08. BOTTOM SWEET PILE
-========================================================= */
+      </div>
 
-.bottom-sweet-pile {
-    position: absolute;
+    </section>
 
-    left: -5%;
-    right: -5%;
-    bottom: -12px;
 
-    height: 105px;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    <!-- =======================================================
+         PAGE 03 — EDUCATION
+    ======================================================== -->
 
-    gap: 4px;
+    <section
+      class="page"
+      data-page-view="education"
+      id="page-education"
+    >
 
-    overflow: hidden;
+      <div class="page-inner">
 
-    opacity: 0.92;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            transparent,
-            black 28%
-        );
-}
+        <div class="section-heading reveal-on-page">
 
-.pile-sweet {
-    flex: 0 0 auto;
+          <div class="section-kicker">
+            EDUCATION
+          </div>
 
-    font-size:
-        var(--pile-size, 42px);
+          <h2>
+            เส้นทางการศึกษา 📚
+          </h2>
 
-    transform:
-        translateY(var(--pile-y, 5px))
-        rotate(var(--pile-rotate, 0deg));
+          <p>
+            ก้าวเล็ก ๆ ที่ค่อย ๆ พาฉันเดินไปสู่ความฝัน
+          </p>
 
-    filter:
-        drop-shadow(
-            0 8px 8px
-            rgba(91, 47, 81, 0.12)
-        );
+        </div>
 
-    animation:
-        pileBounce
-        var(--pile-duration, 4s)
-        ease-in-out
-        infinite alternate;
-}
 
-@keyframes pileBounce {
+        <div
+          class="education-timeline"
+          id="educationTimeline"
+        >
 
-    from {
-        transform:
-            translateY(var(--pile-y, 5px))
-            rotate(var(--pile-rotate, 0deg));
-    }
+          <!-- เส้นเชื่อม -->
+          <div class="timeline-line"></div>
 
-    to {
-        transform:
-            translateY(
-                calc(var(--pile-y, 5px) - 5px)
-            )
-            rotate(
-                calc(var(--pile-rotate, 0deg) + 3deg)
-            );
-    }
-}
 
+          <!-- PRIMARY -->
 
-/* =========================================================
-   09. SAUCE DRIP
-========================================================= */
+          <article
+            class="edu-card tilt-card text-card"
+          >
 
-.sauce-drip {
-    position: fixed;
+            <div class="edu-year">
+              2561–2567
+            </div>
 
-    top: 0;
-    right: 9vw;
+            <div class="edu-bullet">
+              🍪
+            </div>
 
-    width: 22px;
+            <div class="edu-content">
 
-    height:
-        clamp(
-            45px,
-            var(--scroll-drip, 9vh),
-            58vh
-        );
+              <h3>
+                ประถมศึกษา ป.1–6
+              </h3>
 
-    z-index: 25;
+              <p>
+                ศึกษาอยู่ที่โรงเรียนศรีจอมทอง
+              </p>
 
-    pointer-events: none;
+            </div>
 
-    transition:
-        height 0.18s linear;
-}
+          </article>
 
-.sauce-drip::before {
-    content: "";
 
-    position: absolute;
+          <!-- SECONDARY -->
 
-    left: 0;
-    top: 0;
+          <article
+            class="edu-card tilt-card text-card"
+          >
 
-    width: 100%;
-    height: 100%;
+            <div class="edu-year">
+              2567–2568
+            </div>
 
-    border-radius:
-        0 0 20px 20px;
+            <div class="edu-bullet">
+              🍫
+            </div>
 
-    background:
-        linear-gradient(
-            180deg,
-            var(--pink),
-            var(--purple)
-        );
+            <div class="edu-content">
 
-    box-shadow:
-        0 5px 20px
-        rgba(255, 105, 185, 0.22);
-}
+              <h3>
+                มัธยมศึกษา ม.1–2
+              </h3>
 
-.sauce-drip::after {
-    content: "";
+              <p>
+                ศึกษาอยู่ที่โรงเรียนจอมทอง
+              </p>
 
-    position: absolute;
+            </div>
 
-    left: -12px;
-    bottom: -17px;
+          </article>
 
-    width: 46px;
-    height: 42px;
 
-    border-radius: 50%;
+          <!-- CURRENT -->
 
-    background:
-        var(--purple);
+          <article
+            class="edu-card tilt-card text-card"
+          >
 
-    box-shadow:
-        0 0 18px
-        rgba(169, 132, 255, 0.25);
-}
+            <div class="edu-year">
+              2569–ปัจจุบัน
+            </div>
 
-.sauce-pool {
-    position: fixed;
+            <div class="edu-bullet">
+              🍰
+            </div>
 
-    bottom: 0;
-    left: 50%;
+            <div class="edu-content">
 
-    width: 0;
-    height: 0;
+              <h3>
+                มัธยมศึกษา ม.3
+              </h3>
 
-    transform:
-        translateX(-50%);
+              <p>
+                กำลังศึกษาอยู่ที่โรงเรียนจอมทอง
+              </p>
 
-    border-radius: 50%;
+            </div>
 
-    background:
-        radial-gradient(
-            ellipse,
-            var(--pink-light),
-            transparent 70%
-        );
+          </article>
 
-    transition:
-        width 0.5s ease,
-        height 0.5s ease;
-}
+        </div>
 
-body.at-page-bottom .sauce-pool {
-    width: 280px;
-    height: 80px;
-}
 
+        <!-- DESSERT PROGRESS -->
 
-/* =========================================================
-   10. HEADER
-========================================================= */
+        <div
+          class="progress-dessert"
+          id="progressDessert"
+        >
 
-.site-header {
-    position: fixed;
+          <span>🍬</span>
+          <span>🍓</span>
+          <span>🍫</span>
+          <span>🧁</span>
+          <span>🎂</span>
 
-    top: 16px;
-    left: 50%;
+        </div>
 
-    transform:
-        translateX(-50%);
+      </div>
 
-    width:
-        min(
-            calc(100% - 30px),
-            1280px
-        );
+    </section>
 
-    min-height:
-        var(--header-height);
 
-    padding:
-        10px 14px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    <!-- =======================================================
+         PAGE 04 — HOBBIES
+    ======================================================== -->
 
-    gap: 20px;
+    <section
+      class="page"
+      data-page-view="hobbies"
+      id="page-hobbies"
+    >
 
-    z-index: 100;
+      <div class="page-inner">
 
-    border:
-        1px solid var(--border);
 
-    border-radius:
-        999px;
+        <div class="section-heading reveal-on-page">
 
-    background:
-        rgba(255, 255, 255, 0.42);
+          <div class="section-kicker">
+            MY HOBBIES
+          </div>
 
-    backdrop-filter:
-        blur(22px)
-        saturate(140%);
+          <h2>
+            สิ่งที่ฉันชอบทำ 🍭
+          </h2>
 
-    -webkit-backdrop-filter:
-        blur(22px)
-        saturate(140%);
+          <p>
+            งานอดิเรกที่ทำให้วันธรรมดามีสีสันมากขึ้น
+          </p>
 
-    box-shadow:
-        0 15px 45px
-        rgba(110, 61, 107, 0.12);
+        </div>
 
-    transition:
-        background 0.8s ease,
-        box-shadow 0.8s ease;
-}
 
-.brand-button {
-    border: 0;
-    background: transparent;
+        <div class="hobby-grid">
 
-    padding:
-        8px 15px;
 
-    display: flex;
-    align-items: baseline;
+          <!-- DRAWING -->
 
-    gap: 5px;
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    color: var(--text-main);
+            <div class="hobby-image">
 
-    white-space: nowrap;
-}
+              <img
+                src="./images/hobbies/drawing.jpg"
+                alt="วาดรูป"
+                data-fallback="drawing"
+              >
 
-.brand-script {
-    font-family:
-        "Pacifico",
-        cursive;
+            </div>
 
-    color:
-        var(--pink);
+            <h3>
+              วาดรูป
+            </h3>
 
-    font-size: 22px;
-}
+            <p>
+              สร้างโลกจากจินตนาการ
+            </p>
 
-.brand-star {
-    color: var(--yellow);
+          </article>
 
-    animation:
-        starTwinkle
-        1.8s
-        ease-in-out
-        infinite alternate;
-}
 
-.brand-name {
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+          <!-- MUSIC -->
 
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-/* =========================================================
-   11. NAVIGATION
-========================================================= */
+            <div class="hobby-image">
 
-.main-nav {
-    display: flex;
+              <img
+                src="./images/hobbies/music.jpg"
+                alt="ฟังเพลง"
+                data-fallback="music"
+              >
 
-    align-items: center;
-    justify-content: center;
+            </div>
 
-    gap: 4px;
-}
+            <h3>
+              ฟังเพลง
+            </h3>
 
-.nav-button {
-    position: relative;
+            <p>
+              ปล่อยใจไปกับเสียงเพลง
+            </p>
 
-    border: 0;
+          </article>
 
-    padding:
-        9px 13px;
 
-    border-radius:
-        999px;
+          <!-- SINGING -->
 
-    color:
-        var(--text-soft);
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    background:
-        transparent;
+            <div class="hobby-image">
 
-    font-size:
-        13px;
+              <img
+                src="./images/hobbies/singing.jpg"
+                alt="ร้องเพลง"
+                data-fallback="singing"
+              >
 
-    transition:
-        color 0.3s ease,
-        background 0.3s ease,
-        transform 0.3s var(--ease);
-}
+            </div>
 
-.nav-button::after {
-    content: "";
+            <h3>
+              ร้องเพลง
+            </h3>
 
-    position: absolute;
+            <p>
+              สนุกกับการร้องเพลง
+            </p>
 
-    left: 50%;
-    bottom: 4px;
+          </article>
 
-    width: 0;
-    height: 2px;
 
-    transform:
-        translateX(-50%);
+          <!-- DIY -->
 
-    border-radius: 999px;
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--pink),
-            var(--purple)
-        );
+            <div class="hobby-image">
 
-    transition:
-        width 0.35s var(--ease);
-}
+              <img
+                src="./images/hobbies/diy.jpg"
+                alt="งานคราฟต์ DIY"
+                data-fallback="diy"
+              >
 
-.nav-button:hover {
-    color:
-        var(--pink);
+            </div>
 
-    background:
-        rgba(255, 255, 255, 0.45);
+            <h3>
+              งานคราฟต์ DIY
+            </h3>
 
-    transform:
-        translateY(-2px);
-}
+            <p>
+              ประดิษฐ์ของด้วยมือของตัวเอง
+            </p>
 
-.nav-button.active {
-    color:
-        var(--pink);
+          </article>
 
-    font-weight: 600;
 
-    background:
-        rgba(255, 255, 255, 0.62);
+          <!-- GAMING -->
 
-    box-shadow:
-        0 6px 18px
-        rgba(255, 114, 184, 0.12);
-}
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-.nav-button.active::after {
-    width: 45%;
-}
+            <div class="hobby-image">
 
+              <img
+                src="./images/hobbies/gaming.jpg"
+                alt="เล่นเกม"
+                data-fallback="gaming"
+              >
 
-/* =========================================================
-   12. MOBILE MENU BUTTON
-========================================================= */
+            </div>
 
-.mobile-menu-btn {
-    display: none;
+            <h3>
+              เล่นเกม
+            </h3>
 
-    width: 45px;
-    height: 45px;
+            <p>
+              ผจญภัยในโลกอีกใบ
+            </p>
 
-    border: 1px solid var(--border);
+          </article>
 
-    border-radius: 50%;
 
-    background:
-        rgba(255, 255, 255, 0.6);
+          <!-- SLEEPING -->
 
-    color:
-        var(--text-main);
+          <article
+            class="hobby-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    font-size: 21px;
-}
+            <div class="hobby-image">
 
+              <img
+                src="./images/hobbies/sleeping.jpg"
+                alt="นอน"
+                data-fallback="sleeping"
+              >
 
-/* =========================================================
-   13. MOBILE MENU
-========================================================= */
+            </div>
 
-.mobile-menu {
-    position: fixed;
+            <h3>
+              นอน
+            </h3>
 
-    inset: 0;
+            <p>
+              พักผ่อนชาร์จพลังให้ตัวเอง
+            </p>
 
-    z-index: 300;
+          </article>
 
-    display: flex;
 
-    justify-content: flex-end;
+        </div>
 
-    background:
-        rgba(55, 30, 52, 0.25);
+      </div>
 
-    backdrop-filter:
-        blur(8px);
+    </section>
 
-    opacity: 0;
-    visibility: hidden;
 
-    transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
-}
 
-.mobile-menu.open {
-    opacity: 1;
-    visibility: visible;
-}
+    <!-- =======================================================
+         PAGE 05 — INTERESTS / DREAMS
+    ======================================================== -->
 
-.mobile-menu-panel {
-    width:
-        min(
-            84vw,
-            360px
-        );
+    <section
+      class="page"
+      data-page-view="interests"
+      id="page-interests"
+    >
 
-    height: 100%;
+      <div class="page-inner">
 
-    padding:
-        35px 24px;
 
-    display: flex;
-    flex-direction: column;
+        <div class="section-heading reveal-on-page">
 
-    gap: 10px;
+          <div class="section-kicker">
+            MY DREAMS
+          </div>
 
-    background:
-        linear-gradient(
-            160deg,
-            rgba(255,255,255,.95),
-            rgba(255,240,250,.95)
-        );
+          <h2>
+            ความสนใจและความฝัน 🌈
+          </h2>
 
-    box-shadow:
-        -20px 0 60px
-        rgba(74, 35, 69, 0.16);
+          <p>
+            โลกกว้างยังมีอะไรอีกมากให้ฉันได้ออกไปค้นหา
+          </p>
 
-    transform:
-        translateX(100%);
+        </div>
 
-    transition:
-        transform 0.6s var(--ease);
-}
 
-.mobile-menu.open .mobile-menu-panel {
-    transform:
-        translateX(0);
-}
+        <div class="dream-grid">
 
-.mobile-close {
-    align-self: flex-end;
 
-    width: 42px;
-    height: 42px;
+          <!-- WORLD -->
 
-    border: 0;
+          <article
+            class="dream-card tilt-card text-card"
+          >
 
-    border-radius: 50%;
+            <div class="dream-icon">
+              🌍
+            </div>
 
-    background:
-        var(--pink-light);
+            <h3>
+              โลกกว้างที่อยากไปเจอ
+            </h3>
 
-    color:
-        var(--text-main);
+            <p>
+              ฉันอยากออกสำรวจโลกกว้าง
+              เสาะหาความรู้ต่าง ๆ
+              และเรียนรู้จากประสบการณ์ที่ได้พบเจอ
+              เพราะฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้นแค่ในห้องเรียน
+            </p>
 
-    font-size: 26px;
-}
+          </article>
 
-.mobile-brand {
-    margin:
-        20px 0;
 
-    font-family:
-        "Pacifico",
-        cursive;
+          <!-- DREAM -->
 
-    font-size: 27px;
+          <article
+            class="dream-card tilt-card text-card"
+          >
 
-    color:
-        var(--pink);
-}
+            <div class="dream-icon">
+              👩‍🏫
+            </div>
 
-.mobile-menu-panel > button:not(.mobile-close) {
-    border: 0;
+            <h3>
+              ความฝันของฉัน
+            </h3>
 
-    padding:
-        14px 17px;
+            <p>
+              ฉันอยากเป็นครู
+              และอยากส่งต่อความรู้ให้กับคนอื่นในอนาคต
+              ให้การเรียนรู้เป็นสิ่งที่น่าสนใจและมีความหมาย
+            </p>
 
-    border-radius:
-        17px;
+          </article>
 
-    text-align: left;
 
-    color:
-        var(--text-main);
+          <!-- DREAM IMAGE -->
 
-    background:
-        rgba(255,255,255,.65);
+          <article
+            class="dream-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
+            <div class="dream-photo">
 
-.mobile-menu-panel > button:not(.mobile-close):hover {
-    background:
-        var(--pink-light);
+              <img
+                src="./images/decorations/dream.jpg"
+                alt="รูปเกี่ยวกับความฝัน"
+                data-fallback="dream"
+              >
 
-    transform:
-        translateX(6px);
-}
+            </div>
 
+            <div class="dream-caption">
+              ทำในสิ่งที่รัก · เรียนรู้ · เติบโต
+            </div>
 
-/* =========================================================
-   14. APP SHELL
-========================================================= */
+          </article>
 
-.app-shell {
-    position: relative;
 
-    width: 100%;
-    min-height: 100vh;
-}
+        </div>
 
+      </div>
 
-/* =========================================================
-   15. PAGE SYSTEM
-========================================================= */
+    </section>
 
-.page {
-    position: absolute;
 
-    inset: 0;
 
-    min-height: 100vh;
+    <!-- =======================================================
+         PAGE 06 — CONTACT
+    ======================================================== -->
 
-    width: 100%;
+    <section
+      class="page"
+      data-page-view="contact"
+      id="page-contact"
+    >
 
-    padding:
-        calc(var(--header-height) + 55px)
-        var(--page-padding)
-        120px;
+      <div class="page-inner">
 
-    opacity: 0;
-    visibility: hidden;
 
-    pointer-events: none;
+        <div class="section-heading reveal-on-page">
 
-    transform:
-        translateY(25px)
-        scale(0.985);
+          <div class="section-kicker">
+            CONTACT
+          </div>
 
-    transition:
-        opacity 0.65s var(--ease),
-        transform 0.75s var(--ease),
-        visibility 0.65s;
+          <h2>
+            มาพูดคุยกัน ❤️
+          </h2>
 
-    overflow-x: clip;
-}
+          <p>
+            ขอบคุณที่แวะเข้ามาทำความรู้จักกับ Portfolio ของฉัน
+          </p>
 
-.page.active-page {
-    position: relative;
+        </div>
 
-    opacity: 1;
-    visibility: visible;
 
-    pointer-events: auto;
+        <div class="contact-grid">
 
-    transform:
-        translateY(0)
-        scale(1);
 
-    min-height: 100vh;
-}
+          <!-- CONTACT INFORMATION -->
 
-.page-inner {
-    position: relative;
+          <div
+            class="contact-card tilt-card text-card"
+          >
 
-    width:
-        min(
-            1320px,
-            100%
-        );
 
-    min-height:
-        calc(100vh - 160px);
+            <!-- EMAIL -->
 
-    margin:
-        0 auto;
-}
+            <a
+              class="contact-row"
+              href="mailto:gamhom181a54@gmail.com"
+            >
 
+              <span>
+                📧
+              </span>
 
-/* =========================================================
-   16. SECTION HEADING
-========================================================= */
+              <div>
 
-.section-heading {
-    max-width: 850px;
+                <small>
+                  Email
+                </small>
 
-    margin:
-        0 auto 60px;
+                <strong>
+                  gamhom181a54@gmail.com
+                </strong>
 
-    text-align: center;
-}
+              </div>
 
-.section-kicker {
-    display: inline-flex;
+            </a>
 
-    align-items: center;
-    justify-content: center;
 
-    gap: 8px;
+            <!-- PHONE -->
 
-    margin-bottom: 12px;
+            <a
+              class="contact-row"
+              href="tel:0636271686"
+            >
 
-    color:
-        var(--pink);
+              <span>
+                📱
+              </span>
 
-    font-size:
-        12px;
+              <div>
 
-    font-weight:
-        600;
+                <small>
+                  Number
+                </small>
 
-    letter-spacing:
-        4px;
+                <strong>
+                  063-627-1686
+                </strong>
 
-    text-transform:
-        uppercase;
-}
+              </div>
 
-.section-heading h2 {
-    margin:
-        0 0 14px;
+            </a>
 
-    font-size:
-        clamp(34px, 5vw, 65px);
 
-    line-height:
-        1.08;
+            <!-- INSTAGRAM -->
 
-    letter-spacing:
-        -1px;
+            <a
+              class="contact-row"
+              href="https://instagram.com/Supitchaya_Butta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
 
-    color:
-        var(--text-main);
-}
+              <span>
+                📸
+              </span>
 
-.section-heading p {
-    margin: 0;
+              <div>
 
-    color:
-        var(--text-soft);
+                <small>
+                  Instagram
+                </small>
 
-    font-size:
-        clamp(15px, 1.5vw, 18px);
-}
+                <strong>
+                  Supitchaya_Butta
+                </strong>
 
+              </div>
 
-/* =========================================================
-   17. GLASS COMPONENTS
-========================================================= */
+            </a>
 
-.glass-pill {
-    display: inline-flex;
 
-    align-items: center;
+          </div>
 
-    padding:
-        9px 16px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.8);
+          <!-- PORTFOLIO CARD -->
 
-    border-radius:
-        999px;
+          <article
+            class="portfolio-card tilt-card image-card"
+            data-zoom="true"
+          >
 
-    background:
-        rgba(255,255,255,.48);
+            <div class="portfolio-icon">
+              🍰
+            </div>
 
-    backdrop-filter:
-        blur(12px);
+            <div class="portfolio-title">
+              My Portfolio
+            </div>
 
-    box-shadow:
-        var(--shadow-small);
-}
+            <p>
+              Sweet Fantasy ของแก้ม
+              <br>
+              ศิลปะ ความฝัน และตัวตนของฉัน
+            </p>
 
-.tilt-card {
-    position: relative;
+          </article>
 
-    transform-style: preserve-3d;
 
-    transition:
-        transform 0.15s ease-out,
-        box-shadow 0.4s ease,
-        border-color 0.4s ease;
-}
+        </div>
 
-.tilt-card::before {
-    content: "";
+      </div>
 
-    position: absolute;
+    </section>
 
-    inset: 0;
 
-    border-radius:
-        inherit;
 
-    pointer-events: none;
+    <!-- =======================================================
+         PAGE 07 — THANK YOU / GIFT
+    ======================================================== -->
 
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,.5),
-            transparent 35%,
-            rgba(255,255,255,.16)
-        );
+    <section
+      class="page thankyou-page"
+      data-page-view="thankyou"
+      id="page-thankyou"
+    >
 
-    opacity: 0;
+      <div class="page-inner">
 
-    transition:
-        opacity 0.35s ease;
-}
 
-.tilt-card:hover::before {
-    opacity: 1;
-}
+        <!-- TITLE -->
 
-.text-card,
-.image-card {
-    border:
-        1px solid var(--border);
+        <div class="section-heading reveal-on-page">
 
-    background:
-        var(--glass);
+          <div class="section-kicker">
+            THANK YOU
+          </div>
 
-    backdrop-filter:
-        blur(20px)
-        saturate(130%);
+          <h2>
+            ขอบคุณที่แวะมาเยี่ยมชม 💗
+          </h2>
 
-    -webkit-backdrop-filter:
-        blur(20px)
-        saturate(130%);
+          <p>
+            ก่อนที่เราจะบอกลากัน…
+            ฉันมีของขวัญเล็ก ๆ ให้คุณ
+          </p>
 
-    box-shadow:
-        var(--shadow);
-}
+        </div>
 
-.text-card:hover,
-.image-card:hover {
-    box-shadow:
-        0 30px 85px
-        rgba(118, 62, 112, 0.19),
-        0 0 35px
-        rgba(255, 119, 191, 0.1);
-}
 
+        <!-- ===================================================
+             GIFT MESSAGE
+        ==================================================== -->
 
-/* =========================================================
-   18. HOME
-========================================================= */
+        <article
+          class="gift-message tilt-card text-card"
+        >
 
-.home-layout {
-    min-height:
-        calc(100vh - 150px);
+          <div class="gift-message-icon">
+            🎁
+          </div>
 
-    display: grid;
+          <h3>
+            ก่อนกลับ ฉันมีของขวัญให้คุณ
+          </h3>
 
-    grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(380px, .95fr);
+          <p>
+            คุณเดินทางผ่านโลกหวาน ๆ
+            ของแก้มมาจนถึงตรงนี้แล้ว
+            เลยอยากชวนคุณทำของหวานชิ้นเล็ก ๆ
+            ด้วยตัวเอง เพื่อเป็นที่ระลึกจากโลกใบนี้ค่ะ ✨
+          </p>
 
-    align-items: center;
+        </article>
 
-    gap:
-        clamp(40px, 7vw, 110px);
-}
 
-.hero-copy {
-    position: relative;
 
-    z-index: 2;
-}
+        <!-- ===================================================
+             CAKE LAB
+        ==================================================== -->
 
-.hero-script {
-    margin:
-        24px 0 0;
+        <div class="cake-lab">
 
-    font-family:
-        "Pacifico",
-        cursive;
 
-    color:
-        var(--pink);
+          <!-- =================================================
+               GACHA PANEL
+          ================================================== -->
 
-    font-size:
-        clamp(25px, 3vw, 40px);
-}
+          <div
+            class="gacha-panel tilt-card text-card"
+          >
 
-.hero-name {
-    position: relative;
+            <div class="panel-title">
+              🎰 Sweet Gacha
+            </div>
 
-    margin:
-        4px 0 22px;
 
-    font-size:
-        clamp(45px, 7vw, 95px);
+            <div
+              class="gacha-machine"
+              id="gachaMachine"
+            >
 
-    line-height:
-        1.02;
+              <div class="gacha-glass">
 
-    letter-spacing:
-        -3px;
+                <div
+                  id="gachaBallDisplay"
+                >
+                  🍬
+                </div>
 
-    font-weight:
-        800;
+              </div>
 
-    color:
-        var(--text-main);
-}
 
-.shimmer-text {
-    background:
-        linear-gradient(
-            110deg,
-            var(--text-main) 20%,
-            #fff 42%,
-            var(--pink) 50%,
-            var(--text-main) 68%
-        );
+              <div class="gacha-controls">
 
-    background-size:
-        220% auto;
+                <button
+                  class="primary-btn"
+                  id="gachaButton"
+                  type="button"
+                >
+                  สุ่มขนม 🎲
+                </button>
 
-    -webkit-background-clip:
-        text;
+              </div>
 
-    background-clip:
-        text;
 
-    color:
-        transparent;
+              <div
+                class="gacha-result"
+                id="gachaResult"
+              >
+                กดสุ่มเพื่อรับของตกแต่ง
+              </div>
 
-    animation:
-        shimmerText 5s linear infinite;
-}
+            </div>
 
-@keyframes shimmerText {
 
-    to {
-        background-position:
-            220% center;
-    }
-}
+            <!-- INVENTORY -->
 
-.hero-lead {
-    max-width: 700px;
+            <div
+              class="inventory"
+              id="inventory"
+            >
 
-    margin:
-        0 0 25px;
+              <div class="inventory-title">
+                🎒 ช่องเก็บของ
+              </div>
 
-    color:
-        var(--text-soft);
+              <div
+                class="inventory-slots"
+                id="inventorySlots"
+              ></div>
 
-    font-size:
-        clamp(16px, 1.7vw, 20px);
+            </div>
 
-    line-height:
-        1.9;
-}
+          </div>
 
-.hero-lead strong {
-    color:
-        var(--text-main);
 
-    font-weight:
-        600;
-}
 
-.quote-box {
-    display: inline-flex;
+          <!-- =================================================
+               CAKE STAGE
+          ================================================== -->
 
-    padding:
-        14px 20px;
+          <div
+            class="cake-stage tilt-card image-card"
+            data-zoom="false"
+          >
 
-    margin-bottom:
-        26px;
+            <div class="panel-title">
+              🍰 แต่งเค้ก
+            </div>
 
-    border-radius:
-        18px;
 
-    color:
-        var(--pink);
+            <!-- CAKE OPTIONS -->
 
-    font-weight:
-        500;
-}
+            <div class="cake-options">
 
-.hero-actions {
-    display: flex;
 
-    flex-wrap: wrap;
+              <!-- LAYERS -->
 
-    gap: 12px;
-}
+              <div>
 
-.primary-btn,
-.secondary-btn {
-    position: relative;
+                <label>
+                  จำนวนชั้น
+                </label>
 
-    border: 0;
+                <div
+                  class="choice-row"
+                  id="cakeLayersChoice"
+                >
 
-    min-height: 52px;
+                  <button
+                    data-value="1"
+                    class="choice active"
+                    type="button"
+                  >
+                    1
+                  </button>
 
-    padding:
-        13px 23px;
+                  <button
+                    data-value="2"
+                    class="choice"
+                    type="button"
+                  >
+                    2
+                  </button>
 
-    border-radius:
-        999px;
+                  <button
+                    data-value="3"
+                    class="choice"
+                    type="button"
+                  >
+                    3
+                  </button>
 
-    font-weight:
-        600;
+                </div>
 
-    transition:
-        transform 0.35s var(--ease),
-        box-shadow 0.35s ease,
-        background 0.35s ease;
-}
+              </div>
 
-.primary-btn {
-    color:
-        white;
 
-    background:
-        linear-gradient(
-            110deg,
-            var(--pink),
-            var(--purple)
-        );
+              <!-- FLAVOR -->
 
-    box-shadow:
-        0 15px 35px
-        rgba(255, 104, 183, .24);
-}
+              <div>
 
-.secondary-btn {
-    color:
-        var(--text-main);
+                <label>
+                  รสชาติ
+                </label>
 
-    background:
-        rgba(255,255,255,.64);
+                <div
+                  class="choice-row"
+                  id="cakeFlavorChoice"
+                >
 
-    border:
-        1px solid var(--border);
+                  <button
+                    data-value="vanilla"
+                    class="choice active"
+                    type="button"
+                  >
+                    วานิลา
+                  </button>
 
-    box-shadow:
-        var(--shadow-small);
-}
+                  <button
+                    data-value="chocolate"
+                    class="choice"
+                    type="button"
+                  >
+                    ช็อกโกแลต
+                  </button>
 
-.primary-btn:hover,
-.secondary-btn:hover {
-    transform:
-        translateY(-4px)
-        scale(1.02);
-}
+                  <button
+                    data-value="strawberry"
+                    class="choice"
+                    type="button"
+                  >
+                    สตรอว์เบอร์รี่
+                  </button>
 
-.primary-btn:hover {
-    box-shadow:
-        0 20px 45px
-        rgba(255, 104, 183, .34);
-}
+                </div>
 
-.secondary-btn:hover {
-    box-shadow:
-        0 18px 35px
-        rgba(118, 65, 112, .16);
-}
+              </div>
 
 
-/* =========================================================
-   19. ACHIEVEMENT STRIP
-========================================================= */
+            </div>
 
-.achievement-strip {
-    display: flex;
 
-    flex-wrap: wrap;
+            <!-- CAKE DROP ZONE -->
 
-    gap: 7px;
+            <div
+              class="cake-canvas-wrap"
+              id="cakeDropZone"
+            >
 
-    margin-top:
-        20px;
-}
+              <div
+                class="cake-canvas"
+                id="cakeCanvas"
+              ></div>
 
-.mini-achievement {
-    display: inline-flex;
+              <div class="cake-drop-hint">
+                ลากของตกแต่งจากช่องเก็บของมาวางบนเค้ก
+              </div>
 
-    align-items: center;
+            </div>
 
-    gap: 6px;
 
-    padding:
-        7px 11px;
+            <!-- FINISH -->
 
-    border-radius:
-        999px;
+            <button
+              class="secondary-btn finish-cake-btn"
+              id="finishCakeButton"
+              type="button"
+            >
+              เสร็จสิ้น ✨
+            </button>
 
-    background:
-        rgba(255,255,255,.55);
+          </div>
 
-    border:
-        1px solid
-        rgba(255,255,255,.75);
+        </div>
 
-    color:
-        var(--text-soft);
 
-    font-size:
-        12px;
-}
 
+        <!-- ===================================================
+             GIFT BOX
+        ==================================================== -->
 
-/* =========================================================
-   20. HERO ART
-========================================================= */
+        <div
+          class="cake-box-zone"
+          id="cakeBoxZone"
+          aria-hidden="true"
+        >
 
-.hero-art {
-    position: relative;
+          <div class="cake-box-copy">
 
-    min-height:
-        min(620px, 72vh);
+            <h3>
+              ได้เวลาแพ็กของขวัญแล้ว 🎁
+            </h3>
 
-    display: grid;
-    place-items: center;
+            <p>
+              ลากเค้กใส่กล่องเพื่อรับข้อความพิเศษ
+            </p>
 
-    border-radius:
-        50px;
+          </div>
 
-    overflow: hidden;
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.72),
-            rgba(255,255,255,.2) 52%,
-            transparent 72%
-        );
+          <div
+            class="gift-box"
+            id="giftBox"
+          >
 
-    border:
-        0;
+            <div class="box-lid"></div>
 
-    box-shadow:
-        none;
+            <div class="box-body">
+              🎁
+            </div>
 
-    backdrop-filter:
-        none;
-}
+          </div>
 
-.hero-art:hover {
-    box-shadow:
-        none;
-}
 
-.hero-sweet-core {
-    position: relative;
+          <div
+            class="draggable-final-cake"
+            id="draggableFinalCake"
+            draggable="true"
+          >
+            🍰
+          </div>
 
-    z-index: 5;
+        </div>
 
-    width:
-        clamp(150px, 18vw, 245px);
 
-    height:
-        clamp(150px, 18vw, 245px);
 
-    display: grid;
-    place-items: center;
+        <!-- ===================================================
+             FINAL THANK YOU
+        ==================================================== -->
 
-    font-size:
-        clamp(85px, 10vw, 145px);
+        <div
+          class="final-thanks-card tilt-card text-card"
+          id="finalThanksCard"
+          aria-hidden="true"
+        >
 
-    border-radius: 50%;
+          <div class="final-sparkles">
+            ✨ ✦ ✨
+          </div>
 
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            rgba(255,255,255,.98),
-            rgba(255,255,255,.55) 35%,
-            rgba(255,190,222,.34) 65%,
-            transparent 75%
-        );
+          <div class="final-card-icon">
+            💌
+          </div>
 
-    box-shadow:
-        0 0 60px
-        rgba(255, 125, 192, .28);
+          <h3>
+            ขอบคุณที่เข้ามาในโลกของแก้มนะคะ
+          </h3>
 
-    animation:
-        heroSweetFloat 4.5s ease-in-out infinite;
-}
+          <p>
+            เค้กชิ้นนี้เป็นของขวัญเล็ก ๆ
+            แทนคำขอบคุณที่แวะเข้ามาทำความรู้จักกับฉัน
+            หวังว่าคุณจะยิ้มได้ก่อนออกจากเว็บนี้นะ 🍰💗
+          </p>
 
-@keyframes heroSweetFloat {
+          <button
+            class="primary-btn"
+            type="button"
+            data-page="home"
+          >
+            กลับไปเที่ยว Sweet World อีกครั้ง ✨
+          </button>
 
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
+        </div>
 
-    50% {
-        transform:
-            translateY(-15px)
-            rotate(4deg);
-    }
-}
+      </div>
 
-.hero-ring {
-    position: absolute;
+    </section>
 
-    left: 50%;
-    top: 50%;
+  </main>
 
-    border:
-        1px solid
-        rgba(255, 113, 185, .4);
 
-    border-radius: 50%;
 
-    transform:
-        translate(-50%, -50%);
-}
+  <!-- =========================================================
+       FIXED CONTROLS
+  ========================================================== -->
 
-.hero-ring-1 {
-    width:
-        clamp(270px, 31vw, 430px);
+  <div class="fixed-controls">
 
-    height:
-        clamp(270px, 31vw, 430px);
 
-    border-top-color:
-        var(--pink);
+    <!-- THEME SWITCH -->
 
-    border-bottom-color:
-        var(--purple);
+    <button
+      id="themeButton"
+      class="floating-control theme-control"
+      type="button"
+      aria-label="เปลี่ยนธีม"
+      title="เปลี่ยนธีม"
+    >
+      🍭
+    </button>
 
-    animation:
-        rotateRing 13s linear infinite;
-}
 
-.hero-ring-2 {
-    width:
-        clamp(340px, 40vw, 560px);
+    <!-- ACHIEVEMENTS -->
 
-    height:
-        clamp(340px, 40vw, 560px);
+    <button
+      id="achievementsButton"
+      class="floating-control"
+      type="button"
+      aria-label="ดูรางวัล"
+      title="Achievements"
+    >
+      🏆
+    </button>
 
-    border-left-color:
-        var(--cyan);
 
-    border-right-color:
-        var(--pink);
+    <!-- MUSIC -->
 
-    animation:
-        rotateRingReverse 18s linear infinite;
-}
+    <button
+      id="musicToggle"
+      class="music-control"
+      type="button"
+      aria-label="เปิดหรือปิดเพลง"
+    >
 
-.hero-ring-3 {
-    width:
-        clamp(430px, 49vw, 680px);
+      <span id="musicIcon">
+        🎵
+      </span>
 
-    height:
-        clamp(430px, 49vw, 680px);
+      <span id="musicText">
+        เปิดเพลง
+      </span>
 
-    opacity:
-        .35;
+    </button>
 
-    border-style:
-        dashed;
+  </div>
 
-    animation:
-        rotateRing 28s linear infinite;
-}
 
-@keyframes rotateRing {
 
-    to {
-        transform:
-            translate(-50%, -50%)
-            rotate(360deg);
-    }
-}
+  <!-- =========================================================
+       ACHIEVEMENT PANEL
+  ========================================================== -->
 
-@keyframes rotateRingReverse {
+  <div
+    id="achievementPanel"
+    class="achievement-panel"
+    aria-hidden="true"
+  >
 
-    to {
-        transform:
-            translate(-50%, -50%)
-            rotate(-360deg);
-    }
-}
+    <div class="achievement-panel-head">
 
-.hero-sprinkles {
-    position: absolute;
+      <strong>
+        🏆 Achievements
+      </strong>
 
-    inset: 0;
+      <button
+        id="closeAchievements"
+        type="button"
+        aria-label="ปิด"
+      >
+        ×
+      </button>
 
-    pointer-events: none;
-}
+    </div>
 
-.hero-sprinkles span {
-    position: absolute;
+    <div
+      id="achievementList"
+    ></div>
 
-    color:
-        var(--pink);
+  </div>
 
-    font-size:
-        25px;
 
-    animation:
-        sprinkleFloat
-        var(--d, 4s)
-        ease-in-out
-        infinite alternate;
-}
 
-.hero-sprinkles span:nth-child(1) {
-    left: 16%;
-    top: 23%;
-}
+  <!-- =========================================================
+       PAGE PROGRESS
+       ใช้ขนมแทนจุดบอกตำแหน่งหน้า
+  ========================================================== -->
 
-.hero-sprinkles span:nth-child(2) {
-    right: 14%;
-    top: 32%;
+  <div
+    class="page-progress"
+    id="pageProgress"
+    aria-label="ลำดับหน้า"
+  >
 
-    color:
-        var(--purple);
-}
+    <button
+      data-progress-page="home"
+      type="button"
+      aria-label="หน้าแรก"
+    >
+      🍭
+    </button>
 
-.hero-sprinkles span:nth-child(3) {
-    left: 23%;
-    bottom: 22%;
+    <button
+      data-progress-page="about"
+      type="button"
+      aria-label="เกี่ยวกับฉัน"
+    >
+      🍓
+    </button>
 
-    color:
-        var(--cyan);
-}
+    <button
+      data-progress-page="education"
+      type="button"
+      aria-label="การศึกษา"
+    >
+      📚
+    </button>
 
-.hero-sprinkles span:nth-child(4) {
-    right: 23%;
-    bottom: 20%;
+    <button
+      data-progress-page="hobbies"
+      type="button"
+      aria-label="งานอดิเรก"
+    >
+      🍬
+    </button>
 
-    color:
-        var(--yellow);
-}
+    <button
+      data-progress-page="interests"
+      type="button"
+      aria-label="ความสนใจ"
+    >
+      🌈
+    </button>
 
-@keyframes sprinkleFloat {
+    <button
+      data-progress-page="contact"
+      type="button"
+      aria-label="ติดต่อ"
+    >
+      💌
+    </button>
 
-    from {
-        transform:
-            translateY(8px)
-            rotate(-10deg)
-            scale(.85);
+    <button
+      data-progress-page="thankyou"
+      type="button"
+      aria-label="ของขวัญ"
+    >
+      🎁
+    </button>
 
-        opacity:
-            .5;
-    }
+  </div>
 
-    to {
-        transform:
-            translateY(-12px)
-            rotate(15deg)
-            scale(1.15);
 
-        opacity:
-            1;
-    }
-}
 
-.image-placeholder.hero-placeholder {
-    position: absolute;
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
 
-    width: 1px;
-    height: 1px;
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
 
-    overflow: hidden;
 
-    opacity: 0;
-}
 
+  <!-- =========================================================
+       BACKGROUND MUSIC
 
-/* =========================================================
-   21. ABOUT
-========================================================= */
+       ชื่อไฟล์คงเป็น:
+       play-date.mp3
 
-.about-grid {
-    display: grid;
+       ให้วางไฟล์เพลงไว้ที่ root เดียวกับ index.html
+  ========================================================== -->
 
-    grid-template-columns:
-        minmax(280px, .75fr)
-        minmax(0, 1.25fr);
+  <audio
+    id="bgMusic"
+    loop
+    preload="metadata"
+  >
 
-    gap:
-        35px;
+    <source
+      src="./play-date.mp3"
+      type="audio/mpeg"
+    >
 
-    align-items: stretch;
-}
+  </audio>
 
-.profile-card {
-    min-height:
-        580px;
 
-    padding:
-        30px;
 
-    border-radius:
-        38px;
+  <!-- =========================================================
+       JAVASCRIPT
+       แยกเป็นระบบเพื่อให้แก้ง่าย
+  ========================================================== -->
 
-    display: flex;
+  <script src="./js/effects.js"></script>
 
-    flex-direction: column;
+  <script src="./js/theme.js"></script>
 
-    align-items: center;
+  <script src="./js/transition.js"></script>
 
-    justify-content: center;
+  <script src="./js/cake.js"></script>
 
-    text-align: center;
-}
+  <script src="./js/gacha.js"></script>
 
-.profile-photo-wrap {
-    position: relative;
+  <script src="./js/main.js"></script>
 
-    width:
-        min(70vw, 330px);
 
-    aspect-ratio:
-        1;
-
-    overflow: hidden;
-
-    border-radius:
-        38% 62% 55% 45%
-        / 52% 42% 58% 48%;
-
-    border:
-        8px solid
-        rgba(255,255,255,.65);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light)
-        );
-
-    box-shadow:
-        0 25px 70px
-        rgba(130, 69, 120, .16);
-
-    animation:
-        blobShape 9s ease-in-out infinite alternate;
-}
-
-@keyframes blobShape {
-
-    0% {
-        border-radius:
-            38% 62% 55% 45%
-            / 52% 42% 58% 48%;
-    }
-
-    100% {
-        border-radius:
-            58% 42% 40% 60%
-            / 42% 57% 43% 58%;
-    }
-}
-
-.profile-photo-wrap img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform .6s var(--ease);
-}
-
-.image-card:hover img,
-.profile-card:hover img {
-    transform:
-        scale(1.055);
-}
-
-.profile-name {
-    margin-top:
-        25px;
-
-    font-size:
-        28px;
-
-    font-weight:
-        700;
-}
-
-.profile-nick {
-    color:
-        var(--pink);
-
-    font-family:
-        "Pacifico",
-        cursive;
-
-    font-size:
-        20px;
-}
-
-.profile-ribbon {
-    margin-top:
-        14px;
-
-    padding:
-        7px 14px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.65);
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        12px;
-}
-
-.profile-details {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap:
-        18px;
-}
-
-.info-card {
-    min-height:
-        150px;
-
-    padding:
-        25px;
-
-    border-radius:
-        25px;
-
-    display: flex;
-
-    align-items: center;
-}
-
-.info-card span {
-    display: block;
-
-    margin-bottom:
-        7px;
-
-    color:
-        var(--pink);
-
-    font-size:
-        13px;
-}
-
-.info-card strong {
-    display: block;
-
-    color:
-        var(--text-main);
-
-    font-size:
-        20px;
-}
-
-
-/* =========================================================
-   22. SECRET BOX
-========================================================= */
-
-.secret-box {
-    margin-top:
-        30px;
-
-    padding:
-        22px 25px;
-
-    border-radius:
-        25px;
-
-    display: grid;
-
-    grid-template-columns:
-        auto 1fr auto auto;
-
-    align-items: center;
-
-    gap:
-        18px;
-}
-
-.secret-icon {
-    width: 48px;
-    height: 48px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 15px;
-
-    background:
-        var(--pink-light);
-
-    font-size:
-        25px;
-}
-
-.secret-box strong {
-    display: block;
-}
-
-.secret-box p {
-    margin:
-        4px 0 0;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        13px;
-}
-
-.secret-sequence {
-    display: flex;
-
-    gap: 6px;
-}
-
-.secret-sequence button {
-    width: 43px;
-    height: 43px;
-
-    border: 0;
-
-    border-radius: 13px;
-
-    background:
-        rgba(255,255,255,.7);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.secret-sequence button:hover {
-    transform:
-        translateY(-4px)
-        rotate(-5deg);
-
-    box-shadow:
-        0 10px 25px
-        rgba(255,110,185,.2);
-}
-
-.secret-result {
-    min-width: 105px;
-
-    text-align: center;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        12px;
-}
-
-
-/* =========================================================
-   23. EDUCATION
-========================================================= */
-
-.education-timeline {
-    position: relative;
-
-    max-width:
-        1050px;
-
-    margin:
-        0 auto;
-
-    padding:
-        25px 0;
-}
-
-.timeline-line {
-    position: absolute;
-
-    left: 50%;
-    top: 20px;
-    bottom: 20px;
-
-    width: 4px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius:
-        999px;
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--pink),
-            var(--purple),
-            var(--cyan)
-        );
-
-    box-shadow:
-        0 0 25px
-        rgba(255, 113, 184, .2);
-}
-
-.edu-card {
-    position: relative;
-
-    width:
-        calc(50% - 45px);
-
-    min-height:
-        170px;
-
-    margin-bottom:
-        50px;
-
-    padding:
-        25px 28px;
-
-    border-radius:
-        26px;
-}
-
-.edu-card:nth-of-type(odd) {
-    margin-right:
-        auto;
-}
-
-.edu-card:nth-of-type(even) {
-    margin-left:
-        auto;
-}
-
-.edu-bullet {
-    position: absolute;
-
-    top: 50%;
-
-    width: 55px;
-    height: 55px;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        5px solid
-        rgba(255,255,255,.8);
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light)
-        );
-
-    transform:
-        translateY(-50%);
-
-    box-shadow:
-        0 10px 30px
-        rgba(100, 55, 96, .13);
-
-    z-index: 2;
-}
-
-.edu-card:nth-of-type(odd) .edu-bullet {
-    right:
-        -73px;
-}
-
-.edu-card:nth-of-type(even) .edu-bullet {
-    left:
-        -73px;
-}
-
-.edu-year {
-    color:
-        var(--pink);
-
-    font-size:
-        13px;
-
-    font-weight:
-        600;
-
-    letter-spacing:
-        1px;
-}
-
-.edu-content h3 {
-    margin:
-        8px 0 6px;
-
-    font-size:
-        23px;
-}
-
-.edu-content p {
-    margin: 0;
-
-    color:
-        var(--text-soft);
-
-    line-height:
-        1.7;
-}
-
-.edu-card:hover {
-    transform:
-        perspective(900px)
-        translateZ(-16px)
-        rotateX(1deg)
-        rotateY(2deg);
-}
-
-.progress-dessert {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 14px;
-
-    margin-top:
-        15px;
-}
-
-.progress-dessert span {
-    font-size:
-        25px;
-
-    animation:
-        dessertPulse
-        2.5s
-        ease-in-out
-        infinite alternate;
-}
-
-.progress-dessert span:nth-child(2) {
-    animation-delay: -.4s;
-}
-
-.progress-dessert span:nth-child(3) {
-    animation-delay: -.8s;
-}
-
-.progress-dessert span:nth-child(4) {
-    animation-delay: -1.2s;
-}
-
-.progress-dessert span:nth-child(5) {
-    animation-delay: -1.6s;
-}
-
-@keyframes dessertPulse {
-
-    from {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-
-    to {
-        transform:
-            translateY(-9px)
-            rotate(7deg);
-    }
-}
-
-
-/* =========================================================
-   24. HOBBIES
-========================================================= */
-
-.hobby-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap:
-        23px;
-}
-
-.hobby-card {
-    overflow: hidden;
-
-    border-radius:
-        28px;
-
-    padding-bottom:
-        20px;
-}
-
-.hobby-image {
-    position: relative;
-
-    width: 100%;
-
-    aspect-ratio:
-        4 / 3;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light),
-            var(--cyan-light)
-        );
-}
-
-.hobby-image::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            140deg,
-            rgba(255,255,255,.25),
-            transparent 40%
-        );
-
-    pointer-events: none;
-}
-
-.hobby-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform .7s var(--ease);
-}
-
-.hobby-card h3 {
-    margin:
-        17px 20px 5px;
-
-    font-size:
-        22px;
-}
-
-.hobby-card p {
-    margin:
-        0 20px;
-
-    color:
-        var(--text-soft);
-}
-
-.hobby-card:hover {
-    transform:
-        translateY(-6px);
-}
-
-
-/* =========================================================
-   25. DREAMS
-========================================================= */
-
-.dream-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap:
-        25px;
-}
-
-.dream-card {
-    min-height:
-        340px;
-
-    padding:
-        30px;
-
-    border-radius:
-        30px;
-
-    overflow: hidden;
-}
-
-.dream-icon {
-    width: 70px;
-    height: 70px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius:
-        22px;
-
-    background:
-        rgba(255,255,255,.62);
-
-    font-size:
-        38px;
-
-    margin-bottom:
-        22px;
-
-    box-shadow:
-        var(--shadow-small);
-}
-
-.dream-card h3 {
-    margin:
-        0 0 12px;
-
-    font-size:
-        24px;
-}
-
-.dream-card p {
-    margin: 0;
-
-    color:
-        var(--text-soft);
-
-    line-height:
-        1.9;
-}
-
-.dream-photo {
-    width: 100%;
-
-    height:
-        230px;
-
-    overflow: hidden;
-
-    border-radius:
-        23px;
-
-    margin-bottom:
-        18px;
-}
-
-.dream-photo img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform .65s var(--ease);
-}
-
-.dream-card:hover .dream-photo img {
-    transform:
-        scale(1.06);
-}
-
-.dream-caption {
-    color:
-        var(--pink);
-
-    font-weight:
-        600;
-}
-
-
-/* =========================================================
-   26. CONTACT
-========================================================= */
-
-.contact-grid {
-    max-width:
-        1050px;
-
-    margin:
-        0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        1.2fr .8fr;
-
-    gap:
-        25px;
-}
-
-.contact-card {
-    padding:
-        18px;
-
-    border-radius:
-        32px;
-}
-
-.contact-row {
-    min-height:
-        105px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap:
-        18px;
-
-    padding:
-        18px;
-
-    border-radius:
-        20px;
-
-    transition:
-        background .3s ease,
-        transform .3s var(--ease);
-}
-
-.contact-row:hover {
-    background:
-        rgba(255,255,255,.58);
-
-    transform:
-        translateX(5px);
-}
-
-.contact-row > span {
-    width: 55px;
-    height: 55px;
-
-    display: grid;
-    place-items: center;
-
-    flex: 0 0 auto;
-
-    border-radius:
-        17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light)
-        );
-
-    font-size:
-        25px;
-}
-
-.contact-row small {
-    display: block;
-
-    color:
-        var(--pink);
-
-    margin-bottom:
-        3px;
-}
-
-.contact-row strong {
-    color:
-        var(--text-main);
-
-    font-size:
-        17px;
-
-    word-break:
-        break-word;
-}
-
-.portfolio-card {
-    min-height:
-        100%;
-
-    padding:
-        35px;
-
-    border-radius:
-        32px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-}
-
-.portfolio-icon {
-    font-size:
-        90px;
-
-    filter:
-        drop-shadow(
-            0 15px 20px
-            rgba(255,100,180,.15)
-        );
-
-    animation:
-        heroSweetFloat
-        4s
-        ease-in-out
-        infinite;
-}
-
-.portfolio-title {
-    margin-top:
-        18px;
-
-    font-family:
-        "Pacifico",
-        cursive;
-
-    color:
-        var(--pink);
-
-    font-size:
-        30px;
-}
-
-.portfolio-card p {
-    color:
-        var(--text-soft);
-
-    line-height:
-        1.8;
-}
-
-
-/* =========================================================
-   27. THANK YOU
-========================================================= */
-
-.gift-message {
-    max-width:
-        850px;
-
-    margin:
-        0 auto 35px;
-
-    padding:
-        30px;
-
-    border-radius:
-        30px;
-
-    text-align:
-        center;
-}
-
-.gift-message-icon {
-    font-size:
-        55px;
-
-    margin-bottom:
-        10px;
-}
-
-.gift-message h3 {
-    margin:
-        0 0 10px;
-
-    font-size:
-        27px;
-}
-
-.gift-message p {
-    max-width:
-        650px;
-
-    margin:
-        auto;
-
-    color:
-        var(--text-soft);
-
-    line-height:
-        1.9;
-}
-
-
-/* =========================================================
-   28. CAKE LAB
-========================================================= */
-
-.cake-lab {
-    display: grid;
-
-    grid-template-columns:
-        minmax(300px, .75fr)
-        minmax(0, 1.25fr);
-
-    gap:
-        25px;
-
-    align-items:
-        stretch;
-}
-
-.gacha-panel,
-.cake-stage {
-    border-radius:
-        32px;
-
-    padding:
-        25px;
-}
-
-.panel-title {
-    margin-bottom:
-        18px;
-
-    color:
-        var(--text-main);
-
-    font-size:
-        20px;
-
-    font-weight:
-        700;
-}
-
-.gacha-machine {
-    min-height:
-        280px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        20px;
-
-    border-radius:
-        25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,210,235,.55),
-            rgba(224,210,255,.5)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.75);
-}
-
-.gacha-glass {
-    width:
-        150px;
-
-    height:
-        150px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border-radius:
-        50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 25%,
-            rgba(255,255,255,.95),
-            rgba(255,255,255,.4)
-        );
-
-    border:
-        5px solid
-        rgba(255,255,255,.8);
-
-    box-shadow:
-        inset 0 0 30px
-        rgba(255,255,255,.5),
-        0 15px 35px
-        rgba(109,56,101,.1);
-}
-
-#gachaBallDisplay {
-    font-size:
-        72px;
-
-    transition:
-        transform .25s ease;
-}
-
-.gacha-machine.spinning #gachaBallDisplay {
-    animation:
-        gachaSpin
-        .35s
-        linear
-        infinite;
-}
-
-@keyframes gachaSpin {
-
-    0% {
-        transform:
-            rotate(0)
-            scale(.8);
-    }
-
-    50% {
-        transform:
-            rotate(180deg)
-            scale(1.15);
-    }
-
-    100% {
-        transform:
-            rotate(360deg)
-            scale(.8);
-    }
-}
-
-.gacha-controls {
-    margin-top:
-        20px;
-}
-
-.gacha-result {
-    margin-top:
-        14px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        13px;
-
-    text-align:
-        center;
-}
-
-.inventory {
-    margin-top:
-        20px;
-}
-
-.inventory-title {
-    margin-bottom:
-        10px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        13px;
-}
-
-.inventory-slots {
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap:
-        8px;
-}
-
-.inventory-slot {
-    min-height:
-        65px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border:
-        1px dashed
-        rgba(120,70,115,.22);
-
-    border-radius:
-        15px;
-
-    background:
-        rgba(255,255,255,.4);
-
-    font-size:
-        30px;
-
-    transition:
-        transform .3s var(--ease),
-        background .3s ease,
-        box-shadow .3s ease;
-}
-
-.inventory-slot.has-item {
-    border-style:
-        solid;
-
-    background:
-        rgba(255,255,255,.72);
-
-    box-shadow:
-        var(--shadow-small);
-}
-
-.inventory-slot.draggable {
-    animation:
-        inventoryAppear
-        .5s
-        var(--ease);
-}
-
-@keyframes inventoryAppear {
-
-    from {
-        transform:
-            scale(.5)
-            rotate(-12deg);
-
-        opacity:
-            0;
-    }
-
-    to {
-        transform:
-            scale(1)
-            rotate(0);
-
-        opacity:
-            1;
-    }
-}
-
-
-/* =========================================================
-   29. CAKE OPTIONS
-========================================================= */
-
-.cake-options {
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 2fr;
-
-    gap:
-        15px;
-
-    margin-bottom:
-        18px;
-}
-
-.cake-options label {
-    display:
-        block;
-
-    margin-bottom:
-        7px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        12px;
-}
-
-.choice-row {
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        6px;
-}
-
-.choice {
-    border:
-        1px solid
-        rgba(255,255,255,.8);
-
-    padding:
-        8px 12px;
-
-    border-radius:
-        999px;
-
-    color:
-        var(--text-soft);
-
-    background:
-        rgba(255,255,255,.5);
-
-    font-size:
-        12px;
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        color .25s ease;
-}
-
-.choice:hover {
-    transform:
-        translateY(-2px);
-}
-
-.choice.active {
-    color:
-        white;
-
-    background:
-        linear-gradient(
-            100deg,
-            var(--pink),
-            var(--purple)
-        );
-
-    border-color:
-        transparent;
-}
-
-
-/* =========================================================
-   30. CAKE CANVAS
-========================================================= */
-
-.cake-canvas-wrap {
-    position:
-        relative;
-
-    min-height:
-        360px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        27px;
-
-    overflow:
-        hidden;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.75),
-            rgba(255,228,243,.3)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.75);
-}
-
-.cake-canvas {
-    position:
-        relative;
-
-    width:
-        320px;
-
-    height:
-        270px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        flex-end;
-
-    padding-bottom:
-        25px;
-
-    transition:
-        transform .4s var(--ease);
-}
-
-.cake-canvas.drag-over {
-    transform:
-        scale(1.035);
-
-    filter:
-        drop-shadow(
-            0 0 30px
-            rgba(255,105,190,.35)
-        );
-}
-
-.cake-layer {
-    position:
-        relative;
-
-    width:
-        var(--cake-width, 220px);
-
-    height:
-        62px;
-
-    margin-top:
-        -8px;
-
-    border-radius:
-        20px 20px 12px 12px;
-
-    border:
-        3px solid
-        rgba(255,255,255,.65);
-
-    box-shadow:
-        0 8px 20px
-        rgba(95,48,87,.14);
-
-    transition:
-        background .5s ease,
-        transform .3s ease;
-}
-
-.cake-layer:first-child {
-    margin-top:
-        0;
-}
-
-.cake-layer::before {
-    content: "";
-
-    position:
-        absolute;
-
-    left: 10%;
-    right: 10%;
-    top: -8px;
-
-    height: 18px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,.35);
-}
-
-.cake-flavor-vanilla .cake-layer {
-    background:
-        linear-gradient(
-            180deg,
-            #fff0c5,
-            #e9b878
-        );
-}
-
-.cake-flavor-chocolate .cake-layer {
-    background:
-        linear-gradient(
-            180deg,
-            #a8674e,
-            #653a31
-        );
-}
-
-.cake-flavor-strawberry .cake-layer {
-    background:
-        linear-gradient(
-            180deg,
-            #ffb1c7,
-            #e97d9f
-        );
-}
-
-.cake-base {
-    position:
-        absolute;
-
-    bottom:
-        0;
-
-    width:
-        285px;
-
-    height:
-        25px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,.78);
-
-    box-shadow:
-        0 10px 20px
-        rgba(82,45,77,.12);
-}
-
-.cake-cream {
-    position:
-        absolute;
-
-    z-index:
-        8;
-
-    font-size:
-        45px;
-
-    pointer-events:
-        none;
-
-    animation:
-        creamBounce
-        .5s
-        var(--ease);
-}
-
-@keyframes creamBounce {
-
-    from {
-        transform:
-            translateY(-15px)
-            scale(.7);
-
-        opacity:
-            0;
-    }
-
-    to {
-        transform:
-            translateY(0)
-            scale(1);
-
-        opacity:
-            1;
-    }
-}
-
-.cake-topping {
-    position:
-        absolute;
-
-    z-index:
-        12;
-
-    font-size:
-        30px;
-
-    user-select:
-        none;
-
-    pointer-events:
-        none;
-
-    animation:
-        toppingPop
-        .45s
-        var(--ease);
-}
-
-@keyframes toppingPop {
-
-    from {
-        transform:
-            scale(.2)
-            rotate(-20deg);
-
-        opacity:
-            0;
-    }
-
-    to {
-        transform:
-            scale(1)
-            rotate(0);
-
-        opacity:
-            1;
-    }
-}
-
-.cake-drip {
-    position:
-        absolute;
-
-    z-index:
-        9;
-
-    top:
-        4px;
-
-    width:
-        90%;
-
-    height:
-        30px;
-
-    border-radius:
-        50%;
-
-    background:
-        #fff;
-
-    filter:
-        drop-shadow(
-            0 4px 4px
-            rgba(90,45,80,.08)
-        );
-}
-
-.cake-drop-hint {
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    bottom:
-        10px;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        max-content;
-
-    max-width:
-        90%;
-
-    padding:
-        6px 12px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.58);
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        11px;
-
-    opacity:
-        .7;
-}
-
-.finish-cake-btn {
-    display:
-        block;
-
-    margin:
-        17px auto 0;
-}
-
-
-/* =========================================================
-   31. CAKE BOX
-========================================================= */
-
-.cake-box-zone {
-    position:
-        relative;
-
-    display:
-        none;
-
-    min-height:
-        430px;
-
-    margin-top:
-        35px;
-
-    padding:
-        35px;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        70px;
-
-    border-radius:
-        35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,231,244,.65),
-            rgba(229,218,255,.65)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.8);
-}
-
-.cake-box-zone.visible {
-    display:
-        flex;
-
-    animation:
-        boxReveal
-        .8s
-        var(--ease);
-}
-
-@keyframes boxReveal {
-
-    from {
-        opacity:
-            0;
-
-        transform:
-            translateY(25px)
-            scale(.96);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-.cake-box-copy {
-    max-width:
-        360px;
-}
-
-.cake-box-copy h3 {
-    margin:
-        0 0 10px;
-
-    font-size:
-        28px;
-}
-
-.cake-box-copy p {
-    margin:
-        0;
-
-    color:
-        var(--text-soft);
-}
-
-.gift-box {
-    position:
-        relative;
-
-    width:
-        230px;
-
-    height:
-        180px;
-
-    display:
-        flex;
-
-    align-items:
-        flex-end;
-
-    justify-content:
-        center;
-
-    filter:
-        drop-shadow(
-            0 25px 20px
-            rgba(87,43,80,.16)
-        );
-}
-
-.box-body {
-    width:
-        220px;
-
-    height:
-        140px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border-radius:
-        8px 8px 20px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink),
-            var(--purple)
-        );
-
-    font-size:
-        60px;
-
-    overflow:
-        hidden;
-}
-
-.box-lid {
-    position:
-        absolute;
-
-    top:
-        30px;
-
-    width:
-        245px;
-
-    height:
-        45px;
-
-    z-index:
-        4;
-
-    border-radius:
-        12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff8fc5,
-            #ae91ff
-        );
-
-    transform:
-        rotate(-2deg);
-}
-
-.draggable-final-cake {
-    position:
-        relative;
-
-    z-index:
-        20;
-
-    width:
-        100px;
-
-    height:
-        100px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border-radius:
-        25px;
-
-    background:
-        rgba(255,255,255,.72);
-
-    font-size:
-        65px;
-
-    box-shadow:
-        var(--shadow);
-
-    user-select:
-        none;
-
-    animation:
-        cakeGiftFloat
-        2s
-        ease-in-out
-        infinite alternate;
-}
-
-.draggable-final-cake.dragging {
-    opacity:
-        .65;
-
-    transform:
-        scale(1.1)
-        rotate(5deg);
-}
-
-@keyframes cakeGiftFloat {
-
-    from {
-        transform:
-            translateY(4px)
-            rotate(-3deg);
-    }
-
-    to {
-        transform:
-            translateY(-9px)
-            rotate(3deg);
-    }
-}
-
-
-/* =========================================================
-   32. FINAL THANKS
-========================================================= */
-
-.final-thanks-card {
-    display:
-        none;
-
-    position:
-        relative;
-
-    max-width:
-        800px;
-
-    margin:
-        40px auto 0;
-
-    padding:
-        50px 35px;
-
-    border-radius:
-        35px;
-
-    text-align:
-        center;
-
-    overflow:
-        hidden;
-}
-
-.final-thanks-card.visible {
-    display:
-        block;
-
-    animation:
-        finalCardReveal
-        1s
-        var(--ease);
-}
-
-@keyframes finalCardReveal {
-
-    from {
-        opacity:
-            0;
-
-        transform:
-            translateY(40px)
-            scale(.92);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-.final-card-icon {
-    font-size:
-        65px;
-
-    animation:
-        heroSweetFloat
-        3s
-        ease-in-out
-        infinite;
-}
-
-.final-thanks-card h3 {
-    margin:
-        15px 0;
-
-    font-size:
-        30px;
-}
-
-.final-thanks-card p {
-    max-width:
-        650px;
-
-    margin:
-        0 auto 25px;
-
-    color:
-        var(--text-soft);
-
-    line-height:
-        1.95;
-}
-
-.final-sparkles {
-    position:
-        absolute;
-
-    inset:
-        20px;
-
-    pointer-events:
-        none;
-
-    color:
-        var(--pink);
-
-    font-size:
-        24px;
-
-    letter-spacing:
-        35px;
-
-    animation:
-        sparkleText
-        2s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes sparkleText {
-
-    from {
-        opacity:
-            .35;
-
-        transform:
-            scale(.9);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            scale(1.05);
-    }
-}
-
-
-/* =========================================================
-   33. FIXED CONTROLS
-========================================================= */
-
-.fixed-controls {
-    position:
-        fixed;
-
-    right:
-        20px;
-
-    bottom:
-        20px;
-
-    z-index:
-        150;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        flex-end;
-
-    gap:
-        9px;
-}
-
-.floating-control {
-    width:
-        50px;
-
-    height:
-        50px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.85);
-
-    border-radius:
-        50%;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    background:
-        rgba(255,255,255,.58);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        var(--shadow-small);
-
-    font-size:
-        21px;
-
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s ease;
-}
-
-.floating-control:hover {
-    transform:
-        translateY(-5px)
-        rotate(8deg);
-
-    box-shadow:
-        0 16px 35px
-        rgba(109,53,102,.18);
-}
-
-.music-control {
-    min-width:
-        125px;
-
-    height:
-        50px;
-
-    padding:
-        0 16px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        7px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.85);
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.68);
-
-    backdrop-filter:
-        blur(15px);
-
-    color:
-        var(--text-main);
-
-    box-shadow:
-        var(--shadow-small);
-
-    font-size:
-        13px;
-
-    transition:
-        transform .35s var(--ease),
-        box-shadow .35s ease;
-}
-
-.music-control:hover {
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 16px 35px
-        rgba(109,53,102,.18);
-}
-
-.music-control.playing {
-    color:
-        white;
-
-    background:
-        linear-gradient(
-            110deg,
-            var(--pink),
-            var(--purple)
-        );
-}
-
-
-/* =========================================================
-   34. ACHIEVEMENT PANEL
-========================================================= */
-
-.achievement-panel {
-    position:
-        fixed;
-
-    right:
-        20px;
-
-    bottom:
-        85px;
-
-    width:
-        min(
-            330px,
-            calc(100vw - 40px)
-        );
-
-    padding:
-        18px;
-
-    z-index:
-        170;
-
-    border:
-        1px solid
-        rgba(255,255,255,.85);
-
-    border-radius:
-        25px;
-
-    background:
-        rgba(255,255,255,.78);
-
-    backdrop-filter:
-        blur(25px);
-
-    box-shadow:
-        0 25px 70px
-        rgba(91,43,84,.18);
-
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    transform:
-        translateY(15px)
-        scale(.95);
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease,
-        transform .45s var(--ease);
-}
-
-.achievement-panel.open {
-    opacity:
-        1;
-
-    visibility:
-        visible;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-.achievement-panel-head {
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-bottom:
-        12px;
-}
-
-.achievement-panel-head button {
-    width:
-        32px;
-
-    height:
-        32px;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--pink-light);
-
-    font-size:
-        20px;
-}
-
-.achievement-item {
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        12px;
-
-    padding:
-        11px;
-
-    margin-top:
-        7px;
-
-    border-radius:
-        15px;
-
-    background:
-        rgba(255,255,255,.5);
-
-    opacity:
-        .48;
-
-    filter:
-        grayscale(.8);
-}
-
-.achievement-item.unlocked {
-    opacity:
-        1;
-
-    filter:
-        none;
-
-    background:
-        linear-gradient(
-            110deg,
-            rgba(255,214,235,.75),
-            rgba(230,218,255,.75)
-        );
-
-    box-shadow:
-        0 8px 22px
-        rgba(111,59,104,.08);
-}
-
-.achievement-item-icon {
-    font-size:
-        25px;
-}
-
-.achievement-item-title {
-    font-weight:
-        600;
-
-    font-size:
-        14px;
-}
-
-.achievement-item-description {
-    color:
-        var(--text-soft);
-
-    font-size:
-        11px;
-}
-
-
-/* =========================================================
-   35. PAGE PROGRESS
-========================================================= */
-
-.page-progress {
-    position:
-        fixed;
-
-    left:
-        20px;
-
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    z-index:
-        120;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        7px;
-
-    padding:
-        8px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.4);
-
-    border:
-        1px solid
-        rgba(255,255,255,.65);
-
-    backdrop-filter:
-        blur(15px);
-}
-
-.page-progress button {
-    width:
-        37px;
-
-    height:
-        37px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
-
-    background:
-        transparent;
-
-    font-size:
-        16px;
-
-    opacity:
-        .45;
-
-    transition:
-        opacity .3s ease,
-        transform .3s var(--ease),
-        background .3s ease;
-}
-
-.page-progress button:hover {
-    opacity:
-        1;
-
-    transform:
-        scale(1.2);
-}
-
-.page-progress button.active {
-    opacity:
-        1;
-
-    background:
-        rgba(255,255,255,.75);
-
-    box-shadow:
-        0 7px 18px
-        rgba(100,48,91,.12);
-
-    transform:
-        scale(1.12);
-}
-
-
-/* =========================================================
-   36. CURSOR
-========================================================= */
-
-.cursor-spoon {
-    position:
-        fixed;
-
-    left:
-        0;
-
-    top:
-        0;
-
-    z-index:
-        1000;
-
-    pointer-events:
-        none;
-
-    font-size:
-        29px;
-
-    transform:
-        translate(-7px, -7px)
-        rotate(-25deg);
-
-    filter:
-        drop-shadow(
-            0 4px 7px
-            rgba(91,46,85,.2)
-        );
-
-    transition:
-        transform .1s ease;
-}
-
-.cursor-spoon.clicking {
-    transform:
-        translate(-7px,-7px)
-        rotate(-35deg)
-        scale(.78);
-}
-
-.cursor-dot {
-    position:
-        fixed;
-
-    left:
-        0;
-
-    top:
-        0;
-
-    z-index:
-        999;
-
-    width:
-        7px;
-
-    height:
-        7px;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--pink);
-
-    pointer-events:
-        none;
-
-    box-shadow:
-        0 0 15px
-        var(--pink);
-}
-
-.mouse-glow {
-    position:
-        fixed;
-
-    left:
-        0;
-
-    top:
-        0;
-
-    width:
-        150px;
-
-    height:
-        150px;
-
-    z-index:
-        -1;
-
-    border-radius:
-        50%;
-
-    pointer-events:
-        none;
-
-    transform:
-        translate(-50%, -50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,125,194,.14),
-            transparent 70%
-        );
-
-    filter:
-        blur(3px);
-}
-
-
-/* =========================================================
-   37. TRAIL
-========================================================= */
-
-.trail-layer,
-.click-layer,
-.sparkle-layer {
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        900;
-
-    pointer-events:
-        none;
-
-    overflow:
-        hidden;
-}
-
-.trail-sweet {
-    position:
-        absolute;
-
-    left:
-        0;
-
-    top:
-        0;
-
-    font-size:
-        var(--trail-size, 18px);
-
-    transform:
-        translate(
-            var(--trail-x),
-            var(--trail-y)
-        )
-        rotate(
-            var(--trail-rotation, 0deg)
-        );
-
-    animation:
-        trailFade
-        .9s
-        var(--ease)
-        forwards;
-
-    filter:
-        drop-shadow(
-            0 3px 5px
-            rgba(93,42,86,.12)
-        );
-}
-
-@keyframes trailFade {
-
-    0% {
-        opacity:
-            .9;
-
-        transform:
-            translate(
-                var(--trail-x),
-                var(--trail-y)
-            )
-            scale(1);
-    }
-
-    100% {
-        opacity:
-            0;
-
-        transform:
-            translate(
-                var(--trail-end-x),
-                var(--trail-end-y)
-            )
-            rotate(
-                var(--trail-rotation-end, 25deg)
-            )
-            scale(.25);
-    }
-}
-
-.click-sweet {
-    position:
-        absolute;
-
-    left:
-        0;
-
-    top:
-        0;
-
-    font-size:
-        var(--click-size, 20px);
-
-    transform:
-        translate(
-            var(--click-x),
-            var(--click-y)
-        );
-
-    animation:
-        clickBurst
-        .8s
-        var(--ease)
-        forwards;
-}
-
-@keyframes clickBurst {
-
-    from {
-        opacity:
-            1;
-
-        transform:
-            translate(
-                var(--click-x),
-                var(--click-y)
-            )
-            scale(.4)
-            rotate(0);
-    }
-
-    to {
-        opacity:
-            0;
-
-        transform:
-            translate(
-                var(--click-end-x),
-                var(--click-end-y)
-            )
-            scale(1)
-            rotate(
-                var(--click-rotation)
-            );
-    }
-}
-
-
-/* =========================================================
-   38. CANDY SPARKLES
-========================================================= */
-
-.candy-sparkle {
-    position:
-        absolute;
-
-    width:
-        18px;
-
-    height:
-        18px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    color:
-        var(--pink);
-
-    pointer-events:
-        auto;
-
-    font-size:
-        16px;
-
-    opacity:
-        .55;
-
-    transition:
-        opacity .3s ease,
-        transform .3s ease;
-}
-
-.candy-sparkle:hover {
-    opacity:
-        1;
-
-    transform:
-        scale(1.6)
-        rotate(20deg);
-}
-
-.candy-sparkle-message {
-    position:
-        fixed;
-
-    z-index:
-        950;
-
-    max-width:
-        200px;
-
-    padding:
-        9px 13px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.85);
-
-    border:
-        1px solid
-        rgba(255,255,255,.95);
-
-    color:
-        var(--text-main);
-
-    font-size:
-        12px;
-
-    box-shadow:
-        var(--shadow-small);
-
-    pointer-events:
-        none;
-
-    animation:
-        sparkleMessage .25s var(--ease);
-}
-
-@keyframes sparkleMessage {
-
-    from {
-        opacity:
-            0;
-
-        transform:
-            translateY(5px)
-            scale(.9);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   39. TOAST
-========================================================= */
-
-.toast {
-    position:
-        fixed;
-
-    left:
-        50%;
-
-    bottom:
-        25px;
-
-    z-index:
-        1000;
-
-    max-width:
-        min(
-            90vw,
-            500px
-        );
-
-    padding:
-        12px 18px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(80,40,74,.9);
-
-    color:
-        white;
-
-    font-size:
-        13px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(50,25,48,.25);
-
-    transform:
-        translate(-50%, 30px);
-
-    opacity:
-        0;
-
-    pointer-events:
-        none;
-
-    transition:
-        opacity .35s ease,
-        transform .45s var(--ease);
-}
-
-.toast.show {
-    opacity:
-        1;
-
-    transform:
-        translate(-50%, 0);
-}
-
-
-/* =========================================================
-   40. LOADER
-========================================================= */
-
-.site-loader {
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        2000;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    overflow:
-        hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff2fa,
-            #f1eaff,
-            #e9fbff
-        );
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
-}
-
-.site-loader.loaded {
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    pointer-events:
-        none;
-}
-
-.loader-sky {
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.85),
-            transparent 35%
-        );
-}
-
-.loader-center {
-    position:
-        relative;
-
-    z-index:
-        5;
-
-    width:
-        min(
-            90vw,
-            500px
-        );
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    text-align:
-        center;
-}
-
-.loader-candy {
-    width:
-        125px;
-
-    height:
-        125px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,.7);
-
-    border:
-        5px solid
-        rgba(255,255,255,.85);
-
-    box-shadow:
-        0 0 80px
-        rgba(255,112,185,.28);
-
-    font-size:
-        65px;
-
-    animation:
-        loaderCandy
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-@keyframes loaderCandy {
-
-    0%,
-    100% {
-        transform:
-            scale(1)
-            rotate(-6deg);
-    }
-
-    50% {
-        transform:
-            scale(1.08)
-            rotate(7deg);
-    }
-}
-
-.loader-title {
-    margin-top:
-        25px;
-
-    font-family:
-        "Pacifico",
-        cursive;
-
-    color:
-        var(--pink);
-
-    font-size:
-        34px;
-}
-
-.loader-subtitle {
-    margin:
-        7px 0 18px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        14px;
-}
-
-.loader-bar {
-    width:
-        min(
-            360px,
-            75vw
-        );
-
-    height:
-        9px;
-
-    overflow:
-        hidden;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.72);
-}
-
-.loader-bar span {
-    display:
-        block;
-
-    width:
-        0%;
-
-    height:
-        100%;
-
-    border-radius:
-        inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--pink),
-            var(--purple),
-            var(--cyan)
-        );
-
-    transition:
-        width .18s linear;
-}
-
-.loader-percent {
-    margin-top:
-        9px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        12px;
-}
-
-.loader-orbit {
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    top:
-        50%;
-
-    width:
-        300px;
-
-    height:
-        300px;
-
-    border:
-        1px solid
-        rgba(255,110,184,.3);
-
-    border-radius:
-        50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    pointer-events:
-        none;
-}
-
-.orbit-a {
-    animation:
-        rotateRing
-        10s
-        linear
-        infinite;
-}
-
-.orbit-b {
-    width:
-        450px;
-
-    height:
-        450px;
-
-    border-color:
-        rgba(163,129,255,.25);
-
-    border-style:
-        dashed;
-
-    animation:
-        rotateRingReverse
-        16s
-        linear
-        infinite;
-}
-
-.loader-sweets {
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    pointer-events:
-        none;
-}
-
-.loader-sweet {
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    top:
-        50%;
-
-    font-size:
-        var(--loader-size, 25px);
-
-    transform:
-        translate(-50%,-50%);
-
-    opacity:
-        0;
-
-    transition:
-        transform 1.7s cubic-bezier(.18,.85,.25,1),
-        opacity .5s ease;
-}
-
-.site-loader.scatter .loader-sweet {
-    opacity:
-        1;
-
-    transform:
-        translate(
-            var(--scatter-x),
-            var(--scatter-y)
-        )
-        rotate(
-            var(--scatter-r)
-        );
-}
-
-.loader-curtain {
-    position:
-        absolute;
-
-    top:
-        0;
-
-    width:
-        50%;
-
-    height:
-        100%;
-
-    z-index:
-        10;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,156,205,.96),
-            rgba(177,139,255,.96)
-        );
-
-    transition:
-        transform .9s cubic-bezier(.76,0,.24,1);
-}
-
-.loader-curtain-left {
-    left:
-        0;
-
-    transform:
-        translateX(0);
-}
-
-.loader-curtain-right {
-    right:
-        0;
-
-    transform:
-        translateX(0);
-}
-
-.site-loader.open-curtain .loader-curtain-left {
-    transform:
-        translateX(-100%);
-}
-
-.site-loader.open-curtain .loader-curtain-right {
-    transform:
-        translateX(100%);
-}
-
-
-/* =========================================================
-   41. PAGE CURTAIN
-========================================================= */
-
-.page-curtain {
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        1800;
-
-    display:
-        flex;
-
-    pointer-events:
-        none;
-
-    visibility:
-        hidden;
-}
-
-.page-curtain.active {
-    visibility:
-        visible;
-}
-
-.page-curtain span {
-    flex:
-        1;
-
-    height:
-        100%;
-
-    transform:
-        translateY(-105%);
-
-    background:
-        linear-gradient(
-            145deg,
-            #ff8fc5,
-            #ae8cff
-        );
-
-    box-shadow:
-        inset
-        -1px 0
-        rgba(255,255,255,.2);
-}
-
-.page-curtain span:nth-child(2) {
-    transition-delay:
-        .03s;
-}
-
-.page-curtain span:nth-child(3) {
-    transition-delay:
-        .06s;
-}
-
-.page-curtain span:nth-child(4) {
-    transition-delay:
-        .09s;
-}
-
-.page-curtain span:nth-child(5) {
-    transition-delay:
-        .12s;
-}
-
-.page-curtain.active span {
-    transform:
-        translateY(0);
-
-    transition:
-        transform .55s var(--ease);
-}
-
-.page-curtain.opening span {
-    transform:
-        translateY(105%);
-
-    transition:
-        transform .65s var(--ease);
-}
-
-.curtain-candy-burst {
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        5;
-
-    pointer-events:
-        none;
-}
-
-
-/* =========================================================
-   42. PAGE REVEAL
-========================================================= */
-
-.reveal-on-page {
-    animation:
-        pageReveal
-        .85s
-        var(--ease)
-        both;
-}
-
-@keyframes pageReveal {
-
-    from {
-        opacity:
-            0;
-
-        transform:
-            translateY(25px);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =========================================================
-   43. SECTION FOOTER HINT
-========================================================= */
-
-.section-footer-hint {
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    bottom:
-        25px;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        max-content;
-
-    max-width:
-        90%;
-
-    padding:
-        8px 14px;
-
-    border-radius:
-        999px;
-
-    background:
-        rgba(255,255,255,.5);
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        11px;
-}
-
-
-/* =========================================================
-   44. RESPONSIVE — TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    :root {
-        --header-height:
-            70px;
-    }
-
-    .main-nav {
-        display:
-            none;
-    }
-
-    .mobile-menu-btn {
-        display:
-            grid;
-
-        place-items:
-            center;
-    }
-
-    .home-layout {
-        grid-template-columns:
-            1fr;
-
-        text-align:
-            center;
-    }
-
-    .hero-copy {
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-    }
-
-    .hero-lead {
-        max-width:
-            780px;
-    }
-
-    .hero-art {
-        min-height:
-            500px;
-
-        width:
-            min(
-                100%,
-                700px
-            );
-
-        margin:
-            0 auto;
-    }
-
-    .about-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .profile-card {
-        min-height:
-            500px;
-    }
-
-    .hobby-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    .dream-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .dream-card:last-child {
-        grid-column:
-            1 / -1;
-    }
-
-    .cake-lab {
-        grid-template-columns:
-            1fr;
-    }
-
-}
-
-
-/* =========================================================
-   45. RESPONSIVE — MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    :root {
-        --page-padding:
-            15px;
-    }
-
-    body {
-        cursor:
-            auto;
-    }
-
-    body *,
-    button,
-    a {
-        cursor:
-            auto;
-    }
-
-    .cursor-spoon,
-    .cursor-dot,
-    .mouse-glow {
-        display:
-            none;
-    }
-
-    .site-header {
-        top:
-            9px;
-
-        width:
-            calc(100% - 18px);
-
-        min-height:
-            62px;
-
-        padding:
-            7px 9px;
-
-        border-radius:
-            22px;
-    }
-
-    .brand-button {
-        padding:
-            5px 8px;
-    }
-
-    .brand-script {
-        font-size:
-            18px;
-    }
-
-    .brand-name {
-        font-size:
-            14px;
-    }
-
-    .page {
-        padding:
-            100px
-            var(--page-padding)
-            105px;
-    }
-
-    .page-inner {
-        min-height:
-            calc(100vh - 170px);
-    }
-
-    .section-heading {
-        margin-bottom:
-            35px;
-    }
-
-    .section-heading h2 {
-        font-size:
-            35px;
-    }
-
-    .hero-name {
-        font-size:
-            clamp(42px, 12vw, 65px);
-
-        letter-spacing:
-            -2px;
-    }
-
-    .hero-lead {
-        font-size:
-            15px;
-
-        line-height:
-            1.8;
-    }
-
-    .hero-actions {
-        width:
-            100%;
-
-        justify-content:
-            center;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-        width:
-            100%;
-    }
-
-    .hero-art {
-        min-height:
-            380px;
-
-        border-radius:
-            30px;
-    }
-
-    .hero-ring-1 {
-        width:
-            260px;
-
-        height:
-            260px;
-    }
-
-    .hero-ring-2 {
-        width:
-            330px;
-
-        height:
-            330px;
-    }
-
-    .hero-ring-3 {
-        width:
-            400px;
-
-        height:
-            400px;
-    }
-
-    .profile-card {
-        min-height:
-            auto;
-
-        padding:
-            22px;
-    }
-
-    .profile-photo-wrap {
-        width:
-            min(
-                70vw,
-                260px
-            );
-    }
-
-    .profile-details {
-        grid-template-columns:
-            1fr;
-    }
-
-    .info-card {
-        min-height:
-            110px;
-    }
-
-    .secret-box {
-        grid-template-columns:
-            auto 1fr;
-
-        align-items:
-            start;
-    }
-
-    .secret-sequence,
-    .secret-result {
-        grid-column:
-            1 / -1;
-    }
-
-    .education-timeline {
-        padding-left:
-            18px;
-    }
-
-    .timeline-line {
-        left:
-            10px;
-
-        transform:
-            none;
-    }
-
-    .edu-card,
-    .edu-card:nth-of-type(odd),
-    .edu-card:nth-of-type(even) {
-        width:
-            calc(100% - 30px);
-
-        margin:
-            0 0 25px 30px;
-    }
-
-    .edu-bullet,
-    .edu-card:nth-of-type(odd) .edu-bullet,
-    .edu-card:nth-of-type(even) .edu-bullet {
-        left:
-            -48px;
-
-        right:
-            auto;
-
-        width:
-            42px;
-
-        height:
-            42px;
-    }
-
-    .hobby-grid,
-    .dream-grid,
-    .contact-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .dream-card:last-child {
-        grid-column:
-            auto;
-    }
-
-    .cake-options {
-        grid-template-columns:
-            1fr;
-    }
-
-    .cake-canvas-wrap {
-        min-height:
-            330px;
-    }
-
-    .cake-canvas {
-        transform:
-            scale(.82);
-    }
-
-    .cake-box-zone {
-        flex-direction:
-            column;
-
-        gap:
-            25px;
-
-        text-align:
-            center;
-    }
-
-    .page-progress {
-        left:
-            50%;
-
-        top:
-            auto;
-
-        bottom:
-            15px;
-
-        transform:
-            translateX(-50%);
-
-        flex-direction:
-            row;
-
-        max-width:
-            calc(100vw - 100px);
-
-        overflow-x:
-            auto;
-    }
-
-    .page-progress button {
-        flex:
-            0 0 auto;
-    }
-
-    .fixed-controls {
-        right:
-            10px;
-
-        bottom:
-            78px;
-    }
-
-    .music-control {
-        min-width:
-            50px;
-
-        width:
-            50px;
-
-        padding:
-            0;
-
-        border-radius:
-            50%;
-    }
-
-    #musicText {
-        display:
-            none;
-    }
-
-    .achievement-panel {
-        right:
-            10px;
-
-        bottom:
-            135px;
-    }
-
-    .bottom-sweet-pile {
-        height:
-            75px;
-    }
-
-    .pile-sweet {
-        font-size:
-            30px;
-    }
-
-    .sauce-drip {
-        right:
-            18px;
-    }
-
-    .loader-title {
-        font-size:
-            27px;
-    }
-
-    .loader-orbit {
-        width:
-            230px;
-
-        height:
-            230px;
-    }
-
-    .orbit-b {
-        width:
-            330px;
-
-        height:
-            330px;
-    }
-
-}
-
-
-/* =========================================================
-   46. REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration:
-            0.001ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        scroll-behavior:
-            auto !important;
-
-        transition-duration:
-            0.001ms !important;
-    }
-
-}
-
-
-/* =========================================================
-   47. FALLBACK IMAGE STYLE
-========================================================= */
-
-img[data-fallback].image-error {
-    display:
-        none;
-}
-
-.image-placeholder-fallback {
-    width:
-        100%;
-
-    height:
-        100%;
-
-    min-height:
-        150px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        20px;
-
-    text-align:
-        center;
-
-    color:
-        var(--text-soft);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light),
-            var(--cyan-light)
-        );
-
-    font-size:
-        13px;
-}
-
-.image-placeholder-fallback strong {
-    margin-bottom:
-        5px;
-
-    color:
-        var(--text-main);
-
-    font-size:
-        18px;
-}
-
-
-/* =========================================================
-   48. DARK / NIGHT BASE
-========================================================= */
-
-body.night-mode {
-    --bg-1:
-        #211329;
-
-    --bg-2:
-        #17162d;
-
-    --bg-3:
-        #10252d;
-
-    --bg-glow-1:
-        rgba(255, 84, 171, .13);
-
-    --bg-glow-2:
-        rgba(103, 82, 255, .15);
-
-    --text-main:
-        #fff1fa;
-
-    --text-soft:
-        #d1bdd0;
-
-    --glass:
-        rgba(48, 29, 52, .48);
-
-    --glass-strong:
-        rgba(55, 33, 59, .7);
-
-    --border:
-        rgba(255,255,255,.13);
-
-    --shadow:
-        0 25px 80px
-        rgba(0,0,0,.3);
-
-    --shadow-small:
-        0 10px 30px
-        rgba(0,0,0,.22);
-}
-
-body.night-mode .site-header {
-    background:
-        rgba(30,20,38,.58);
-}
-
-body.night-mode .nav-button {
-    color:
-        #d8c6d6;
-}
-
-body.night-mode .secondary-btn,
-body.night-mode .floating-control,
-body.night-mode .music-control {
-    background:
-        rgba(255,255,255,.08);
-
-    color:
-        var(--text-main);
-}
-
-body.night-mode .achievement-panel {
-    background:
-        rgba(34,23,42,.88);
-}
-
-body.night-mode .page-progress {
-    background:
-        rgba(35,23,43,.55);
-}
-
-
-/* =========================================================
-   49. SMALL SCREEN SAFETY
-========================================================= */
-
-@media (max-width: 420px) {
-
-    .hero-name {
-        font-size:
-            39px;
-    }
-
-    .section-heading h2 {
-        font-size:
-            31px;
-    }
-
-    .hero-art {
-        min-height:
-            330px;
-    }
-
-    .hero-sweet-core {
-        width:
-            125px;
-
-        height:
-            125px;
-
-        font-size:
-            70px;
-    }
-
-    .hero-ring-1 {
-        width:
-            220px;
-
-        height:
-            220px;
-    }
-
-    .hero-ring-2 {
-        width:
-            280px;
-
-        height:
-            280px;
-    }
-
-    .hero-ring-3 {
-        width:
-            335px;
-
-        height:
-            335px;
-    }
-
-    .cake-canvas {
-        transform:
-            scale(.68);
-    }
-
-    .page-progress {
-        gap:
-            2px;
-
-        padding:
-            5px;
-    }
-
-    .page-progress button {
-        width:
-            31px;
-
-        height:
-            31px;
-
-        font-size:
-            13px;
-    }
-
-}
+</body>
+</html>
