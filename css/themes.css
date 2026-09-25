@@ -1,0 +1,2204 @@
+/* =========================================================
+   MY SWEET PORTFOLIO
+   THEMES.CSS
+   Candy / Sweet Fantasy + Vintage Bakery
+========================================================= */
+
+
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+:root {
+
+    --theme-main: #ff72b6;
+    --theme-main-2: #ff9bd2;
+    --theme-secondary: #a875ff;
+    --theme-cyan: #75eaff;
+
+    --theme-cream: #fff8fb;
+    --theme-white: #ffffff;
+
+    --theme-dark: #28152d;
+
+    --theme-bg-1: #fff1fa;
+    --theme-bg-2: #f4eaff;
+    --theme-bg-3: #e7faff;
+
+    --theme-glass:
+        rgba(255,255,255,.58);
+
+    --theme-glass-strong:
+        rgba(255,255,255,.76);
+
+    --theme-border:
+        rgba(255,255,255,.78);
+
+    --theme-shadow:
+        0 18px 55px rgba(183,92,159,.20);
+
+    --theme-glow:
+        rgba(255,114,182,.45);
+
+    --theme-sauce:
+        #ff76b9;
+
+    --theme-sauce-light:
+        #ffb7db;
+
+    --theme-pile-1:
+        #ff77b8;
+
+    --theme-pile-2:
+        #ffd15c;
+
+    --theme-pile-3:
+        #9d7aff;
+
+    --theme-pile-4:
+        #6ee7ff;
+
+    --theme-text:
+        #40213f;
+
+    --theme-text-soft:
+        #805a79;
+
+    --theme-card-highlight:
+        rgba(255,255,255,.72);
+
+    --theme-star:
+        #ffd85c;
+
+    --theme-success:
+        #7ddc9b;
+}
+
+
+/* =========================================================
+   CANDY THEME
+========================================================= */
+
+body.theme-candy,
+body:not(.theme-bakery) {
+
+    --theme-main: #ff72b6;
+    --theme-main-2: #ff9bd2;
+    --theme-secondary: #a875ff;
+    --theme-cyan: #75eaff;
+
+    --theme-cream: #fff8fb;
+    --theme-white: #ffffff;
+
+    --theme-dark: #28152d;
+
+    --theme-bg-1: #fff1fa;
+    --theme-bg-2: #f4eaff;
+    --theme-bg-3: #e7faff;
+
+    --theme-glass:
+        rgba(255,255,255,.58);
+
+    --theme-glass-strong:
+        rgba(255,255,255,.76);
+
+    --theme-border:
+        rgba(255,255,255,.80);
+
+    --theme-shadow:
+        0 18px 55px rgba(183,92,159,.20);
+
+    --theme-glow:
+        rgba(255,114,182,.48);
+
+    --theme-sauce:
+        #ff76b9;
+
+    --theme-sauce-light:
+        #ffb7db;
+
+    --theme-pile-1:
+        #ff77b8;
+
+    --theme-pile-2:
+        #ffd15c;
+
+    --theme-pile-3:
+        #9d7aff;
+
+    --theme-pile-4:
+        #6ee7ff;
+
+    --theme-text:
+        #40213f;
+
+    --theme-text-soft:
+        #805a79;
+
+    --theme-card-highlight:
+        rgba(255,255,255,.74);
+
+    --theme-star:
+        #ffd85c;
+
+}
+
+
+/* =========================================================
+   BAKERY THEME
+========================================================= */
+
+body.theme-bakery {
+
+    --theme-main: #a86645;
+    --theme-main-2: #d59a70;
+    --theme-secondary: #9b6b52;
+    --theme-cyan: #d7b58c;
+
+    --theme-cream: #fff8e9;
+    --theme-white: #fffdf7;
+
+    --theme-dark: #39251d;
+
+    --theme-bg-1: #fff3dc;
+    --theme-bg-2: #ead2b6;
+    --theme-bg-3: #d9b894;
+
+    --theme-glass:
+        rgba(255,248,231,.66);
+
+    --theme-glass-strong:
+        rgba(255,248,231,.84);
+
+    --theme-border:
+        rgba(255,255,255,.72);
+
+    --theme-shadow:
+        0 18px 55px rgba(103,65,42,.22);
+
+    --theme-glow:
+        rgba(168,102,69,.38);
+
+    --theme-sauce:
+        #9a593b;
+
+    --theme-sauce-light:
+        #d99c6c;
+
+    --theme-pile-1:
+        #b86f49;
+
+    --theme-pile-2:
+        #e0b36f;
+
+    --theme-pile-3:
+        #83543e;
+
+    --theme-pile-4:
+        #d9c39e;
+
+    --theme-text:
+        #4b3024;
+
+    --theme-text-soft:
+        #80604d;
+
+    --theme-card-highlight:
+        rgba(255,250,237,.78);
+
+    --theme-star:
+        #e7b75b;
+
+}
+
+
+/* =========================================================
+   BODY THEME TRANSITION
+========================================================= */
+
+body,
+body * {
+
+    transition-property:
+        background-color,
+        border-color,
+        box-shadow,
+        color,
+        text-shadow,
+        opacity;
+
+    transition-duration:
+        .65s;
+
+    transition-timing-function:
+        ease;
+}
+
+
+/* อย่าให้ animation หลักโดน transition นี้ */
+
+.loader-ring,
+.loader-candy,
+.loader-sweets *,
+.background-sweet,
+.floating-candy,
+.ripple,
+.mouse-trail *,
+.click-burst *,
+.candy-star,
+.home-orbit,
+.radar *,
+.cake *,
+.gacha *,
+.sparkle,
+.secret-sparkle {
+
+    transition:
+        none;
+}
+
+
+/* =========================================================
+   BACKGROUND THEME
+========================================================= */
+
+.background-gradient {
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            color-mix(
+                in srgb,
+                var(--theme-main) 25%,
+                transparent
+            ),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 30%,
+            color-mix(
+                in srgb,
+                var(--theme-secondary) 23%,
+                transparent
+            ),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            color-mix(
+                in srgb,
+                var(--theme-cyan) 18%,
+                transparent
+            ),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            var(--theme-bg-1),
+            var(--theme-bg-2),
+            var(--theme-bg-3)
+        );
+
+}
+
+
+/* =========================================================
+   GLASS CARDS
+========================================================= */
+
+.glass-card,
+.image-frame,
+.education-card,
+.contact-card,
+.gacha-machine,
+.decoration-menu,
+.cake-work-area,
+.cake-box {
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--theme-glass-strong),
+            var(--theme-glass)
+        );
+
+    border-color:
+        var(--theme-border);
+
+    box-shadow:
+        var(--theme-shadow);
+
+}
+
+
+.glass-card::before,
+.image-frame::before,
+.education-card::before,
+.contact-card::before {
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.62),
+            transparent 38%
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.main-header {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--theme-glass-strong) 82%,
+            transparent
+        );
+
+    border-color:
+        var(--theme-border);
+
+    box-shadow:
+        0 10px 35px
+        color-mix(
+            in srgb,
+            var(--theme-main) 12%,
+            transparent
+        );
+
+}
+
+
+.brand-icon {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+    box-shadow:
+        0 0 25px
+        var(--theme-glow);
+
+}
+
+
+.brand-text {
+
+    color:
+        var(--theme-text);
+
+}
+
+
+.brand-sparkle {
+
+    color:
+        var(--theme-star);
+
+    text-shadow:
+        0 0 12px
+        var(--theme-star);
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-link {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+
+    color:
+        var(--theme-main);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--theme-main) 10%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px
+        color-mix(
+            in srgb,
+            var(--theme-main) 16%,
+            transparent
+        );
+
+}
+
+
+.nav-icon {
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            color-mix(
+                in srgb,
+                var(--theme-main) 35%,
+                transparent
+            )
+        );
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+    color:
+        white;
+
+    box-shadow:
+        0 12px 30px
+        color-mix(
+            in srgb,
+            var(--theme-main) 30%,
+            transparent
+        );
+
+}
+
+
+.primary-button:hover {
+
+    box-shadow:
+        0 16px 40px
+        color-mix(
+            in srgb,
+            var(--theme-main) 42%,
+            transparent
+        );
+
+}
+
+
+.secondary-button,
+.tool-button {
+
+    background:
+        var(--theme-glass);
+
+    color:
+        var(--theme-text);
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.secondary-button:hover,
+.tool-button:hover {
+
+    border-color:
+        var(--theme-main);
+
+    color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 22px
+        color-mix(
+            in srgb,
+            var(--theme-main) 22%,
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+
+    border-color:
+        var(--theme-border);
+
+    background:
+        var(--theme-glass);
+
+}
+
+
+.theme-toggle:hover {
+
+    border-color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 25px
+        var(--theme-glow);
+
+}
+
+
+body.theme-bakery .theme-toggle {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,248,231,.90),
+            rgba(218,181,143,.55)
+        );
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+.home-title {
+
+    color:
+        var(--theme-text);
+
+    text-shadow:
+        0 5px 30px
+        color-mix(
+            in srgb,
+            var(--theme-main) 18%,
+            transparent
+        );
+
+}
+
+
+.title-name {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.home-subtitle,
+.section-description {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.section-kicker {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.home-tags span {
+
+    background:
+        var(--theme-glass);
+
+    border-color:
+        var(--theme-border);
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.home-tags span:hover {
+
+    border-color:
+        var(--theme-main);
+
+    color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 18px
+        color-mix(
+            in srgb,
+            var(--theme-main) 20%,
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   HOME CANDY
+========================================================= */
+
+.home-candy {
+
+    filter:
+        drop-shadow(
+            0 20px 40px
+            color-mix(
+                in srgb,
+                var(--theme-main) 28%,
+                transparent
+            )
+        );
+
+}
+
+
+.home-candy-glow {
+
+    background:
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--theme-main) 35%,
+                transparent
+            ),
+            transparent 70%
+        );
+
+}
+
+
+.home-orbit {
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--theme-main) 38%,
+            transparent
+        );
+
+}
+
+
+.orbit-2 {
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--theme-secondary) 35%,
+            transparent
+        );
+
+}
+
+
+.orbit-3 {
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--theme-cyan) 35%,
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.image-frame-caption {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+    color:
+        white;
+
+}
+
+
+.card-label {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.mini-info {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--theme-main) 7%,
+            var(--theme-glass)
+        );
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.mini-info:hover {
+
+    border-color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 20px
+        color-mix(
+            in srgb,
+            var(--theme-main) 18%,
+            transparent
+        );
+
+}
+
+
+.mini-info-icon {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.quote-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(
+                in srgb,
+                var(--theme-main) 10%,
+                var(--theme-glass)
+            ),
+            color-mix(
+                in srgb,
+                var(--theme-secondary) 9%,
+                var(--theme-glass)
+            )
+        );
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.quote-mark {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.quote-end {
+
+    color:
+        var(--theme-secondary);
+
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-line {
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--theme-main),
+            var(--theme-secondary),
+            var(--theme-cyan)
+        );
+
+}
+
+
+.education-line-glow {
+
+    background:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 18px
+        var(--theme-glow);
+
+}
+
+
+.education-node {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+    box-shadow:
+        0 0 24px
+        var(--theme-glow);
+
+}
+
+
+.education-card:hover {
+
+    border-color:
+        var(--theme-main);
+
+}
+
+
+.education-year {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.education-icon {
+
+    color:
+        var(--theme-secondary);
+
+}
+
+
+/* =========================================================
+   HOBBIES
+========================================================= */
+
+.hobby-card:hover {
+
+    border-color:
+        var(--theme-main);
+
+    box-shadow:
+        0 20px 50px
+        color-mix(
+            in srgb,
+            var(--theme-main) 22%,
+            transparent
+        );
+
+}
+
+
+.hobby-overlay {
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            color-mix(
+                in srgb,
+                var(--theme-dark) 80%,
+                transparent
+            )
+        );
+
+}
+
+
+.hobby-number {
+
+    color:
+        var(--theme-star);
+
+}
+
+
+/* =========================================================
+   DREAMS
+========================================================= */
+
+.dream-main {
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.dream-icon {
+
+    color:
+        var(--theme-main);
+
+    text-shadow:
+        0 0 20px
+        var(--theme-glow);
+
+}
+
+
+.dream-orbit {
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--theme-main) 30%,
+            transparent
+        );
+
+}
+
+
+.dream-small {
+
+    background:
+        var(--theme-glass);
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.dream-small:hover {
+
+    border-color:
+        var(--theme-main);
+
+}
+
+
+.dream-small-icon {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.dream-goal {
+
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(
+                in srgb,
+                var(--theme-main) 10%,
+                var(--theme-glass)
+            ),
+            color-mix(
+                in srgb,
+                var(--theme-secondary) 10%,
+                var(--theme-glass)
+            )
+        );
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.goal-decoration {
+
+    color:
+        var(--theme-star);
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-envelope {
+
+    color:
+        var(--theme-main);
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            var(--theme-glow)
+        );
+
+}
+
+
+.contact-card:hover {
+
+    border-color:
+        var(--theme-main);
+
+}
+
+
+.contact-card-icon {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.contact-card-content strong {
+
+    color:
+        var(--theme-text);
+
+}
+
+
+.contact-card-content span {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.contact-arrow {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+/* =========================================================
+   GACHA
+========================================================= */
+
+.gacha-machine {
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--theme-glass-strong),
+            var(--theme-glass)
+        );
+
+}
+
+
+.gacha-top-light {
+
+    background:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 25px
+        var(--theme-glow);
+
+}
+
+
+.gacha-window {
+
+    background:
+        radial-gradient(
+            circle at center,
+            color-mix(
+                in srgb,
+                var(--theme-main) 12%,
+                transparent
+            ),
+            rgba(255,255,255,.30)
+        );
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--theme-main) 30%,
+            white
+        );
+
+}
+
+
+.gacha-machine-label {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.gacha-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+    color:
+        white;
+
+    box-shadow:
+        0 12px 28px
+        var(--theme-glow);
+
+}
+
+
+.gacha-button:hover {
+
+    box-shadow:
+        0 16px 38px
+        color-mix(
+            in srgb,
+            var(--theme-main) 45%,
+            transparent
+        );
+
+}
+
+
+.gacha-result {
+
+    color:
+        var(--theme-text);
+
+}
+
+
+/* =========================================================
+   DECORATION INVENTORY
+========================================================= */
+
+.decoration-menu {
+
+    background:
+        var(--theme-glass);
+
+}
+
+
+.decoration-menu-heading {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.inventory-empty {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.decoration-item {
+
+    border-color:
+        var(--theme-border);
+
+    background:
+        var(--theme-glass);
+
+}
+
+
+.decoration-item:hover {
+
+    border-color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 20px
+        var(--theme-glow);
+
+}
+
+
+/* =========================================================
+   CAKE STUDIO
+========================================================= */
+
+.cake-controls {
+
+    background:
+        var(--theme-glass);
+
+}
+
+
+.control-title {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.choice-button {
+
+    background:
+        var(--theme-glass);
+
+    color:
+        var(--theme-text);
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.choice-button:hover,
+.choice-button.active {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--theme-main) 12%,
+            var(--theme-glass)
+        );
+
+    border-color:
+        var(--theme-main);
+
+    color:
+        var(--theme-main);
+
+    box-shadow:
+        0 0 18px
+        color-mix(
+            in srgb,
+            var(--theme-main) 20%,
+            transparent
+        );
+
+}
+
+
+.drip-toggle {
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.drip-toggle-check {
+
+    background:
+        var(--theme-main);
+
+}
+
+
+/* =========================================================
+   CAKE WORK AREA
+========================================================= */
+
+.cake-work-area {
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            color-mix(
+                in srgb,
+                var(--theme-main) 8%,
+                transparent
+            ),
+            transparent 55%
+        ),
+        var(--theme-glass);
+
+}
+
+
+.work-area-label {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.cake-shadow {
+
+    background:
+        color-mix(
+            in srgb,
+            var(--theme-dark) 18%,
+            transparent
+        );
+
+}
+
+
+.cake-hint {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+/* =========================================================
+   CAKE COLORS
+========================================================= */
+
+.cake-layer-1 {
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffaf1,
+            #f1d6b8
+        );
+
+}
+
+
+.cake-layer-2 {
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffe5ef,
+            #f5a9c8
+        );
+
+}
+
+
+.cake-layer-3 {
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff4d4,
+            #eac38c
+        );
+
+}
+
+
+.cake-cream {
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fff5fb
+        );
+
+}
+
+
+.cake-drip {
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--theme-main-2),
+            var(--theme-main)
+        );
+
+}
+
+
+/* =========================================================
+   CAKE BOX
+========================================================= */
+
+.cake-box {
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--theme-glass-strong),
+            var(--theme-glass)
+        );
+
+}
+
+
+.box-lid {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+}
+
+
+.box-ribbon {
+
+    background:
+        var(--theme-star);
+
+}
+
+
+.box-heart {
+
+    color:
+        var(--theme-main);
+
+    text-shadow:
+        0 0 15px
+        var(--theme-glow);
+
+}
+
+
+.final-gift-message {
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--theme-glass-strong),
+            var(--theme-glass)
+        );
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.final-gift-icon {
+
+    color:
+        var(--theme-main);
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            var(--theme-glow)
+        );
+
+}
+
+
+/* =========================================================
+   SECRET SPARKLES
+========================================================= */
+
+.secret-sparkle {
+
+    color:
+        var(--theme-star);
+
+    text-shadow:
+        0 0 12px
+        var(--theme-star);
+
+}
+
+
+.secret-sparkle:hover {
+
+    color:
+        var(--theme-main);
+
+    text-shadow:
+        0 0 22px
+        var(--theme-glow);
+
+}
+
+
+/* =========================================================
+   SECRET RECIPE
+========================================================= */
+
+.secret-recipe-inner {
+
+    background:
+        var(--theme-glass-strong);
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+.secret-recipe-icon {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+.recipe-sequence span {
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            var(--theme-glow)
+        );
+
+}
+
+
+/* =========================================================
+   ACHIEVEMENT
+========================================================= */
+
+.achievement-popup-inner {
+
+    background:
+        var(--theme-glass-strong);
+
+    border-color:
+        var(--theme-border);
+
+    box-shadow:
+        0 25px 70px
+        color-mix(
+            in srgb,
+            var(--theme-main) 22%,
+            transparent
+        );
+
+}
+
+
+#achievementIcon {
+
+    color:
+        var(--theme-star);
+
+    text-shadow:
+        0 0 20px
+        var(--theme-star);
+
+}
+
+
+#achievementTitle {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    background:
+        var(--theme-glass-strong);
+
+    color:
+        var(--theme-text);
+
+    border-color:
+        var(--theme-border);
+
+}
+
+
+#toastIcon {
+
+    color:
+        var(--theme-main);
+
+}
+
+
+/* =========================================================
+   SAUCE
+========================================================= */
+
+.sticky-sauce {
+
+    pointer-events:
+        none;
+
+}
+
+
+.sauce-top,
+.drip {
+
+    background:
+        var(--theme-sauce);
+
+    box-shadow:
+        0 4px 16px
+        color-mix(
+            in srgb,
+            var(--theme-sauce) 25%,
+            transparent
+        );
+
+}
+
+
+.drip::after {
+
+    background:
+        var(--theme-sauce-light);
+
+}
+
+
+/* =========================================================
+   BOTTOM SWEET PILE
+========================================================= */
+
+.bottom-sweet-pile {
+
+    filter:
+        drop-shadow(
+            0 -8px 25px
+            color-mix(
+                in srgb,
+                var(--theme-main) 12%,
+                transparent
+            )
+        );
+
+}
+
+
+.pile-sweet {
+
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(0,0,0,.10)
+        );
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    color:
+        var(--theme-text-soft);
+
+}
+
+
+.footer-sparkles {
+
+    color:
+        var(--theme-star);
+
+}
+
+
+/* =========================================================
+   CURSOR — SPOON
+========================================================= */
+
+.cursor-spoon {
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            var(--theme-glow)
+        );
+
+}
+
+
+.spoon-head {
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            var(--theme-main-2)
+        );
+
+    border-color:
+        rgba(255,255,255,.85);
+
+}
+
+
+.spoon-handle {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--theme-main),
+            var(--theme-secondary)
+        );
+
+}
+
+
+/* =========================================================
+   MOUSE TRAIL
+========================================================= */
+
+.mouse-trail .trail-sweet {
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            var(--theme-glow)
+        );
+
+}
+
+
+.click-burst .burst-sweet {
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            var(--theme-glow)
+        );
+
+}
+
+
+/* =========================================================
+   CANDY THEME DECORATIONS
+========================================================= */
+
+body.theme-candy .background-sweet::after {
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,114,182,.22)
+        );
+
+}
+
+
+body.theme-candy .floating-candy {
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(175,91,150,.13)
+        );
+
+}
+
+
+/* =========================================================
+   BAKERY THEME DECORATIONS
+========================================================= */
+
+body.theme-bakery .background-sweet {
+
+    filter:
+        sepia(.18)
+        saturate(.82)
+        drop-shadow(
+            0 8px 14px
+            rgba(92,55,35,.14)
+        );
+
+}
+
+
+body.theme-bakery .floating-candy {
+
+    filter:
+        sepia(.22)
+        saturate(.75)
+        drop-shadow(
+            0 8px 14px
+            rgba(92,55,35,.15)
+        );
+
+}
+
+
+body.theme-bakery .background-gradient {
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(168,102,69,.18),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(224,179,111,.20),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(125,84,62,.15),
+            transparent 42%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff3dc,
+            #ead2b6,
+            #d9b894
+        );
+
+}
+
+
+/* =========================================================
+   BAKERY — SPECIAL DETAILS
+========================================================= */
+
+body.theme-bakery .home-title {
+
+    text-shadow:
+        0 5px 30px
+        rgba(126,78,49,.20);
+
+}
+
+
+body.theme-bakery .title-name {
+
+    color:
+        #a86645;
+
+}
+
+
+body.theme-bakery .primary-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #a86645,
+            #d59a70
+        );
+
+}
+
+
+body.theme-bakery .section-kicker {
+
+    color:
+        #a86645;
+
+}
+
+
+body.theme-bakery .gacha-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #a86645,
+            #d59a70
+        );
+
+}
+
+
+body.theme-bakery .sauce-top,
+body.theme-bakery .drip {
+
+    background:
+        #925238;
+
+}
+
+
+body.theme-bakery .box-lid {
+
+    background:
+        linear-gradient(
+            135deg,
+            #9a593b,
+            #c9875e
+        );
+
+}
+
+
+/* =========================================================
+   BAKERY — WARM OVERLAY
+========================================================= */
+
+body.theme-bakery::after {
+
+    content:
+        "";
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    z-index:
+        2;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(101,66,43,.06)
+        );
+
+}
+
+
+/* =========================================================
+   CANDY — SOFT LIGHT
+========================================================= */
+
+body.theme-candy::after,
+body:not(.theme-bakery)::after {
+
+    content:
+        "";
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    z-index:
+        2;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(255,115,183,.035)
+        );
+
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+body.theme-changing {
+
+    pointer-events:
+        none;
+
+}
+
+
+body.theme-changing::before {
+
+    content:
+        "";
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        99990;
+
+    pointer-events:
+        none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            color-mix(
+                in srgb,
+                var(--theme-main) 20%,
+                transparent
+            ),
+            transparent 65%
+        );
+
+    animation:
+        themeFlash 1.25s ease both;
+
+}
+
+
+@keyframes themeFlash {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(.8);
+
+    }
+
+    35% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(1.3);
+
+    }
+
+}
+
+
+/* =========================================================
+   NIGHT VARIATION
+========================================================= */
+
+body.theme-night {
+
+    --theme-bg-1: #181326;
+    --theme-bg-2: #211936;
+    --theme-bg-3: #102b38;
+
+    --theme-glass:
+        rgba(31,25,52,.58);
+
+    --theme-glass-strong:
+        rgba(35,28,58,.78);
+
+    --theme-border:
+        rgba(255,255,255,.16);
+
+    --theme-text:
+        #fff4fb;
+
+    --theme-text-soft:
+        #cdbbd2;
+
+    --theme-shadow:
+        0 18px 55px rgba(0,0,0,.35);
+
+}
+
+
+body.theme-bakery.theme-night {
+
+    --theme-bg-1: #1d1714;
+    --theme-bg-2: #2c211b;
+    --theme-bg-3: #35271f;
+
+    --theme-glass:
+        rgba(55,42,34,.62);
+
+    --theme-glass-strong:
+        rgba(63,47,37,.82);
+
+    --theme-text:
+        #fff5e5;
+
+    --theme-text-soft:
+        #d8c1a9;
+
+}
+
+
+/* =========================================================
+   NIGHT STARS
+========================================================= */
+
+body.theme-night #backgroundStars {
+
+    opacity:
+        1;
+
+}
+
+
+body.theme-night .background-sparkles {
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255,255,255,.75)
+        );
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body,
+    body * {
+
+        transition-duration:
+            .01ms !important;
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+}
